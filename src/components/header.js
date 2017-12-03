@@ -11,7 +11,7 @@ export default function Header(props) {
         </div>
 
         <div className="col-6 header-content">
-          <a href="" id="log-in">Log In</a>
+          <a href="/login" id="log-in">Log In</a>
         </div>
       </div>
     </header>

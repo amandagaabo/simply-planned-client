@@ -25,6 +25,8 @@ export default function SignUpForm(props) {
 
           <button type="submit">submit</button>
         </form>
+
+        <p>Already have an account, <a className="underline" href="/login">log in</a></p>
       </div>
     </section>
 

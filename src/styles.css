@@ -11,3 +11,14 @@ a {
   text-decoration: none;
   color: black;
 }
+
+.button {
+  background-color: #bbb;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.underline {
+  text-decoration: underline;
+}

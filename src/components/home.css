@@ -15,3 +15,7 @@ section:nth-child(odd) {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+#photo-caption {
+  margin-top: 0;
+}
