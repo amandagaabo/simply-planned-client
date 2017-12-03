@@ -7,7 +7,7 @@ export function Login(props) {
   function onSubmit(e) {
     e.preventDefault();
     console.log("login button clicked");
-  }
+  };
 
   return (
     <main role="main">

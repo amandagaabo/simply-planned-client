@@ -1,27 +1,64 @@
 import React from 'react';
+import {reduxForm, Field} from 'redux-form';
 
 import './sign-up-form.css';
 
-export default function SignUpForm(props) {
+export function SignUpForm(props) {
+  function onSubmit(e) {
+    e.preventDefault();
+    console.log("login button clicked");
+  };
+
   return (
     <section id="sign-up">
       <div className="row">
         <h1>Sign Up</h1>
-        <form>
-          <label for="first-name">First name</label>
-          <input type="text" id="first-name" placeholder="first name" />
 
-          <label for="last-name">Last name</label>
-          <input type="text" id="last-name" placeholder="last name" />
+        <form id="sign-up-form" onSubmit={onSubmit}>
+          <label htmlFor="first-name">First name</label>
+          <Field
+              component="input"
+              name="first-name"
+              id="first-name"
+              type="text"
+              placeholder="first name"
+          />
 
-          <label for="">Email</label>
-          <input type="email" id="email" placeholder="email" />
+          <label htmlFor="last-name">Last name</label>
+          <Field
+              component="input"
+              name="last-name"
+              id="last-name"
+              type="text"
+              placeholder="last name"
+          />
 
-          <label for="">Password</label>
-          <input type="password" id="password" placeholder="password" />
+          <label htmlFor="email">Email</label>
+          <Field
+              component="input"
+              name="email"
+              id="email"
+              type="email"
+              placeholder="email"
+          />
 
-          <label for="">Confirm Password</label>
-          <input type="password" id="password-confirm" placeholder="password" />
+          <label htmlFor="password">Password</label>
+          <Field
+              component="input"
+              name="password"
+              id="password"
+              type="password"
+              placeholder="password"
+          />
+
+          <label htmlFor="confirm-password">Confirm Password</label>
+          <Field
+              component="input"
+              name="confirm-password"
+              id="confirm-password"
+              type="password"
+              placeholder="re-enter password"
+          />
 
           <button type="submit">submit</button>
         </form>
@@ -29,6 +66,9 @@ export default function SignUpForm(props) {
         <p>Already have an account, <a className="underline" href="/login">log in</a></p>
       </div>
     </section>
-
   );
 };
+
+export default reduxForm({
+  form: 'sign-up'
+})(SignUpForm)

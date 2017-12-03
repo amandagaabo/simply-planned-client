@@ -2,6 +2,6 @@
 const action = null;
 const initialState = {};
 
-export const reducer = (state=initialState, action) => {
+export const simplyPlannedReducer = (state=initialState, action) => {
     return state;
 };
