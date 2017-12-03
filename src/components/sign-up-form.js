@@ -6,7 +6,7 @@ import './sign-up-form.css';
 export function SignUpForm(props) {
   function onSubmit(e) {
     e.preventDefault();
-    console.log("login button clicked");
+    console.log("sign up submit button clicked");
   };
 
   return (

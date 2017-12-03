@@ -1,8 +1,6 @@
 import React from 'react';
 import {reduxForm, Field} from 'redux-form';
 
-import './login.css';
-
 export function Login(props) {
   function onSubmit(e) {
     e.preventDefault();
@@ -11,7 +9,7 @@ export function Login(props) {
 
   return (
     <main role="main">
-        <section id="login-section">
+        <section className="dark-section">
           <div className="row">
             <h1>Log In</h1>
 
