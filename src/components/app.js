@@ -10,9 +10,7 @@ export default function App(props) {
     <Router>
       <div className="app">
         <Header />
-        <main>
-          <Route exact path="/" component={Home} />
-        </main>
+        <Route exact path="/" component={Home} />
       </div>
     </Router>
   );

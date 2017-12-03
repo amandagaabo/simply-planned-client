@@ -5,12 +5,12 @@ import './header.css';
 export default function Header(props) {
   return (
     <header role="banner">
-      <div class="row">
-        <div class="col-6 header-content">
+      <div className="row">
+        <div className="col-6 header-content">
           <a href="/" id="logo">Simply Planned</a>
         </div>
 
-        <div class="col-6 header-content">
+        <div className="col-6 header-content">
           <a href="" id="log-in">Log In</a>
         </div>
       </div>

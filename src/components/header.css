@@ -1,6 +1,12 @@
 header {
-  background-color: #ccc;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: white;
 }
+
 .header-content {
   position: relative;
   height: 60px;
