@@ -1,0 +1,14 @@
+section {
+  min-height: 200px;
+  padding: 6% 0;
+  background-color: #bbb;
+}
+
+section:nth-child(odd) {
+  background-color: #eee;
+}
+
+#hero-section {
+  padding: 12% 0;
+  background-color: white;
+}
