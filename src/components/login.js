@@ -1,20 +1,39 @@
 import React from 'react';
+import {reduxForm, Field} from 'redux-form';
 
 import './login.css';
 
-export default function Login(props) {
+export function Login(props) {
+  function onSubmit(e) {
+    e.preventDefault();
+    console.log("login button clicked");
+  }
+
   return (
     <main role="main">
         <section id="login-section">
           <div className="row">
             <h1>Log In</h1>
-            <form id="log-in-form">
 
-              <label for="">Email</label>
-              <input type="email" id="email" placeholder="email" />
+            <form id="log-in-form" onSubmit={onSubmit}>
 
-              <label for="">Password</label>
-              <input type="password" id="password" placeholder="password" />
+              <label htmlFor="email">Email</label>
+              <Field
+                  component="input"
+                  name="email"
+                  id="email"
+                  type="email"
+                  placeholder="email"
+              />
+
+              <label htmlFor="password">Password</label>
+              <Field
+                  component="input"
+                  name="password"
+                  id="password"
+                  type="password"
+                  placeholder="password"
+              />
 
               <button type="submit">log in</button>
             </form>
@@ -25,3 +44,7 @@ export default function Login(props) {
     </main>
   );
 };
+
+export default reduxForm({
+  form: 'login'
+})(Login)
