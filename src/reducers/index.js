@@ -1,5 +1,4 @@
-//import * as actions from '../actions';
-const action = null;
+import {ADD_GROCERY_ITEM, REMOVE_GROCERY_ITEM} from '../actions';
 
 const initialState = {
   meals: [
@@ -51,5 +50,19 @@ const initialState = {
 };
 
 export const simplyPlannedReducer = (state=initialState, action) => {
-    return state;
+  if (action.type === ADD_GROCERY_ITEM) {
+    const id = state.groceries[state.groceries.length - 1].id + 1;
+    const newItem = {id, name: action.item}
+
+    return Object.assign( {}, state, {
+      groceries: [...state.groceries, newItem]
+    });
+  }
+
+  if (action.type === REMOVE_GROCERY_ITEM) {
+    return Object.assign( {}, state, {
+      groceries: state.groceries.filter( item => item.id !== parseInt(action.id, 10) )
+    })
+  }
+  return state;
 };

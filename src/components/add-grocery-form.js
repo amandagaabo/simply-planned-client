@@ -1,20 +1,24 @@
 import React from 'react';
-import {reduxForm, Field} from 'redux-form';
+import {reduxForm, Field, reset} from 'redux-form';
+import {addGroceryItem} from '../actions'
 
 import './add-grocery-form.css';
 
 export function AddGroceryForm(props) {
-  function onSubmit(e) {
-    e.preventDefault();
-    console.log("add grocery item");
+  function onSubmit(value) {
+    const item = value.item;
+    props.dispatch(addGroceryItem(item));
+    props.dispatch(reset('add-item'));
   };
 
   return (
-    <form id="add-grocery-form" onSubmit={onSubmit}>
+    <form id="add-grocery-form" onSubmit={props.handleSubmit( value =>
+      onSubmit(value)
+    )}>
       <Field
           component="input"
-          name="grocery-item"
-          id="grocery-item"
+          name="item"
+          id="item"
           type="text"
           placeholder="enter item and hit enter to add"
       />
@@ -23,5 +27,5 @@ export function AddGroceryForm(props) {
 };
 
 export default reduxForm({
-  form: 'add-grocery'
+  form: 'add-item'
 })(AddGroceryForm)
