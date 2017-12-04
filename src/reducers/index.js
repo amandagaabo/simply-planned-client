@@ -51,7 +51,13 @@ const initialState = {
 
 export const simplyPlannedReducer = (state=initialState, action) => {
   if (action.type === ADD_GROCERY_ITEM) {
-    const id = state.groceries[state.groceries.length - 1].id + 1;
+    let id;
+    if(state.groceries.length === 0) {
+      id = 0;
+    } else {
+      id = state.groceries[state.groceries.length - 1].id + 1;
+    }
+
     const newItem = {id, name: action.item}
 
     return Object.assign( {}, state, {

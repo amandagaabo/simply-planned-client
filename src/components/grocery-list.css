@@ -9,4 +9,5 @@
 
 #grocery-list li:hover {
   cursor: pointer;
+  text-decoration: line-through;
 }
