@@ -10,7 +10,7 @@ export default function GroceryList(props) {
 
   return (
     <main role="main">
-      <section className="dark-section">
+      <section className="dark-section full-length">
         <div className="row">
           <h1>Grocery List</h1>
           <ul id="grocery-list">

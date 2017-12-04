@@ -9,7 +9,7 @@ export function Login(props) {
 
   return (
     <main role="main">
-        <section className="dark-section">
+        <section className="dark-section full-length">
           <div className="row">
             <h1>Log In</h1>
 

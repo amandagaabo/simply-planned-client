@@ -1,13 +1,18 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Home from './home';
 import Header from './header';
+import Nav from './nav'
+import Home from './home';
 import Login from './login';
 import GroceryList from './grocery-list'
 
 import './app.css';
 
 export default function App(props) {
+  let nav;
+  if (props.user) {
+    nav = <Nav />
+  }
   return (
     <Router>
       <div className="app">
@@ -17,7 +22,12 @@ export default function App(props) {
           <Route exact path="/login" component={Login} />
           <Route exact path="/groceries" component={GroceryList} />
         </Switch>
+        {nav}
       </div>
     </Router>
   );
+}
+
+App.defaultProps = {
+  user: "amanda"
 }
