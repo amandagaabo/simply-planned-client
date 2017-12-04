@@ -4,5 +4,5 @@ import {shallow} from 'enzyme';
 import Login from './login';
 
 it('Renders without crashing', () => {
-    shallow(<Login />);
+  shallow(<Login />);
 });

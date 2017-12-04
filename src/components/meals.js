@@ -1,11 +1,12 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import moment from 'moment';
-import {Icon} from 'react-fa'
-import MealField from "./meal-field";
+import {Icon} from 'react-fa';
+import MealField from './meal-field';
 
 import './meals.css';
 
-export default function Meals(props) {
+export function Meals(props) {
   let pageTitle = "";
   const startDayString = props.meals[0].date;
   const endDayString = props.meals[props.meals.length - 1].date;
@@ -24,7 +25,7 @@ export default function Meals(props) {
     pageTitle = `${startMonth} ${startDay} - ${endMonth} ${endDay}`
   }
 
-  const dayMeals = props.meals.map( (meal) => {
+  const dayMeals = props.meals.map( meal => {
     const dayName = moment(meal.date).format('dddd');
 
     return (
@@ -45,7 +46,7 @@ export default function Meals(props) {
             <div className="today">
               <a href="">today</a>
             </div>
-            
+
             <div className="prev">
               <a href=""><Icon name="chevron-left" /></a>
             </div>
@@ -66,46 +67,8 @@ export default function Meals(props) {
   );
 };
 
-Meals.defaultProps= {
-  "meals": [
-    {
-      "date": "2017-12-03",
-      "breakfast": "oatmeal",
-      "lunch": "grilled chicken salad",
-      "dinner": "burger and sweet potato fries"
-    },
-    {
-      "date": "2017-12-04",
-      "breakfast": "cereal",
-      "lunch": "turkey and cheese wrap",
-      "dinner": "pasta and red sauce with veggies"
-    },
-    {
-      "date": "2017-12-05",
-      "breakfast": "eggs and potatoes",
-      "lunch": "spinach and pear salad",
-      "dinner": "pork chops and veggies"
-    },
-    {
-      "date": "2017-12-06"
-    },
-    {
-      "date": "2017-12-07",
-      "breakfast": "eggs and toast",
-      "lunch": "turkey sub and fries",
-      "dinner": "grilled cheese and soup"
-    },
-    {
-      "date": "2017-12-08",
-      "breakfast": "cereal",
-      "lunch": "ham and swiss wrap",
-      "dinner": "chicken fingers and sweet potato fries"
-    },
-    {
-      "date": "2017-12-09",
-      "breakfast": "oatmeal with bananas and walnuts",
-      "lunch": "cobb salad",
-      "dinner": "turkey and mashed potatoes"
-    }
-  ]
-}
+export const mapStateToProps = state => ({
+  meals: state.app.meals
+});
+
+export default connect(mapStateToProps)(Meals)

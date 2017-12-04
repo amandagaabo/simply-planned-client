@@ -6,7 +6,7 @@ import './add-grocery-form.css';
 export function AddGroceryForm(props) {
   function onSubmit(e) {
     e.preventDefault();
-    console.log("add grocery item button clicked");
+    console.log("add grocery item");
   };
 
   return (

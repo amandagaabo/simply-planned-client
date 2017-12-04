@@ -6,7 +6,7 @@ import store from './store';
 import App from './components/app';
 
 import './styles.css';
-import './float-grid.css'
+import './float-grid.css';
 import registerServiceWorker from './registerServiceWorker';
 
 

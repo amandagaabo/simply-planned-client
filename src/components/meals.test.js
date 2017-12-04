@@ -1,8 +1,17 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import Meals from './meals';
+import {Meals} from './meals';
 
 it('Renders without crashing', () => {
-    shallow(<Meals />);
+  const meals = [
+    {
+      date: "2017-12-03",
+      breakfast: "oatmeal",
+      lunch: "grilled chicken salad",
+      dinner: "burger and sweet potato fries"
+    }
+  ]
+
+  shallow(<Meals meals={meals}/>);
 });
