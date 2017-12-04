@@ -16,10 +16,8 @@ export function AddGroceryForm(props) {
           name="grocery-item"
           id="grocery-item"
           type="text"
-          placeholder="add item to list"
+          placeholder="enter item and hit enter to add"
       />
-
-      <button type="submit" id="add-item-button">Add</button>
     </form>
   )
 };

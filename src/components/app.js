@@ -4,7 +4,8 @@ import Header from './header';
 import Nav from './nav'
 import Home from './home';
 import Login from './login';
-import GroceryList from './grocery-list'
+import Meals from './meals';
+import GroceryList from './grocery-list';
 
 import './app.css';
 
@@ -13,6 +14,7 @@ export default function App(props) {
   if (props.user) {
     nav = <Nav />
   }
+
   return (
     <Router>
       <div className="app">
@@ -20,6 +22,7 @@ export default function App(props) {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
+          <Route path="/meals" component={Meals} />
           <Route exact path="/groceries" component={GroceryList} />
         </Switch>
         {nav}

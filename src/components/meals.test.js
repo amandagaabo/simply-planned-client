@@ -1,8 +1,8 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import Nav from './nav';
+import Meals from './meals';
 
 it('Renders without crashing', () => {
-  shallow(<Nav />);
+    shallow(<Meals />);
 });

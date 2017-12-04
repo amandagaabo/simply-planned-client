@@ -12,7 +12,7 @@ export default function GroceryList(props) {
     <main role="main">
       <section className="dark-section full-length">
         <div className="row">
-          <h1>Grocery List</h1>
+          <h2>Grocery List</h2>
           <ul id="grocery-list">
             {itemList}
           </ul>
