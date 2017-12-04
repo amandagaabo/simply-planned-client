@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+
 import moment from 'moment';
 import {Icon} from 'react-fa';
 import MealField from './meal-field';
@@ -7,6 +8,7 @@ import MealField from './meal-field';
 import './meals.css';
 
 export function Meals(props) {
+  console.log(props.meals)
   let pageTitle = "";
   const startDayString = props.meals[0].date;
   const endDayString = props.meals[props.meals.length - 1].date;
@@ -31,9 +33,9 @@ export function Meals(props) {
     return (
       <div key={meal.date}>
         <h3>{dayName}</h3>
-          <MealField mealName={meal.breakfast} mealType="breakfast" />
-          <MealField mealName={meal.lunch} mealType="lunch" />
-          <MealField mealName={meal.dinner} mealType="dinner" />
+          <MealField mealName={meal.breakfast} mealType="breakfast" mealDate={meal.date} />
+          <MealField mealName={meal.lunch} mealType="lunch" mealDate={meal.date} />
+          <MealField mealName={meal.dinner} mealType="dinner" mealDate={meal.date} />
       </div>
     );
   });

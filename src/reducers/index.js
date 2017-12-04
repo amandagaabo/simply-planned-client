@@ -1,4 +1,4 @@
-import {ADD_GROCERY_ITEM, REMOVE_GROCERY_ITEM} from '../actions';
+import {ADD_GROCERY_ITEM, REMOVE_GROCERY_ITEM, UPDATE_MEAL} from '../actions';
 
 const initialState = {
   meals: [
@@ -70,5 +70,35 @@ export const simplyPlannedReducer = (state=initialState, action) => {
       groceries: state.groceries.filter( item => item.id !== parseInt(action.id, 10) )
     })
   }
+
+  if (action.type === UPDATE_MEAL) {
+    const index = state.meals.findIndex( meal => meal.date === action.date)
+    const mealName = action.meal
+
+    if (mealName === "breakfast") {
+      return Object.assign( {}, state, {
+        meals: state.meals.map( (meal, i) => i === index ?
+          {...meal, breakfast:action.item} :
+          meal
+        )
+      })
+
+    } else if (mealName === "lunch") {
+      return Object.assign( {}, state, {
+        meals: state.meals.map( (meal, i) => i === index ?
+          {...meal, lunch:action.item} :
+          meal
+        )
+      })
+    } else if (mealName === "dinner") {
+      return Object.assign( {}, state, {
+        meals: state.meals.map( (meal, i) => i === index ?
+          {...meal, dinner:action.item} :
+          meal
+        )
+      })
+    }
+  }
+
   return state;
 };

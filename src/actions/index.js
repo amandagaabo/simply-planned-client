@@ -9,3 +9,11 @@ export const removeGroceryItem = id => ({
     type: REMOVE_GROCERY_ITEM,
     id
 });
+
+export const UPDATE_MEAL = 'UPDATE_MEAL';
+export const updateMeal = (date, meal, item) => ({
+    type: UPDATE_MEAL,
+    date,
+    meal,
+    item
+});

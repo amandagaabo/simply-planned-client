@@ -1,10 +1,15 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {updateMeal} from '../actions'
 
 import './meal-field.css';
 
-export default function MealField(props) {
-  function onChange() {
-    console.log("field updated")
+export function MealField(props) {
+  function onChange(e) {
+    const date = e.target.dataset.date;
+    const meal = e.target.dataset.meal;
+    const item = e.target.value;
+    props.dispatch(updateMeal(date, meal, item));
   }
 
   let value = "";
@@ -18,9 +23,12 @@ export default function MealField(props) {
       <textarea className="meal-input"
         onChange={onChange}
         defaultValue={value}
+        data-date={props.mealDate}
+        data-meal={props.mealType}
         placeholder="type meal name and hit enter to save">
       </textarea>
     </div>
-
   );
 };
+
+export default connect()(MealField);
