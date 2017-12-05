@@ -1,4 +1,4 @@
-#grocery-list  {
+.grocery-list  {
   list-style-type: none;
   text-align: center;
   width: 100px;
@@ -7,7 +7,7 @@
   margin-bottom: 20px;
 }
 
-#grocery-list li:hover {
+.grocery-list li:hover {
   cursor: pointer;
   text-decoration: line-through;
 }

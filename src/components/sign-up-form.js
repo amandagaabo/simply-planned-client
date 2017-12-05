@@ -1,8 +1,6 @@
 import React from 'react';
 import {reduxForm, Field} from 'redux-form';
 
-import './sign-up-form.css';
-
 export function SignUpForm(props) {
   function onSubmit(e) {
     e.preventDefault();
@@ -14,7 +12,7 @@ export function SignUpForm(props) {
       <div className="row">
         <h1>Sign Up</h1>
 
-        <form id="sign-up-form" onSubmit={onSubmit}>
+        <form className="sign-up-form" onSubmit={onSubmit}>
           <label htmlFor="first-name">First name</label>
           <Field
               component="input"

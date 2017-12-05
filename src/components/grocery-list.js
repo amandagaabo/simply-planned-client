@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {removeGroceryItem} from '../actions';
 import AddGroceryForm from './add-grocery-form';
-import Nav from './nav';
 import './grocery-list.css';
 
 export function GroceryList(props) {
@@ -20,13 +19,12 @@ export function GroceryList(props) {
       <section className="dark-section full-length">
         <div className="row">
           <h2>Grocery List</h2>
-          <ul id="grocery-list">
+          <ul className="grocery-list">
             {itemList}
           </ul>
         </div>
         <AddGroceryForm />
       </section>
-      <Nav />
     </main>
   );
 };

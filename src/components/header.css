@@ -12,15 +12,9 @@ header {
   height: 60px;
 }
 
-#logo {
+.main-logo {
   font-size: 30px;
   position: absolute;
   bottom: 5px;
   left: 0;
-}
-
-#log-in {
-  position: absolute;
-  bottom: 5px;
-  right: 0;
 }

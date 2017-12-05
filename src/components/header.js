@@ -1,4 +1,5 @@
 import React from 'react';
+import Nav from './nav';
 
 import './header.css';
 
@@ -7,11 +8,11 @@ export default function Header(props) {
     <header role="banner">
       <div className="row">
         <div className="col-6 header-content">
-          <a href="/" id="logo">Simply Planned</a>
+          <a href="/" className="main-logo">Simply Planned</a>
         </div>
 
         <div className="col-6 header-content">
-          <a href="/login" id="log-in">Log In</a>
+          <Nav />
         </div>
       </div>
     </header>

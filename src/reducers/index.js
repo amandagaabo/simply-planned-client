@@ -46,7 +46,10 @@ const initialState = {
     { id: 0, name: "apples" },
     { id: 1, name: "bananas" },
     { id: 2, name: "chicken" }
-  ]
+  ],
+  currentUser: {
+    name: "amanda"
+  }
 };
 
 export const simplyPlannedReducer = (state=initialState, action) => {

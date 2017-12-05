@@ -12,7 +12,7 @@ export function AddGroceryForm(props) {
   };
 
   return (
-    <form id="add-grocery-form" onSubmit={props.handleSubmit( value =>
+    <form className="add-grocery-form" onSubmit={props.handleSubmit( value =>
       onSubmit(value)
     )}>
       <Field
@@ -20,7 +20,7 @@ export function AddGroceryForm(props) {
           name="item"
           id="item"
           type="text"
-          placeholder="enter item and hit enter to add"
+          placeholder="type item and hit enter to add"
       />
     </form>
   )
