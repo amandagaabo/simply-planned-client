@@ -1,5 +1,10 @@
-.add-grocery-form input {
+#add-grocery-form input {
   float: none;
   text-align: center;
-  width: 250px;
+  width: 225px;
+}
+
+#add-grocery-form {
+  margin-top: 15px;
+  width: auto;
 }

@@ -12,7 +12,7 @@ export function AddGroceryForm(props) {
   };
 
   return (
-    <form className="add-grocery-form" onSubmit={props.handleSubmit( value =>
+    <form id="add-grocery-form" onSubmit={props.handleSubmit( value =>
       onSubmit(value)
     )}>
       <Field

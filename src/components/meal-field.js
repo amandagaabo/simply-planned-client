@@ -13,8 +13,7 @@ export function MealField(props) {
     // update meal in state
     props.dispatch(updateMeal(date, meal, item));
     // resize textarea
-    const textarea = document.querySelector('textarea');
-    autosize(textarea);
+    autosize(e.target);
   }
 
   let value = "";
