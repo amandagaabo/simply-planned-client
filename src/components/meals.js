@@ -8,7 +8,6 @@ import MealField from './meal-field';
 import './meals.css';
 
 export function Meals(props) {
-  console.log(props.meals)
   let pageTitle = "";
   const startDayString = props.meals[0].date;
   const endDayString = props.meals[props.meals.length - 1].date;

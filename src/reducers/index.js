@@ -60,43 +60,26 @@ export const simplyPlannedReducer = (state=initialState, action) => {
 
     const newItem = {id, name: action.item}
 
-    return Object.assign( {}, state, {
+    return {
+      ...state,
       groceries: [...state.groceries, newItem]
-    });
+    }
   }
 
   if (action.type === REMOVE_GROCERY_ITEM) {
-    return Object.assign( {}, state, {
+    return {
+      ...state,
       groceries: state.groceries.filter( item => item.id !== parseInt(action.id, 10) )
-    })
+    }
   }
 
   if (action.type === UPDATE_MEAL) {
-    const index = state.meals.findIndex( meal => meal.date === action.date)
-    const mealName = action.meal
-
-    if (mealName === "breakfast") {
-      return Object.assign( {}, state, {
-        meals: state.meals.map( (meal, i) => i === index ?
-          {...meal, breakfast:action.item} :
-          meal
-        )
-      })
-
-    } else if (mealName === "lunch") {
-      return Object.assign( {}, state, {
-        meals: state.meals.map( (meal, i) => i === index ?
-          {...meal, lunch:action.item} :
-          meal
-        )
-      })
-    } else if (mealName === "dinner") {
-      return Object.assign( {}, state, {
-        meals: state.meals.map( (meal, i) => i === index ?
-          {...meal, dinner:action.item} :
-          meal
-        )
-      })
+    return {
+      ...state,
+      meals: state.meals.map( meal => meal.date === action.date
+        ? {...meal, [action.meal]:action.item}
+        : meal
+      )
     }
   }
 
