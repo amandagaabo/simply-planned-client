@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import moment from 'moment';
 import {Icon} from 'react-fa';
 import MealField from './meal-field';
+import Nav from './nav';
 
 import './meals.css';
 
@@ -64,7 +65,9 @@ export function Meals(props) {
           {dayMeals}
         </div>
       </section>
+      <Nav />
     </main>
+
   );
 };
 
