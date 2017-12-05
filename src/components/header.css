@@ -7,14 +7,6 @@ header {
   background-color: white;
 }
 
-.header-content {
-  position: relative;
-  height: 60px;
-}
-
 .main-logo {
   font-size: 30px;
-  position: absolute;
-  bottom: 5px;
-  left: 0;
 }
