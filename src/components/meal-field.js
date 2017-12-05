@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {updateMeal} from '../actions'
+import {updateMeal} from '../actions';
+import autosize from 'autosize';
 
 import './meal-field.css';
 
@@ -9,7 +10,11 @@ export function MealField(props) {
     const date = e.target.dataset.date;
     const meal = e.target.dataset.meal;
     const item = e.target.value;
+    // update meal in state
     props.dispatch(updateMeal(date, meal, item));
+    // resize textarea
+    const textarea = document.querySelector('textarea');
+    autosize(textarea);
   }
 
   let value = "";
