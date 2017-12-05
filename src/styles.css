@@ -34,13 +34,12 @@ a {
 /* forms */
 form {
   display: block;
-  width: 500px;
   margin: 0 auto;
+  width: 300px;
 }
 
 label, input {
   height: 30px;
-  float:left;
   margin-bottom: 10px;
 }
 
@@ -49,11 +48,11 @@ label {
   text-align: right;
   vertical-align: bottom;
   padding-right: 10px;
-  clear: both;
 }
 
 input {
   width: 300px;
+  text-align: center;
 }
 
 button[type="submit"] {
@@ -62,4 +61,6 @@ button[type="submit"] {
   display: block;
   margin: 0 auto;
   height: 30px;
+  border: 1px solid #aaa;
+  border-radius: 3px;
 }
