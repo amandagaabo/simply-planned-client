@@ -25,7 +25,7 @@ export function MealField(props) {
         defaultValue={value}
         data-date={props.mealDate}
         data-meal={props.mealType}
-        placeholder="type meal name and hit enter to save">
+        placeholder="enter meal name here">
       </textarea>
     </div>
   );
