@@ -8,9 +8,12 @@
 
 .grocery-list li:hover {
   cursor: pointer;
-  text-decoration: line-through;
 }
 
 .grocery-container {
   position: fixed;
+}
+
+.checked {
+  text-decoration: line-through;
 }

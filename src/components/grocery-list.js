@@ -1,17 +1,28 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {removeGroceryItem} from '../actions';
+import {removeCheckedItems, toggleChecked} from '../actions';
 import AddGroceryForm from './add-grocery-form';
 import './grocery-list.css';
 
 export function GroceryList(props) {
-  function onClick(e) {
+  function onItemClick(e) {
     const id= e.target.id;
-    props.dispatch(removeGroceryItem(id));
+    props.dispatch(toggleChecked(id));
+
   };
 
+  function onButtonClick(e) {
+    props.dispatch(removeCheckedItems());
+  }
+
   const itemList = props.groceries.map( (item) => {
-    return <li key={item.id} id={item.id} onClick={onClick}>{item.name}</li>
+    return <li
+      key={item.id} 
+      id={item.id}
+      className={item.checked ? "checked" : "not-checked"}
+      onClick={onItemClick}>
+      {item.name}
+    </li>
   })
 
   return (
@@ -24,6 +35,7 @@ export function GroceryList(props) {
           </ul>
         </div>
         <AddGroceryForm />
+        <button type="button" onClick={onButtonClick}>Remove crossed out items</button>
       </section>
     </main>
   );

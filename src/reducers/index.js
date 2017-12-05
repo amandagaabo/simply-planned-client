@@ -1,4 +1,4 @@
-import {ADD_GROCERY_ITEM, REMOVE_GROCERY_ITEM, UPDATE_MEAL} from '../actions';
+import {ADD_GROCERY_ITEM, REMOVE_CHECKED_ITEMS, UPDATE_MEAL, TOGGLE_CHECKED} from '../actions';
 
 const initialState = {
   meals: [
@@ -43,9 +43,9 @@ const initialState = {
     }
   ],
   groceries: [
-    { id: 0, name: "apples" },
-    { id: 1, name: "bananas" },
-    { id: 2, name: "chicken" }
+    { id: 0, name: "apples", checked: false },
+    { id: 1, name: "bananas", checked: false },
+    { id: 2, name: "chicken", checked: true }
   ],
   currentUser: {
     name: "amanda"
@@ -61,7 +61,7 @@ export const simplyPlannedReducer = (state=initialState, action) => {
       id = state.groceries[state.groceries.length - 1].id + 1;
     }
 
-    const newItem = {id, name: action.item}
+    const newItem = {id, name: action.item, checked: false}
 
     return {
       ...state,
@@ -69,10 +69,20 @@ export const simplyPlannedReducer = (state=initialState, action) => {
     }
   }
 
-  if (action.type === REMOVE_GROCERY_ITEM) {
+  if (action.type === TOGGLE_CHECKED) {
     return {
       ...state,
-      groceries: state.groceries.filter( item => item.id !== parseInt(action.id, 10) )
+      groceries: state.groceries.map( item => item.id === parseInt(action.id, 10)
+        ? {...item, checked: !item.checked}
+        : item
+      )
+    }
+  }
+
+  if (action.type === REMOVE_CHECKED_ITEMS) {
+    return {
+      ...state,
+      groceries: state.groceries.filter( item => item.checked === false )
     }
   }
 
