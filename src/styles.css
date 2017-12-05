@@ -64,3 +64,9 @@ button[type="submit"], button[type="button"] {
   border: 1px solid #aaa;
   border-radius: 3px;
 }
+
+button:hover {
+  cursor: pointer;
+  background-color: #aaa;
+  color: white;
+}

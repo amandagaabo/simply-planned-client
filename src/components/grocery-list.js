@@ -8,7 +8,6 @@ export function GroceryList(props) {
   function onItemClick(e) {
     const id= e.target.id;
     props.dispatch(toggleChecked(id));
-
   };
 
   function onButtonClick(e) {
@@ -17,7 +16,7 @@ export function GroceryList(props) {
 
   const itemList = props.groceries.map( (item) => {
     return <li
-      key={item.id} 
+      key={item.id}
       id={item.id}
       className={item.checked ? "checked" : "not-checked"}
       onClick={onItemClick}>
