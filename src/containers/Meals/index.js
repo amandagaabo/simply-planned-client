@@ -4,16 +4,10 @@ import {connect} from 'react-redux';
 import {updateMeal, toggleSideBar} from './actions'
 import Layout from './components/layout';
 
-export class Meals extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    return (
-      <Layout {...this.props} />
-    );
-  }
+export function Meals(props) {
+  return (
+    <Layout {...props} />
+  );
 };
 
 export const mapStateToProps = state => ({

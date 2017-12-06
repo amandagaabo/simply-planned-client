@@ -5,16 +5,10 @@ import {reset} from 'redux-form';
 import {removeCheckedItems, toggleChecked, addGroceryItem} from './actions';
 import Layout from './components/layout';
 
-export class Groceries extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    return (
-      <Layout {...this.props} />
-    );
-  }
+export function Groceries(props) {
+  return (
+    <Layout {...props} />
+  );
 };
 
 export const mapStateToProps = state => ({
