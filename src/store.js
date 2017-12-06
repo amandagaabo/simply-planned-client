@@ -1,7 +1,7 @@
 import {createStore, combineReducers} from 'redux'
+import {reducer as formReducer} from 'redux-form';
 
 import {simplyPlannedReducer} from './reducers';
-import {reducer as formReducer} from 'redux-form';
 
 export default createStore(
   combineReducers({
