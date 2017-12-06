@@ -17,3 +17,12 @@
 .checked {
   text-decoration: line-through;
 }
+
+.remove-items:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.remove-items {
+  margin-top: 60px;
+}

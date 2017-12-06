@@ -4,7 +4,6 @@ import {reduxForm, Field} from 'redux-form';
 import './add-grocery-form.css';
 
 export function AddGroceryForm(props) {
-
   return (
     // handleSubmit calls the function with the form data automatically
     <form id="add-grocery-form" onSubmit={props.handleSubmit(props.onAddGroceryItem)}>

@@ -8,8 +8,7 @@ export function Nav(props) {
     return (
       <nav>
         <ul className="nav-list">
-          <li><a href="/meals">Meals</a></li>
-          <li><a href="/groceries">Groceries</a></li>
+          <li><a href="/meals">My Plan</a></li>
           <li><a href="/">Log Out</a></li>
         </ul>
       </nav>

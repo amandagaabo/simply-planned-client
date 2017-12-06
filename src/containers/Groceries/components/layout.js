@@ -20,17 +20,15 @@ export default function Layout(props) {
   })
 
   return (
-    <main role="main">
-      <section className="dark-section full-length">
         <div className="row">
           <h2>Grocery List</h2>
           <ul className="grocery-list">
             {itemList}
           </ul>
+
+          <AddGroceryForm onAddGroceryItem={props.onAddGroceryItem}/>
+
+          <p className="remove-items" onClick={props.onRemoveItems}>Remove crossed out items</p>
         </div>
-        <AddGroceryForm onAddGroceryItem={props.onAddGroceryItem}/>
-        <button type="button" onClick={props.onRemoveItems}>Remove crossed out items</button>
-      </section>
-    </main>
   );
 };

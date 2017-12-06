@@ -1,4 +1,4 @@
-import {UPDATE_MEAL} from './actions';
+import {UPDATE_MEAL, TOGGLE_SIDE_BAR} from './actions';
 
 const initialState = {
   meals: [
@@ -41,7 +41,8 @@ const initialState = {
       lunch: "cobb salad",
       dinner: "turkey and mashed potatoes"
     }
-  ]
+  ],
+  showSideBar: true
 };
 
 export default function (state=initialState, action) {
@@ -52,6 +53,13 @@ export default function (state=initialState, action) {
         ? {...meal, [action.meal]:action.item}
         : meal
       )
+    }
+  }
+
+  if (action.type === TOGGLE_SIDE_BAR) {
+    return {
+      ...state,
+      showSideBar: !state.showSideBar
     }
   }
 
