@@ -1,0 +1,39 @@
+.meals-container {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  background-color: #1e2835;
+  transition: transform .2s ease-in-out;
+}
+
+.groceries-side-bar {
+  display: inline-block;
+  position: fixed;
+  overflow: scroll;
+  width: 420px;
+  height: 100vh;
+  top: 0;
+  right: -420px;
+}
+
+.meals-container__with-sidebar {
+  width: calc(100% - 420px);
+  float: left;
+}
+
+.groceries-side-bar__visible {
+  transform: translateX(-420px);
+  z-index: 1;
+}
+
+.toggle-side-bar {
+  position: fixed;
+  right: 20px;
+}
+
+.toggle-side-bar__with-sidebar {
+  position: fixed;
+  right: 430px;
+  transform: rotateY(-180deg);
+}

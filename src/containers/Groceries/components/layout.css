@@ -1,0 +1,28 @@
+.grocery-list  {
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.grocery-list li:hover {
+  cursor: pointer;
+}
+
+.grocery-container {
+  position: fixed;
+}
+
+.checked {
+  text-decoration: line-through;
+}
+
+.remove-items:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.remove-items {
+  margin-top: 60px;
+}

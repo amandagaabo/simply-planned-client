@@ -1,0 +1,12 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: white;
+}
+
+.main-logo {
+  font-size: 30px;
+}

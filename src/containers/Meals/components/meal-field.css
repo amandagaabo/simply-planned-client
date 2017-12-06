@@ -1,0 +1,33 @@
+.meal {
+  background-color: white;
+  margin: 0 auto;
+  border:1px solid black;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+
+.meal-input, .meal-label {
+  display: block;
+}
+
+.meal-input {
+  width: 100%;
+  min-height: 50px;
+  font-size: 20px;
+  padding-top: 10px;
+  border: none;
+  resize: none;
+  overflow: hidden;
+  text-align: center;
+}
+
+.meal-label {
+  margin: 0;
+  margin-left: 10px;
+  text-align: left;
+  color: #aaa;
+}
+
+textarea:focus {
+  outline: none;
+}
