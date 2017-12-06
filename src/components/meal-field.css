@@ -12,7 +12,7 @@
 
 .meal-input {
   width: 100%;
-  min-height: 40px;
+  min-height: 50px;
   font-size: 20px;
   padding-top: 10px;
   border: none;
@@ -26,4 +26,8 @@
   margin-left: 10px;
   text-align: left;
   color: #aaa;
+}
+
+textarea:focus {
+  outline: none;
 }

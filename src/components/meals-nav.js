@@ -6,7 +6,7 @@ import {Icon} from 'react-fa';
 
 import './meals-nav.css';
 
-export function MealsNav(props) {
+export default function MealsNav(props) {
   let pageTitle = "";
   const startDayString = props.meals[0].date;
   const endDayString = props.meals[props.meals.length - 1].date;
@@ -45,9 +45,3 @@ export function MealsNav(props) {
     </div>
   );
 }
-
-  export const mapStateToProps = state => ({
-    meals: state.app.meals
-  });
-
-  export default connect(mapStateToProps)(MealsNav)

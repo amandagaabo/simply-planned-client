@@ -41,7 +41,7 @@ export function GroceryList(props) {
 };
 
 export const mapStateToProps = state => ({
-  groceries: state.app.groceries
+  groceries: state.app.groceryReducer.groceries
 });
 
 export default connect(mapStateToProps)(GroceryList);

@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import {MealsNav} from './meals-nav';
+import MealsNav from './meals-nav';
 
 it('Renders without crashing', () => {
   const meals = [

@@ -27,7 +27,7 @@ export function Nav(props) {
 
 export const mapStateToProps = state => ({
   //isLoggedIn: state.auth.currentUser !== null
-  isLoggedIn: state.app.user !== null
+  isLoggedIn: state.app.userReducer.user !== null
 });
 
 export default connect(mapStateToProps)(Nav);

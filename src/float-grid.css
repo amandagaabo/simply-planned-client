@@ -114,8 +114,9 @@
   }
 
   .nav-list li {
-    float: left;
-    display: block;
+    display: inline-block;
+    position: relative;
+    bottom: 3px;
   }
 
   form {

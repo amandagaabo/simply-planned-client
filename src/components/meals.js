@@ -25,19 +25,18 @@ export function Meals(props) {
     <main role="main">
       <section>
         <div className="row">
-          <MealsNav />
+          <MealsNav meals={props.meals}/>
           <div className="col-12">
             {dayMeals}
           </div>
         </div>
       </section>
     </main>
-
   );
 };
 
 export const mapStateToProps = state => ({
-  meals: state.app.meals
+  meals: state.app.mealsReducer.meals
 });
 
 export default connect(mapStateToProps)(Meals)
