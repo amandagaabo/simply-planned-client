@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {updateMeal} from '../actions'
 
 import moment from 'moment';
 import MealsNav from './meals-nav';
@@ -14,9 +15,9 @@ export function Meals(props) {
     return (
       <div key={meal.date}>
         <h3>{dayName}</h3>
-          <MealField mealName={meal.breakfast} mealType="breakfast" mealDate={meal.date} />
-          <MealField mealName={meal.lunch} mealType="lunch" mealDate={meal.date} />
-          <MealField mealName={meal.dinner} mealType="dinner" mealDate={meal.date} />
+          <MealField mealName={meal.breakfast} mealType="breakfast" mealDate={meal.date} onUpdateMeal={props.onUpdateMeal}/>
+          <MealField mealName={meal.lunch} mealType="lunch" mealDate={meal.date} onUpdateMeal={props.onUpdateMeal}/>
+          <MealField mealName={meal.dinner} mealType="dinner" mealDate={meal.date} onUpdateMeal={props.onUpdateMeal}/>
       </div>
     );
   });
@@ -39,4 +40,12 @@ export const mapStateToProps = state => ({
   meals: state.app.mealsReducer.meals
 });
 
-export default connect(mapStateToProps)(Meals)
+export const mapDispatchToProps = (dispatch) => {
+  return {
+    onUpdateMeal: (date, meal, item) => {
+      dispatch(updateMeal(date, meal, item))
+    }
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Meals)

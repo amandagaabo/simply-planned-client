@@ -1,17 +1,15 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {updateMeal} from '../actions';
 import autosize from 'autosize';
 
 import './meal-field.css';
 
-export function MealField(props) {
-  function onChange(e) {
+export default function MealField(props) {
+  function handleChange(e) {
     const date = e.target.dataset.date;
     const meal = e.target.dataset.meal;
     const item = e.target.value;
     // update meal in state
-    props.dispatch(updateMeal(date, meal, item));
+    props.onUpdateMeal(date, meal, item);
     // resize textarea
     autosize(e.target);
   }
@@ -25,7 +23,7 @@ export function MealField(props) {
     <div className={`meal ${props.mealType}`}>
       <p className="meal-label">{props.mealType}</p>
       <textarea className="meal-input"
-        onChange={onChange}
+        onChange={handleChange}
         defaultValue={value}
         data-date={props.mealDate}
         data-meal={props.mealType}
@@ -34,5 +32,3 @@ export function MealField(props) {
     </div>
   );
 };
-
-export default connect()(MealField);

@@ -1,18 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {removeCheckedItems, toggleChecked} from '../actions';
+import {removeCheckedItems, toggleChecked, addGroceryItem} from '../actions';
+import {reset} from 'redux-form';
 import AddGroceryForm from './add-grocery-form';
 import './grocery-list.css';
 
 export function GroceryList(props) {
   function onItemClick(e) {
     const id= e.target.id;
-    props.dispatch(toggleChecked(id));
+    props.onToggle(id);
   };
-
-  function onButtonClick(e) {
-    props.dispatch(removeCheckedItems());
-  }
 
   const itemList = props.groceries.map( (item) => {
     return <li
@@ -33,8 +30,8 @@ export function GroceryList(props) {
             {itemList}
           </ul>
         </div>
-        <AddGroceryForm />
-        <button type="button" onClick={onButtonClick}>Remove crossed out items</button>
+        <AddGroceryForm onAddGroceryItem={props.onAddGroceryItem}/>
+        <button type="button" onClick={props.onRemoveItems}>Remove crossed out items</button>
       </section>
     </main>
   );
@@ -44,4 +41,17 @@ export const mapStateToProps = state => ({
   groceries: state.app.groceryReducer.groceries
 });
 
-export default connect(mapStateToProps)(GroceryList);
+export const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddGroceryItem: (formData) => {
+      dispatch(addGroceryItem(formData.item))
+      dispatch(reset('add-item'))
+    },
+    onToggle: id => {
+      dispatch(toggleChecked(id))
+    },
+    onRemoveItems: () => dispatch(removeCheckedItems())
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GroceryList);
