@@ -1,7 +1,6 @@
-import React from 'react';
 import {connect} from 'react-redux';
 
-import {updateMeal, toggleSideBar} from './actions'
+import {updateMeal} from './actions'
 import Layout from './components/layout';
 
 export const mapStateToProps = state => ({

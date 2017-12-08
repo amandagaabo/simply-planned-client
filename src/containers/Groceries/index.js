@@ -1,15 +1,8 @@
-import React from 'react';
 import {connect} from 'react-redux';
 import {reset} from 'redux-form';
 
 import {removeCheckedItems, toggleChecked, addGroceryItem} from './actions';
 import Layout from './components/layout';
-
-export function Groceries(props) {
-  return (
-    <Layout {...props} />
-  );
-};
 
 export const mapStateToProps = state => ({
   groceries: state.app.groceries.groceries
@@ -28,4 +21,4 @@ export const mapDispatchToProps = (dispatch) => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Groceries);
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);
