@@ -14,7 +14,7 @@
   width: 420px;
   height: 100vh;
   top: 0;
-  right: -420px;
+  right: -400px;
 }
 
 .meals-container__with-sidebar {
@@ -23,17 +23,18 @@
 }
 
 .groceries-side-bar__visible {
-  transform: translateX(-420px);
+  transform: translateX(-400px);
   z-index: 1;
 }
 
 .toggle-side-bar {
   position: fixed;
   right: 20px;
+  background-color: #ccc;
+  width: 30px;
 }
 
 .toggle-side-bar__with-sidebar {
-  position: fixed;
-  right: 430px;
+  right: 420px;
   transform: rotateY(-180deg);
 }

@@ -4,9 +4,6 @@ import moment from 'moment';
 
 import MealsNav from './meals-nav';
 import MealField from './meal-field';
-import Groceries from '../../Groceries/index';
-
-import './layout.css'
 
 export default function Layout(props) {
   const dayMeals = props.meals.map( meal => {
@@ -23,24 +20,12 @@ export default function Layout(props) {
   });
 
   return (
-    <main role="main">
-      <section className={props.showSideBar ? "meals-container meals-container__with-sidebar" : "meals-container"}>
-        <div className={props.showSideBar ? "toggle-side-bar__with-sidebar" : "toggle-side-bar"}
-          onClick={props.onToggleSideBar}>
-          <Icon name="chevron-left" />
-        </div>
+    <div className="row">
+      <MealsNav meals={props.meals}/>
+      <div className="col-12">
+        {dayMeals}
+      </div>
+    </div>
 
-        <div className="row">
-          <MealsNav meals={props.meals}/>
-          <div className="col-12">
-            {dayMeals}
-          </div>
-        </div>
-      </section>
-
-      <section className={props.showSideBar ? "groceries-side-bar groceries-side-bar__visible" : "groceries-side-bar"}>
-        <Groceries />
-      </section>
-    </main>
   );
 };
