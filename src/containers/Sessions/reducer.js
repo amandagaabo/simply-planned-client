@@ -1,7 +1,5 @@
 const initialState = {
-  currentUser: {
-    name: "amanda"
-  }
+  userId: "5a30712c7ecdadf28402c8aa"
 };
 
 export default function (state=initialState) {
