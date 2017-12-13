@@ -11,7 +11,7 @@ import Layout from './components/layout';
 
 export const mapStateToProps = state => ({
   groceries: state.app.groceries.groceries,
-  userId: state.app.sessions.userId
+  userId: state.app.auth.userId
 });
 
 export const mapDispatchToProps = (dispatch) => {
@@ -20,7 +20,7 @@ export const mapDispatchToProps = (dispatch) => {
       dispatch(addGroceryItem(formData.item))
       dispatch(reset('add-item'))
     },
-    onToggle: id => {
+    onToggle: (id) => {
       dispatch(toggleChecked(id))
     },
     onRemoveItems: () => dispatch(removeCheckedItems()),

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 
 import store from './store';
-import App from './containers/App/components/app';
+import App from './containers/App/index';
 
 import './styles.css';
 import './float-grid.css';

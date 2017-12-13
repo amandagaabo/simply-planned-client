@@ -14,17 +14,12 @@ export default class Layout extends React.Component {
     this.props.onLoad(this.props.userId)
   }
 
-  componentDidUpdate() {
-    console.log('component updated')
-  }
-
   onItemClick(e) {
     const id= e.target.id;
     this.props.onToggle(id);
   };
 
   render() {
-    console.log(this.props)
     const itemList = this.props.groceries.map( (item) => {
       return <li
         key={item.id}
