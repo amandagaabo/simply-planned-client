@@ -1,6 +1,7 @@
 import getGroceriesFromDB from './get-groceries';
 import addGroceryToDB from './add-grocery';
 import toggleCheckedInDB from './toggle-checked';
+import removeCheckedInDB from './remove-checked';
 
 // FETCH GROCERIES
 export const FETCH_GROCERIES_REQUEST = 'FETCH_GROCERIES_REQUEST';
@@ -75,6 +76,7 @@ export const toggleCheckedSuccess = item => ({
   type: TOGGLE_CHECKED_SUCCESS,
   item
 });
+
 export const TOGGLE_CHECKED_ERROR = 'TOGGLE_CHECKED_ERROR';
 export const toggleCheckedError = error => ({
   type: TOGGLE_CHECKED_ERROR,
@@ -94,9 +96,32 @@ export const toggleChecked = (token, itemID, checked) => dispatch => {
   })
 };
 
-// REMOVE GROCERY
-export const REMOVE_CHECKED_ITEMS = 'REMOVE_CHECKED_ITEMS';
-export const removeCheckedItems = id => ({
-  type: REMOVE_CHECKED_ITEMS,
-  id
+// REMOVE CHECKED ITEMS
+export const REMOVE_CHECKED_ITEMS_REQUEST = 'REMOVE_CHECKED_ITEMS_REQUEST';
+export const removeCheckedItemsRequest = () => ({
+  type: REMOVE_CHECKED_ITEMS_REQUEST
 });
+
+export const REMOVE_CHECKED_ITEMS_SUCCESS = 'REMOVE_CHECKED_ITEMS_SUCCESS';
+export const removeCheckedItemsSuccess = () => ({
+  type: REMOVE_CHECKED_ITEMS_SUCCESS
+});
+
+export const REMOVE_CHECKED_ITEMS_ERROR = 'REMOVE_CHECKED_ITEMS_ERROR';
+export const removeCheckedItemsError = error => ({
+  type: REMOVE_CHECKED_ITEMS_ERROR,
+  error
+});
+
+export const removeCheckedItems = (token) => dispatch => {
+  // dispatch the request action to start the request and show loading
+  dispatch(removeCheckedItemsRequest());
+  // search for the users groceries in the database by user id
+  removeCheckedInDB(token).then(result => {
+    // dispatch the success function and pass in the result from the db search on success
+    dispatch(removeCheckedItemsSuccess(result));
+  }).catch(err => {
+    // dispatch the error function if something goes wrong
+    dispatch(removeCheckedItemsError(err));
+  })
+};

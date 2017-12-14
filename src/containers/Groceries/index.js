@@ -44,8 +44,12 @@ export const mapDispatchToProps = (dispatch) => {
     onToggle: (token, itemID, checked) => {
       dispatch(toggleChecked(token, itemID, checked))
     },
-    onRemoveItems: () => dispatch(removeCheckedItems()),
-    onLoad: token => dispatch(fetchGroceries(token))
+    onRemoveItems: (token) => {
+      dispatch(removeCheckedItems(token))
+    },
+    onLoad: (token) => {
+      dispatch(fetchGroceries(token))
+    }
   }
 };
 

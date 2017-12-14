@@ -6,11 +6,15 @@ import './layout.css';
 export default function Layout(props) {
 
   function onItemClick(e) {
-    console.log('item clicked')
     const id= e.target.id;
     const checked = e.target.className === 'checked';
     props.onToggle(props.authToken, id, checked);
   };
+
+  function onRemoveButtonClick() {
+    console.log('remove button clicked')
+    props.onRemoveItems(props.authToken)
+  }
 
   const itemList = props.groceries.map( (item) => {
     return <li
@@ -32,7 +36,7 @@ export default function Layout(props) {
 
       <AddGroceryForm onAddGroceryItem={values => props.onAddGroceryItem(props.authToken, values)}/>
 
-      <p className="remove-items" onClick={props.onRemoveItems}>Remove crossed out items</p>
+      <button className="remove-items" onClick={() => onRemoveButtonClick()}>Remove crossed out items</button>
     </div>
   );
 
