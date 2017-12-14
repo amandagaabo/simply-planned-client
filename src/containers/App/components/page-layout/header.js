@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import Nav from './nav';
 import './header.css';
@@ -8,7 +9,7 @@ export default function Header(props) {
     <header role="banner">
       <div className="row">
         <div className="col-6 header-content">
-          <a href="/" className="main-logo desktop-left">Simply Planned</a>
+          <Link to="/dashboard" className="main-logo desktop-left">Simply Planned</Link>
         </div>
 
         <div className="col-6 header-content mobile-short-height">

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
+import {Link} from 'react-router-dom';
 import Input from '../input';
 import {login} from '../../actions';
 import {required, nonEmpty} from '../validators';
@@ -31,6 +32,7 @@ export function LoginForm(props) {
             name="email"
             type="email"
             label="Email"
+            autofocus
             validate={[required, nonEmpty]}
         />
 
@@ -52,7 +54,7 @@ export function LoginForm(props) {
         </button>
       </form>
 
-      <p>Dont have an account, <a className="underline" href="/sign-up">sign up</a></p>
+      <p>Dont have an account, <Link to="/sign-up" className="underline">sign up</Link></p>
     </div>
   );
 };

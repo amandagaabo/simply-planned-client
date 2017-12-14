@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import {Icon} from 'react-fa';
 
 import Groceries from '../Groceries/index';
@@ -24,6 +25,9 @@ export default class Dashboard extends React.Component {
   }
 
   render () {
+    if (!this.props.loggedIn) {
+      return <Redirect to="/" />;
+    }
     return (
       <main role="main">
         <section className={this.state.showSideBar ? "meals-container meals-container__with-sidebar" : "meals-container"}>

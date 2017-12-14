@@ -6,7 +6,7 @@ export default function SignUp(props) {
 
   if(props.loggedIn) {
     return (
-      <Redirect to='/meals' />
+      <Redirect to='/dashboard' />
     )
   }
 

@@ -1,25 +1,26 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {setCurrentUser, setAuthToken} from '../../actions';
+import {clearAuthToken} from '../../local-storage';
 
 import './nav.css';
 
 export function Nav(props) {
+  function logOut(e) {
+    e.preventDefault();
+    props.dispatch(setCurrentUser(null));
+    props.dispatch(setAuthToken(null));
+    clearAuthToken();
+  }
+
   if (props.isLoggedIn) {
     return (
-      <nav>
-        <ul className="nav-list">
-          <li><a href="/meals">My Plan</a></li>
-          <li><a href="/">Log Out</a></li>
-        </ul>
-      </nav>
+      <button onClick={e => logOut(e)}>Log Out</button>
     );
   } else {
     return (
-      <nav>
-        <ul className="nav-list">
-          <li><a href="/login">Log In</a></li>
-        </ul>
-      </nav>
+      <Link to="/login" className="header-link">Log In</Link>
     );
   }
 };

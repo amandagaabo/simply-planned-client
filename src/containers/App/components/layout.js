@@ -11,7 +11,7 @@ export default class Layout extends React.Component {
   componentDidMount() {
     if (this.props.hasAuthToken) {
       // Try to get a fresh auth token if we had an existing one in localStorage
-      this.props.dispatch(this.props.refreshAuthToken());
+      this.props.dispatch(this.props.onRefreshAuthToken());
     }
   }
 
@@ -31,7 +31,7 @@ export default class Layout extends React.Component {
 
   startPeriodicRefresh() {
     this.refreshInterval = setInterval(
-      () => this.props.dispatch(this.props.refreshAuthToken()),
+      () => this.props.dispatch(this.props.onRefreshAuthToken()),
       60 * 60 * 1000 // One hour
     );
   }
@@ -53,7 +53,7 @@ export default class Layout extends React.Component {
             <Route exact path="/" children={() => <Home {...this.props} />} />
             <Route exact path='/sign-up' children={() => <SignUp {...this.props} />} />
             <Route exact path="/login" children={() => <Login {...this.props} />} />
-            <Route path="/meals" children={() => <Dashboard {...this.props} />} />
+            <Route path="/dashboard" children={() => <Dashboard {...this.props} />} />
           </Switch>
         </div>
       </Router>
