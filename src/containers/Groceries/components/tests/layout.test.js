@@ -4,5 +4,5 @@ import {shallow} from 'enzyme';
 import Layout from '../layout';
 
 it('Renders without crashing', () => {
-  shallow(<Layout groceries={[]}/>);
+  shallow(<Layout groceries={[]} onLoad={jest.fn()} />);
 });

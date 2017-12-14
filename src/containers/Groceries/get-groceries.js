@@ -12,13 +12,13 @@ export default function getGroceriesFromDB(userId) {
       'user': `${userId}`
     }
   }).then(res => {
-    console.log('response from fetct request', res)
+    console.log('response from fetch groceries request', res)
     if (!res.ok) {
       return Promise.reject(res.statusText);
     }
     return res.json()
   }).then(data => {
-    console.log(data)
+    console.log('data from groceries request', data)
     //return data.results.map(character => character.name)
   });
 };

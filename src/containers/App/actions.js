@@ -26,7 +26,7 @@ const storeAuthInfo = (authToken, dispatch) => {
   saveAuthToken(authToken);
 };
 
-export const login = (username, password) => dispatch => {
+export const login = (email, password) => dispatch => {
   return (
     fetch(`${API_BASE_URL}/login`, {
       method: 'POST',
@@ -34,7 +34,7 @@ export const login = (username, password) => dispatch => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        username,
+        email,
         password
       })
     })
@@ -46,11 +46,10 @@ export const login = (username, password) => dispatch => {
     .catch(err => {
       const {code} = err;
       if (code === 401) {
-        // Could not authenticate, so return a SubmissionError for Redux
-        // Form
+        // Could not authenticate, so return SubmissionError for ReduxForm
         return Promise.reject(
           new SubmissionError({
-            _error: 'Incorrect username or password'
+            _error: 'Incorrect email or password'
           })
         );
       }
@@ -83,7 +82,6 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 };
 
 export const registerUser = user => dispatch => {
-  console.log('registerUser action, user:', user)
   return fetch(`${API_BASE_URL}/sign-up`, {
     method: 'POST',
     headers: {
@@ -95,8 +93,9 @@ export const registerUser = user => dispatch => {
   .then(res => res.json())
   .catch(err => {
     const {reason, message, location} = err;
+
     if (reason === 'ValidationError') {
-      // Convert ValidationErrors into SubmissionErrors for Redux Form
+      // convert ValidationErrors into SubmissionErrors for Redux Form
       return Promise.reject(
         new SubmissionError({
           [location]: message

@@ -1,5 +1,4 @@
 import React from 'react';
-import SignUpForm from "./sign-up-form"
 import './home.css';
 
 export default function Home(props) {
@@ -8,7 +7,7 @@ export default function Home(props) {
       <section id="hero-section">
         <div className="row">
           <h1 id="photo-caption">Planning meals made easy</h1>
-          <a href="#sign-up" className="button">Sign up</a>
+          <a href="/sign-up" className="button">Sign up</a>
         </div>
       </section>
 
@@ -27,8 +26,6 @@ export default function Home(props) {
           <img className= "home-img" src="https://dummyimage.com/400x300/424142/ffffff%26text=grocery+list+img" alt="grocery list img" />
         </div>
       </section>
-
-      <SignUpForm />
     </main>
   );
 };

@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Switch}  from 'react-router-dom';
 import Header from './page-layout/header';
 import Home from './home/home';
 import Login from './login/login';
+import SignUp from './sign-up/sign-up';
 import Dashboard from '../../../containers/Dashboard/dashboard';
 
 export default class Layout extends React.Component {
@@ -49,9 +50,10 @@ export default class Layout extends React.Component {
         <div className="app">
           <Header />
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route path="/meals" component={Dashboard} />
+            <Route exact path="/" children={() => <Home {...this.props} />} />
+            <Route exact path='/sign-up' children={() => <SignUp {...this.props} />} />
+            <Route exact path="/login" children={() => <Login {...this.props} />} />
+            <Route path="/meals" children={() => <Dashboard {...this.props} />} />
           </Switch>
         </div>
       </Router>

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
-import ReduxForm from './login-form';
+import ReduxForm from './sign-up-form';
 
-export default function Login(props) {
+export default function SignUp(props) {
 
   if(props.loggedIn) {
     return (

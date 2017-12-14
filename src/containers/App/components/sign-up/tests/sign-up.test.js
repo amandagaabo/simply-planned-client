@@ -1,8 +1,8 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import {App} from '../index';
+import SignUp from './../sign-up';
 
 it('Renders without crashing', () => {
-  shallow(<App />);
+  shallow(<SignUp />);
 });
