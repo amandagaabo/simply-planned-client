@@ -6,8 +6,10 @@ import './layout.css';
 export default function Layout(props) {
 
   function onItemClick(e) {
+    console.log('item clicked')
     const id= e.target.id;
-    props.onToggle(id);
+    const checked = e.target.className === 'checked';
+    props.onToggle(props.authToken, id, checked);
   };
 
   const itemList = props.groceries.map( (item) => {

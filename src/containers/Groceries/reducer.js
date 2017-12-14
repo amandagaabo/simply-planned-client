@@ -1,12 +1,14 @@
 import {
   REMOVE_CHECKED_ITEMS,
-  TOGGLE_CHECKED,
   FETCH_GROCERIES_REQUEST,
   FETCH_GROCERIES_SUCCESS,
   FETCH_GROCERIES_ERROR,
   ADD_GROCERY_ITEM_REQUEST,
   ADD_GROCERY_ITEM_SUCCESS,
-  ADD_GROCERY_ITEM_ERROR
+  ADD_GROCERY_ITEM_ERROR,
+  TOGGLE_CHECKED_REQUEST,
+  TOGGLE_CHECKED_SUCCESS,
+  TOGGLE_CHECKED_ERROR
 } from './actions';
 
 const initialState = {
@@ -24,7 +26,6 @@ export default function (state=initialState, action) {
     }
   }
   else if (action.type === FETCH_GROCERIES_SUCCESS) {
-    console.log('action success, groceries found:', action.groceries)
     return {
       ...state,
       loading: false,
@@ -48,8 +49,6 @@ export default function (state=initialState, action) {
     }
   }
   else if (action.type === ADD_GROCERY_ITEM_SUCCESS) {
-    console.log('action type is add grocery success, grocery to add:', action.item)
-
     return {
       ...state,
       loading: false,
@@ -70,13 +69,27 @@ export default function (state=initialState, action) {
   }
 
   // TOGGLE GROCERY ITEMS
-  else if (action.type === TOGGLE_CHECKED) {
+  else if (action.type === TOGGLE_CHECKED_REQUEST) {
     return {
       ...state,
-      groceries: state.groceries.map( item => item.id === parseInt(action.id, 10)
-        ? {...item, checked: !item.checked}
+      loading: true
+    }
+  }
+  else if (action.type === TOGGLE_CHECKED_SUCCESS) {
+    return {
+      ...state,
+      groceries: state.groceries.map( item => item.id === action.item.id
+        ? {...item, checked: action.item.checked}
         : item
       )
+    }
+  }
+  else if (action.type === TOGGLE_CHECKED_ERROR) {
+    console.log('toggle action error', action.error)
+    return {
+      ...state,
+      loading: false,
+      error: action.error
     }
   }
 

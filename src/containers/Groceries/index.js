@@ -18,7 +18,7 @@ export class Groceries extends React.Component {
 
   render() {
     console.log('Groceries props:', this.props)
-    
+
     if (!this.props.loggedIn) {
       return <Redirect to="/" />;
     }
@@ -41,8 +41,8 @@ export const mapDispatchToProps = (dispatch) => {
       dispatch(addGroceryItem(authToken, formData.item))
       dispatch(reset('add-item'))
     },
-    onToggle: (id) => {
-      dispatch(toggleChecked(id))
+    onToggle: (token, itemID, checked) => {
+      dispatch(toggleChecked(token, itemID, checked))
     },
     onRemoveItems: () => dispatch(removeCheckedItems()),
     onLoad: token => dispatch(fetchGroceries(token))

@@ -1,5 +1,7 @@
 import getGroceriesFromDB from './get-groceries';
 import addGroceryToDB from './add-grocery';
+import toggleCheckedInDB from './toggle-checked';
+
 // FETCH GROCERIES
 export const FETCH_GROCERIES_REQUEST = 'FETCH_GROCERIES_REQUEST';
 export const fetchGroceriesRequest = () => ({
@@ -62,16 +64,39 @@ export const addGroceryItem = (token, itemName) => dispatch => {
   })
 };
 
+// TOGGLE GROCERY
+export const TOGGLE_CHECKED_REQUEST = 'TOGGLE_CHECKED_REQUEST';
+export const toggleCheckedRequest = () => ({
+  type: TOGGLE_CHECKED_REQUEST
+});
+
+export const TOGGLE_CHECKED_SUCCESS = 'TOGGLE_CHECKED_SUCCESS';
+export const toggleCheckedSuccess = item => ({
+  type: TOGGLE_CHECKED_SUCCESS,
+  item
+});
+export const TOGGLE_CHECKED_ERROR = 'TOGGLE_CHECKED_ERROR';
+export const toggleCheckedError = error => ({
+  type: TOGGLE_CHECKED_ERROR,
+  error
+});
+
+export const toggleChecked = (token, itemID, checked) => dispatch => {
+  // dispatch the request action to start the request and show loading
+  dispatch(toggleCheckedRequest());
+  // search for the users groceries in the database by user id
+  toggleCheckedInDB(token, itemID, checked).then(result => {
+    // dispatch the success function and pass in the result from the db search on success
+    dispatch(toggleCheckedSuccess(result));
+  }).catch(err => {
+    // dispatch the error function if something goes wrong
+    dispatch(toggleCheckedError(err));
+  })
+};
+
 // REMOVE GROCERY
 export const REMOVE_CHECKED_ITEMS = 'REMOVE_CHECKED_ITEMS';
 export const removeCheckedItems = id => ({
   type: REMOVE_CHECKED_ITEMS,
-  id
-});
-
-// TOGGLE GROCERY
-export const TOGGLE_CHECKED = 'TOGGLE_CHECKED';
-export const toggleChecked = id => ({
-  type: TOGGLE_CHECKED,
   id
 });
