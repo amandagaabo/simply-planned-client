@@ -16,7 +16,7 @@ export function Nav(props) {
 
   if (props.isLoggedIn) {
     return (
-      <button onClick={e => logOut(e)}>Log Out</button>
+      <button className="header-link" onClick={e => logOut(e)}>Log Out</button>
     );
   } else {
     return (

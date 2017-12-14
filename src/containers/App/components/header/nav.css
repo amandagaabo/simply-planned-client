@@ -1,0 +1,9 @@
+.header-link {
+  border: none;
+  font-size: 18px;
+}
+
+.header-link:hover {
+  background-color: white;
+  color: black;
+}

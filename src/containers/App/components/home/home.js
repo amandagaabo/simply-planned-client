@@ -1,8 +1,15 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import './home.css';
 
 export default function Home(props) {
+
+  if(props.loggedIn) {
+    return (
+      <Redirect to='/dashboard' />
+    )
+  }
+  
   return (
     <main role="main">
       <section id="hero-section">
