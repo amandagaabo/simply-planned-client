@@ -1,10 +1,12 @@
 import {
-  ADD_GROCERY_ITEM,
   REMOVE_CHECKED_ITEMS,
   TOGGLE_CHECKED,
   FETCH_GROCERIES_REQUEST,
   FETCH_GROCERIES_SUCCESS,
-  FETCH_GROCERIES_ERROR
+  FETCH_GROCERIES_ERROR,
+  ADD_GROCERY_ITEM_REQUEST,
+  ADD_GROCERY_ITEM_SUCCESS,
+  ADD_GROCERY_ITEM_ERROR
 } from './actions';
 
 const initialState = {
@@ -14,6 +16,7 @@ const initialState = {
 };
 
 export default function (state=initialState, action) {
+  // FETCH GROCERIES
   if (action.type === FETCH_GROCERIES_REQUEST) {
     return {
       ...state,
@@ -21,15 +24,15 @@ export default function (state=initialState, action) {
     }
   }
   else if (action.type === FETCH_GROCERIES_SUCCESS) {
-    console.log('action success, groceries:', action.groceries)
+    console.log('action success, groceries found:', action.groceries)
     return {
       ...state,
       loading: false,
-      groceries: action.groceries
+      groceries: action.groceries || []
     }
   }
   else if (action.type === FETCH_GROCERIES_ERROR) {
-    console.log('action error', action.error)
+    console.log('fetch groceries action error', action.error)
     return {
       ...state,
       loading: false,
@@ -37,22 +40,36 @@ export default function (state=initialState, action) {
     }
   }
 
-  else if (action.type === ADD_GROCERY_ITEM) {
-    let id;
-    if(state.groceries.length === 0) {
-      id = 0;
-    } else {
-      id = state.groceries[state.groceries.length - 1].id + 1;
+  // ADD GROCERY
+  else if (action.type === ADD_GROCERY_ITEM_REQUEST) {
+    return {
+      ...state,
+      loading: true
     }
-
-    const newItem = {id, name: action.item, checked: false}
+  }
+  else if (action.type === ADD_GROCERY_ITEM_SUCCESS) {
+    console.log('action type is add grocery success, grocery to add:', action.item)
 
     return {
       ...state,
-      groceries: [...state.groceries, newItem]
+      loading: false,
+      groceries: [...state.groceries, {
+        id: action.item.id,
+        name: action.item.name,
+        checked: action.item.checked
+      }]
+    }
+  }
+  else if (action.type === ADD_GROCERY_ITEM_ERROR) {
+    console.log('add grocery action error', action.error)
+    return {
+      ...state,
+      loading: false,
+      error: action.error
     }
   }
 
+  // TOGGLE GROCERY ITEMS
   else if (action.type === TOGGLE_CHECKED) {
     return {
       ...state,
@@ -63,6 +80,7 @@ export default function (state=initialState, action) {
     }
   }
 
+  // REMOVE CHECKED GROCERY ITEMS
   else if (action.type === REMOVE_CHECKED_ITEMS) {
     return {
       ...state,
