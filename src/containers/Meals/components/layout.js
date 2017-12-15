@@ -7,7 +7,6 @@ import MealField from './meal-field';
 export default function Layout(props) {
   const dayMeals = props.meals.map( meal => {
     const dayName = moment(meal.date).format('dddd');
-
     return (
       <div key={meal.date}>
         <h3>{dayName}</h3>

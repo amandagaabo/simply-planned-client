@@ -24,7 +24,7 @@ export default function MealField(props) {
       <p className="meal-label">{props.mealType}</p>
       <textarea className="meal-input"
         onChange={handleChange}
-        defaultValue={value}
+        value={value}
         data-date={props.mealDate}
         data-meal={props.mealType}
         placeholder="enter meal name here">

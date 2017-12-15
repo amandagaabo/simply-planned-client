@@ -7,9 +7,9 @@ export const fetchMealsRequest = () => ({
 });
 
 export const FETCH_MEALS_SUCCESS = 'FETCH_MEALS_SUCCESS';
-export const fetchMealsSuccess = meals => ({
+export const fetchMealsSuccess = results => ({
   type: FETCH_MEALS_SUCCESS,
-  meals
+  results
 });
 
 export const FETCH_MEALS_ERROR = 'FETCH_MEALS_ERROR';
@@ -18,11 +18,11 @@ export const fetchMealsError = error => ({
   error
 });
 
-export const fetchMeals = token => dispatch => {
+export const fetchMeals = (token, sunday) => dispatch => {
   // dispatch the request action to start the request and show loading
   dispatch(fetchMealsRequest());
   // search for the users meals in the database by user id (in req.user)
-  getMealsFromDB(token).then(result => {
+  getMealsFromDB(token, sunday).then(result => {
     // dispatch the success function and pass in the result from the db search on success
     dispatch(fetchMealsSuccess(result));
   }).catch(err => {

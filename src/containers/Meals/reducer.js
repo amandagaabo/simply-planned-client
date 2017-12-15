@@ -1,4 +1,5 @@
 import moment from 'moment';
+import _ from 'lodash';
 import {
   FETCH_MEALS_REQUEST,
   FETCH_MEALS_SUCCESS,
@@ -6,23 +7,24 @@ import {
   UPDATE_MEAL
 } from './actions';
 
-
-const sunday = moment().startOf('week')._d;
-const meals = [{'date': sunday}]
-
-for (let i = 1; i < 7; i++) {
-  meals.push({'date': moment().startOf('week').add(i, 'd')._d})
+function getMealStarter(sunday) {
+  const mealStarter = [{'date': sunday}];
+  for (let i = 1; i < 7; i++) {
+    mealStarter.push({'date': moment().startOf('week').add(i, 'd').toISOString()})
+  };
+  return mealStarter;
 }
 
-console.log('meals:', meals)
-
+// set initial state to this week
+const thisSunday = moment().startOf('week').toISOString();
+const meals = getMealStarter(thisSunday)
 
 const initialState = {
+  sunday: thisSunday,
   meals,
   loading: false,
   error: null
 };
-
 
 export default function (state=initialState, action) {
   switch(action.type){
@@ -35,11 +37,20 @@ export default function (state=initialState, action) {
       }
 
     case FETCH_MEALS_SUCCESS:
-    console.log('fetch meals action success with data:', action.meals)
+      console.log('fetch meals action success with data and sunday:', action.results)
+      const sunday = action.results.sunday;
+      const starterMeals = getMealStarter(sunday);
+      const returnedMeals = action.results.meals;
+
+      const meals = _.map(starterMeals, function(day){
+        return _.assign(day, _.find(returnedMeals, { date: day.date }));
+      });
+
       return {
         ...state,
         loading: false,
-        meals: action.meals || []
+        sunday,
+        meals
       }
 
     case FETCH_MEALS_ERROR:
