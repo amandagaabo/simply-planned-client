@@ -15,7 +15,7 @@ export const fetchGroceriesSuccess = groceries => ({
   groceries
 });
 
-export const FETCH_GROCERIES_ERROR = 'FETCH_GROCERIES_Error';
+export const FETCH_GROCERIES_ERROR = 'FETCH_GROCERIES_ERROR';
 export const fetchGroceriesError = error => ({
   type: FETCH_GROCERIES_ERROR,
   error

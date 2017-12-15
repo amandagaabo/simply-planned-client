@@ -12,7 +12,6 @@ export default function Layout(props) {
   };
 
   function onRemoveButtonClick() {
-    console.log('remove button clicked')
     props.onRemoveItems(props.authToken)
   }
 
@@ -36,7 +35,7 @@ export default function Layout(props) {
 
       <AddGroceryForm onAddGroceryItem={values => props.onAddGroceryItem(props.authToken, values)}/>
 
-      <button className="remove-items" onClick={() => onRemoveButtonClick()}>Remove crossed out items</button>
+      <button className="remove-items" onClick={onRemoveButtonClick}>Remove crossed out items</button>
     </div>
   );
 

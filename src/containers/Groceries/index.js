@@ -17,8 +17,6 @@ export class Groceries extends React.Component {
   }
 
   render() {
-    console.log('Groceries props:', this.props)
-
     if (!this.props.loggedIn) {
       return <Redirect to="/" />;
     }

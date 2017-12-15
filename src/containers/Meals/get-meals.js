@@ -1,7 +1,7 @@
 import {API_BASE_URL} from '../../config';
 
-export default function getGroceriesFromDB(token) {
-  return fetch(`${API_BASE_URL}/groceries`, {
+export default function getMealsFromDB(token) {
+  return fetch(`${API_BASE_URL}/meals`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
@@ -14,6 +14,7 @@ export default function getGroceriesFromDB(token) {
     }
     return res.json()
   }).then(data => {
-    return data.groceries
+    console.log('data returned from GET reqest for meals', data)
+    return data.meals
   });
 };

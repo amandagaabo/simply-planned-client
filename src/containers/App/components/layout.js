@@ -14,9 +14,9 @@ export default function Layout(props) {
         <Header />
         <Switch>
           <Route exact path="/" children={() => <Home {...props} />} />
-          <Route exact path='/sign-up' children={() => <SignUp {...props} />} />
+          <Route exact path="/sign-up" children={() => <SignUp {...props} />} />
           <Route exact path="/login" children={() => <Login {...props} />} />
-          <Route path="/dashboard" children={() => <Dashboard {...props} />} />
+          <Route exact path="/dashboard" children={() => <Dashboard {...props} />} />
         </Switch>
       </div>
     </Router>
