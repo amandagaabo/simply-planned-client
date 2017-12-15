@@ -23,6 +23,7 @@ export const fetchMeals = (token, sunday) => dispatch => {
   dispatch(fetchMealsRequest());
   // search for the users meals in the database by user id (in req.user)
   getMealsFromDB(token, sunday).then(result => {
+    console.log('result from getMealsFromDB', result)
     // dispatch the success function and pass in the result from the db search on success
     dispatch(fetchMealsSuccess(result));
   }).catch(err => {

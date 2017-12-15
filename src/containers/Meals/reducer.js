@@ -10,7 +10,7 @@ import {
 function getMealStarter(sunday) {
   const mealStarter = [{'date': sunday}];
   for (let i = 1; i < 7; i++) {
-    mealStarter.push({'date': moment().startOf('week').add(i, 'd').toISOString()})
+    mealStarter.push({'date': moment(sunday).add(i, 'd').toISOString()})
   };
   return mealStarter;
 }

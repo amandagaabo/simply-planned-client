@@ -19,7 +19,7 @@ export default function Layout(props) {
 
   return (
     <div className="row">
-      <MealsNav meals={props.meals}/>
+      <MealsNav meals={props.meals} authToken={props.authToken} sunday={props.sunday}onGetMeals={props.onGetMeals}/>
       <div className="col-12">
         {dayMeals}
       </div>

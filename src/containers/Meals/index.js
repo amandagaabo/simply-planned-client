@@ -36,6 +36,9 @@ export const mapDispatchToProps = (dispatch) => {
     },
     onLoad: (token, sunday) => {
       dispatch(fetchMeals(token, sunday))
+    },
+    onGetMeals: (token, sunday) => {
+      dispatch(fetchMeals(token, sunday))
     }
   }
 };
