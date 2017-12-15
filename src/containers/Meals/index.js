@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
+import _ from 'lodash';
 
-import {fetchMeals, updateMeal} from './actions'
+import {fetchMeals, updateMealServer, updateMealClient} from './actions'
 import Layout from './components/layout';
 
 export class Meals extends React.Component {
@@ -29,9 +30,14 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = (dispatch) => {
+  const sync = _.debounce( (token, date, name, item) => {
+    dispatch(updateMealServer(token, date, name, item));
+  }, 500 )
+
   return {
-    onUpdateMeal: (token, date, meal, item) => {
-      dispatch(updateMeal(token, date, meal, item))
+    onUpdateMeal: (token, date, name, item) => {
+      dispatch(updateMealClient(date, name, item));
+      sync(token, date, name, item);
     },
     onLoad: (token, sunday) => {
       dispatch(fetchMeals(token, sunday))

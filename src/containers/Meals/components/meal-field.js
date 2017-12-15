@@ -1,6 +1,5 @@
 import React from 'react';
 import autosize from 'autosize';
-import _ from 'lodash';
 
 import './meal-field.css';
 
@@ -22,8 +21,6 @@ export default function MealField(props) {
   if (props.mealName) {
     value = props.mealName
   }
-
-  //const debounceHandleChange = _.debounce(handleChange, 200);
 
   return (
     <div className={`meal ${props.mealType}`}>

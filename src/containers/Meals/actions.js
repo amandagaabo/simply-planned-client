@@ -33,16 +33,24 @@ export const fetchMeals = (token, sunday) => dispatch => {
 };
 
 
-// UPDATE MEALS
+// UPDATE MEAL CLIENT SIDE
+export const UPDATE_MEAL_CLIENT = 'UPDATE_MEAL_CLIENT';
+export const updateMealClient =  (date, name, item) => ({
+  type: UPDATE_MEAL_CLIENT,
+  date,
+  name,
+  item
+});
+
+// UPDATE MEAL SERVER SIDE
 export const UPDATE_MEAL_REQUEST = 'UPDATE_MEAL_REQUEST';
 export const updateMealRequest = () => ({
   type: UPDATE_MEAL_REQUEST
 });
 
 export const UPDATE_MEAL_SUCCESS = 'UPDATE_MEAL_SUCCESS';
-export const updateMealSuccess = meal => ({
-  type: UPDATE_MEAL_SUCCESS,
-  meal
+export const updateMealSuccess = () => ({
+  type: UPDATE_MEAL_SUCCESS
 });
 
 export const UPDATE_MEAL_ERROR = 'UPDATE_MEAL_ERROR';
@@ -51,13 +59,13 @@ export const updateMealError = error => ({
   error
 });
 
-export const updateMeal = (token, date, meal, item) => dispatch => {
+export const updateMealServer = (token, date, name, item) => dispatch => {
   // dispatch the request action to start the request and show loading
   dispatch(updateMealRequest());
   // search for the users meals in the database by user id (in req.user)
-  updateMealInDB(token, date, meal, item).then(meal => {
+  updateMealInDB(token, date, name, item).then( () => {
     // dispatch the success function and pass in the result from the db search on success
-    dispatch(updateMealSuccess(meal));
+    dispatch(updateMealSuccess());
   }).catch(err => {
     // dispatch the error function if something goes wrong
     dispatch(updateMealError(err));

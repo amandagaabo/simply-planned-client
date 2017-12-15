@@ -1,6 +1,6 @@
 import {API_BASE_URL} from '../../config';
 
-export default function updateMealInDB(token, date, meal, item)  {
+export default function updateMealInDB(token, date, name, item)  {
   return fetch(`${API_BASE_URL}/meals/update`, {
     method: 'POST',
     headers: {
@@ -10,15 +10,13 @@ export default function updateMealInDB(token, date, meal, item)  {
     },
     body: JSON.stringify({
       date: `${date}`,
-      mealName: `${meal}`,
+      mealName: `${name}`,
       mealItem: `${item}`
     })
   }).then(res => {
     if (!res.ok) {
       return Promise.reject(res.statusText);
     }
-    return res.json();
-  }).then(data => {
-    return data.meal
+    return res.status;
   });
 };
