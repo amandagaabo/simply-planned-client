@@ -1,15 +1,19 @@
 import React from 'react';
 import autosize from 'autosize';
+import _ from 'lodash';
 
 import './meal-field.css';
 
 export default function MealField(props) {
   function handleChange(e) {
+    const token = props.authToken;
     const date = e.target.dataset.date;
     const meal = e.target.dataset.meal;
     const item = e.target.value;
-    // update meal in state
-    props.onUpdateMeal(date, meal, item);
+
+    // update meal
+    props.onUpdateMeal(token, date, meal, item);
+
     // resize textarea
     autosize(e.target);
   }
@@ -18,6 +22,8 @@ export default function MealField(props) {
   if (props.mealName) {
     value = props.mealName
   }
+
+  //const debounceHandleChange = _.debounce(handleChange, 200);
 
   return (
     <div className={`meal ${props.mealType}`}>

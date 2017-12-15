@@ -1,4 +1,5 @@
 import getMealsFromDB from './get-meals';
+import updateMealInDB from './update-meal';
 
 // FETCH MEALS
 export const FETCH_MEALS_REQUEST = 'FETCH_MEALS_REQUEST';
@@ -23,7 +24,6 @@ export const fetchMeals = (token, sunday) => dispatch => {
   dispatch(fetchMealsRequest());
   // search for the users meals in the database by user id (in req.user)
   getMealsFromDB(token, sunday).then(result => {
-    console.log('result from getMealsFromDB', result)
     // dispatch the success function and pass in the result from the db search on success
     dispatch(fetchMealsSuccess(result));
   }).catch(err => {
@@ -32,10 +32,34 @@ export const fetchMeals = (token, sunday) => dispatch => {
   })
 };
 
-export const UPDATE_MEAL = 'UPDATE_MEAL';
-export const updateMeal = (date, meal, item) => ({
-  type: UPDATE_MEAL,
-  date,
-  meal,
-  item
+
+// UPDATE MEALS
+export const UPDATE_MEAL_REQUEST = 'UPDATE_MEAL_REQUEST';
+export const updateMealRequest = () => ({
+  type: UPDATE_MEAL_REQUEST
 });
+
+export const UPDATE_MEAL_SUCCESS = 'UPDATE_MEAL_SUCCESS';
+export const updateMealSuccess = meal => ({
+  type: UPDATE_MEAL_SUCCESS,
+  meal
+});
+
+export const UPDATE_MEAL_ERROR = 'UPDATE_MEAL_ERROR';
+export const updateMealError = error => ({
+  type: UPDATE_MEAL_ERROR,
+  error
+});
+
+export const updateMeal = (token, date, meal, item) => dispatch => {
+  // dispatch the request action to start the request and show loading
+  dispatch(updateMealRequest());
+  // search for the users meals in the database by user id (in req.user)
+  updateMealInDB(token, date, meal, item).then(meal => {
+    // dispatch the success function and pass in the result from the db search on success
+    dispatch(updateMealSuccess(meal));
+  }).catch(err => {
+    // dispatch the error function if something goes wrong
+    dispatch(updateMealError(err));
+  })
+};

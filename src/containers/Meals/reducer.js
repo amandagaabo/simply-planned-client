@@ -4,7 +4,9 @@ import {
   FETCH_MEALS_REQUEST,
   FETCH_MEALS_SUCCESS,
   FETCH_MEALS_ERROR,
-  UPDATE_MEAL
+  UPDATE_MEAL_REQUEST,
+  UPDATE_MEAL_SUCCESS,
+  UPDATE_MEAL_ERROR
 } from './actions';
 
 function getMealStarter(sunday) {
@@ -37,7 +39,6 @@ export default function (state=initialState, action) {
       }
 
     case FETCH_MEALS_SUCCESS:
-      console.log('fetch meals action success with data and sunday:', action.results)
       const sunday = action.results.sunday;
       const starterMeals = getMealStarter(sunday);
       const returnedMeals = action.results.meals;
@@ -61,13 +62,29 @@ export default function (state=initialState, action) {
         error: action.error
       }
 
-    case UPDATE_MEAL:
+    // UPDATE MEAL
+    case UPDATE_MEAL_REQUEST:
       return {
         ...state,
-        meals: state.meals.map( meal => meal.date === action.date
-          ? {...meal, [action.meal]:action.item}
+        loading: true
+      }
+
+    case UPDATE_MEAL_SUCCESS:
+    const returnedMeal = action.meal;
+      return {
+        ...state,
+        meals: state.meals.map( meal => meal.date === returnedMeal.date
+          ? {...meal, ...returnedMeal}
           : meal
         )
+      }
+
+    case UPDATE_MEAL_ERROR:
+      console.log('update meal action error', action.error)
+      return {
+        ...state,
+        loading: false,
+        error: action.error
       }
 
     default:

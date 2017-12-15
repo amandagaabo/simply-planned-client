@@ -11,7 +11,6 @@ export class Meals extends React.Component {
   }
 
   render() {
-    console.log('meal props', this.props)
     if (!this.props.loggedIn) {
       return <Redirect to="/" />;
     }
@@ -31,8 +30,8 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = (dispatch) => {
   return {
-    onUpdateMeal: (date, meal, item) => {
-      dispatch(updateMeal(date, meal, item))
+    onUpdateMeal: (token, date, meal, item) => {
+      dispatch(updateMeal(token, date, meal, item))
     },
     onLoad: (token, sunday) => {
       dispatch(fetchMeals(token, sunday))

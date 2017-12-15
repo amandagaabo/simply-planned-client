@@ -7,19 +7,16 @@ import './meals-nav.css';
 export default function MealsNav(props) {
   function onTodayClick() {
     const sunday = moment().startOf('week').toISOString();
-    console.log('today clicked, sunday:', sunday)
     props.onGetMeals(props.authToken, sunday);
   };
 
   function onPrevClick() {
     const sunday = moment(props.sunday).subtract(7,'d').toISOString()
-    console.log('prev clicked, sunday:', sunday)
     props.onGetMeals(props.authToken, sunday);
   };
 
   function onNextClick() {
     const sunday = moment(props.sunday).add(7,'d').toISOString()
-    console.log('next clicked, sunday:', sunday)
     props.onGetMeals(props.authToken, sunday);
   };
 
