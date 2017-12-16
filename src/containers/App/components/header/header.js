@@ -8,7 +8,7 @@ export default function Header(props) {
     <header role="banner">
       <div className="row">
         <div className="col-6 header-content">
-          <a href="/" className="main-logo desktop-left">Simply Planned</a>
+          <h1 className="main-logo desktop-left">Simply Planned</h1>
         </div>
 
         <div className="col-6 header-content mobile-short-height">

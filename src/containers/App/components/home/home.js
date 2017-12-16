@@ -1,14 +1,21 @@
 import React from 'react';
-import SignUpForm from "./sign-up-form"
+import {Link, Redirect} from 'react-router-dom';
 import './home.css';
 
 export default function Home(props) {
+
+  if(props.loggedIn) {
+    return (
+      <Redirect to='/dashboard' />
+    )
+  }
+  
   return (
     <main role="main">
       <section id="hero-section">
         <div className="row">
           <h1 id="photo-caption">Planning meals made easy</h1>
-          <a href="#sign-up" className="button">Sign up</a>
+          <Link to="/sign-up" className="button">Sign up</Link>
         </div>
       </section>
 
@@ -27,8 +34,6 @@ export default function Home(props) {
           <img className= "home-img" src="https://dummyimage.com/400x300/424142/ffffff%26text=grocery+list+img" alt="grocery list img" />
         </div>
       </section>
-
-      <SignUpForm />
     </main>
   );
 };

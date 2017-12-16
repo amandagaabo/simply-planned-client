@@ -1,8 +1,8 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import Layout from '../layout';
+import LoginForm from './../login-form';
 
 it('Renders without crashing', () => {
-  shallow(<Layout groceries={[]} onLoad={jest.fn()} />);
+  shallow(<LoginForm />);
 });

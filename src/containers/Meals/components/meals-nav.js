@@ -5,6 +5,22 @@ import {Icon} from 'react-fa';
 import './meals-nav.css';
 
 export default function MealsNav(props) {
+  function onTodayClick() {
+    const sunday = moment().startOf('week').toISOString();
+    props.onGetMeals(props.authToken, sunday);
+  };
+
+  function onPrevClick() {
+    const sunday = moment(props.sunday).subtract(7,'d').toISOString()
+    props.onGetMeals(props.authToken, sunday);
+  };
+
+  function onNextClick() {
+    const sunday = moment(props.sunday).add(7,'d').toISOString()
+    props.onGetMeals(props.authToken, sunday);
+  };
+
+  // page title calcs
   let pageTitle = "";
   const startDayString = props.meals[0].date;
   const endDayString = props.meals[props.meals.length - 1].date;
@@ -23,22 +39,16 @@ export default function MealsNav(props) {
     pageTitle = `${startMonth} ${startDay} - ${endMonth} ${endDay}`
   }
 
+  // render nav
   return (
-    <div className="calendar-nav col-12">
-      <div className="today">
-        <a href="">today</a>
-      </div>
-
-      <div className="prev">
-        <a href=""><Icon name="chevron-left" /></a>
-      </div>
-
-      <div className="next">
-        <a href=""><Icon name="chevron-right" /></a>
-      </div>
-
-      <div className="title">
+    <div className="calendar-nav">
+      <div className="col-12 title">
         <h2>{pageTitle}</h2>
+      </div>
+      <div className="col-12 nav-buttons">
+        <button className="today" onClick={onTodayClick}>today</button>
+        <button className="prev" onClick={onPrevClick}><Icon name="chevron-left" /></button>
+        <button className="next"onClick={onNextClick}><Icon name="chevron-right" /></button>
       </div>
     </div>
   );

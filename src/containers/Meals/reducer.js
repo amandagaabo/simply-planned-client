@@ -1,59 +1,105 @@
-import {UPDATE_MEAL} from './actions';
+import moment from 'moment';
+import _ from 'lodash';
+import {
+  FETCH_MEALS_REQUEST,
+  FETCH_MEALS_SUCCESS,
+  FETCH_MEALS_ERROR,
+  UPDATE_MEAL_REQUEST,
+  UPDATE_MEAL_SUCCESS,
+  UPDATE_MEAL_ERROR,
+  UPDATE_MEAL_CLIENT
+} from './actions';
+
+function getMealStarter(sunday) {
+  const mealStarter = [{'date': sunday}];
+  for (let i = 1; i < 7; i++) {
+    mealStarter.push({'date': moment(sunday).add(i, 'd').toISOString()})
+  };
+  return mealStarter;
+}
+
+// set initial state to this week
+const thisSunday = moment().startOf('week').toISOString();
+const meals = getMealStarter(thisSunday)
 
 const initialState = {
-  meals: [
-    {
-      date: "2017-12-03",
-      breakfast: "oatmeal",
-      lunch: "grilled chicken salad",
-      dinner: "burger and sweet potato fries"
-    },
-    {
-      date: "2017-12-04",
-      breakfast: "cereal",
-      lunch: "turkey and cheese wrap",
-      dinner: "pasta and red sauce with veggies"
-    },
-    {
-      date: "2017-12-05",
-      breakfast: "eggs and potatoes",
-      lunch: "spinach and pear salad",
-      dinner: "pork chops and veggies"
-    },
-    {
-      date: "2017-12-06"
-    },
-    {
-      date: "2017-12-07",
-      breakfast: "eggs and toast",
-      lunch: "turkey sub and fries",
-      dinner: "grilled cheese and soup"
-    },
-    {
-      date: "2017-12-08",
-      breakfast: "cereal",
-      lunch: "ham and swiss wrap",
-      dinner: "chicken fingers and sweet potato fries"
-    },
-    {
-      date: "2017-12-09",
-      breakfast: "oatmeal with bananas and walnuts",
-      lunch: "cobb salad",
-      dinner: "turkey and mashed potatoes"
-    }
-  ]
+  sunday: thisSunday,
+  meals,
+  loading: false,
+  error: null
 };
 
 export default function (state=initialState, action) {
-  if (action.type === UPDATE_MEAL) {
-    return {
-      ...state,
-      meals: state.meals.map( meal => meal.date === action.date
-        ? {...meal, [action.meal]:action.item}
-        : meal
-      )
-    }
+  switch(action.type){
+
+    // FETCH MEALS
+    case FETCH_MEALS_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+
+    case FETCH_MEALS_SUCCESS:
+      const sunday = action.results.sunday;
+      const starterMeals = getMealStarter(sunday);
+      const returnedMeals = action.results.meals;
+
+      const meals = _.map(starterMeals, function(day){
+        return _.assign(day, _.find(returnedMeals, { date: day.date }));
+      });
+
+      return {
+        ...state,
+        loading: false,
+        sunday,
+        meals
+      }
+
+    case FETCH_MEALS_ERROR:
+      console.log('fetch meals action error', action.error)
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      }
+
+    // UPDATE MEAL
+    case UPDATE_MEAL_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+
+    case UPDATE_MEAL_SUCCESS:
+      return {
+        ...state,
+        loading: false
+      }
+
+    case UPDATE_MEAL_ERROR:
+      console.log('update meal action error', action.error)
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      }
+
+    case UPDATE_MEAL_CLIENT:
+      const updatedMeal = {
+        date: action.date,
+        [action.name]: action.item
+      }
+
+      return {
+        ...state,
+        meals: state.meals.map( meal => meal.date ===  updatedMeal.date
+          ? {...meal, ...updatedMeal}
+          : meal
+        )
+      }
+
+    default:
+      return state;
   }
 
-  return state;
 };

@@ -20,6 +20,10 @@ a {
   color: black;
 }
 
+.link:hover {
+  text-decoration: underline;
+}
+
 .button {
   background-color: #bbb;
   border: 1px solid black;
@@ -38,9 +42,10 @@ form {
   width: 300px;
 }
 
-label, input {
+label, input, .form-error {
   height: 30px;
   margin-bottom: 10px;
+  display: inline-block;
 }
 
 label {
@@ -53,6 +58,11 @@ label {
 input {
   width: 300px;
   text-align: center;
+}
+
+.form-error {
+  color: red;
+  width: 500px;
 }
 
 button[type="submit"], button[type="button"] {
@@ -69,4 +79,13 @@ button:hover {
   cursor: pointer;
   background-color: #aaa;
   color: white;
+}
+
+button[disabled] {
+  color: #aaa;
+  background-color: white;
+}
+
+button[disabled]:hover {
+  cursor: not-allowed;
 }

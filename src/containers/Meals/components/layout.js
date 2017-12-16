@@ -7,20 +7,19 @@ import MealField from './meal-field';
 export default function Layout(props) {
   const dayMeals = props.meals.map( meal => {
     const dayName = moment(meal.date).format('dddd');
-
     return (
       <div key={meal.date}>
         <h3>{dayName}</h3>
-          <MealField mealName={meal.breakfast} mealType="breakfast" mealDate={meal.date} onUpdateMeal={props.onUpdateMeal}/>
-          <MealField mealName={meal.lunch} mealType="lunch" mealDate={meal.date} onUpdateMeal={props.onUpdateMeal}/>
-          <MealField mealName={meal.dinner} mealType="dinner" mealDate={meal.date} onUpdateMeal={props.onUpdateMeal}/>
+          <MealField mealName={meal.breakfast} mealType="breakfast" mealDate={meal.date} onUpdateMeal={props.onUpdateMeal} authToken={props.authToken} />
+          <MealField mealName={meal.lunch} mealType="lunch" mealDate={meal.date} onUpdateMeal={props.onUpdateMeal} authToken={props.authToken} />
+          <MealField mealName={meal.dinner} mealType="dinner" mealDate={meal.date} onUpdateMeal={props.onUpdateMeal} authToken={props.authToken} />
       </div>
     );
   });
 
   return (
     <div className="row">
-      <MealsNav meals={props.meals}/>
+      <MealsNav meals={props.meals} authToken={props.authToken} sunday={props.sunday} onGetMeals={props.onGetMeals} onUpdateMeal={props.onUpdateMeal}/>
       <div className="col-12">
         {dayMeals}
       </div>

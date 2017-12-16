@@ -1,46 +1,104 @@
-import {ADD_GROCERY_ITEM, REMOVE_CHECKED_ITEMS, TOGGLE_CHECKED} from './actions';
+import {
+  FETCH_GROCERIES_REQUEST,
+  FETCH_GROCERIES_SUCCESS,
+  FETCH_GROCERIES_ERROR,
+  ADD_GROCERY_ITEM_REQUEST,
+  ADD_GROCERY_ITEM_SUCCESS,
+  ADD_GROCERY_ITEM_ERROR,
+  TOGGLE_CHECKED_REQUEST,
+  TOGGLE_CHECKED_SUCCESS,
+  TOGGLE_CHECKED_ERROR,
+  REMOVE_CHECKED_ITEMS_REQUEST,
+  REMOVE_CHECKED_ITEMS_SUCCESS,
+  REMOVE_CHECKED_ITEMS_ERROR
+} from './actions';
 
 const initialState = {
-  groceries: [
-    { id: 0, name: "apples", checked: false },
-    { id: 1, name: "bananas", checked: false },
-    { id: 2, name: "chicken", checked: true }
-  ]
+  groceries: [],
+  loading: false,
+  error: null
 };
 
 export default function (state=initialState, action) {
-  if (action.type === ADD_GROCERY_ITEM) {
-    let id;
-    if(state.groceries.length === 0) {
-      id = 0;
-    } else {
-      id = state.groceries[state.groceries.length - 1].id + 1;
-    }
-
-    const newItem = {id, name: action.item, checked: false}
-
-    return {
-      ...state,
-      groceries: [...state.groceries, newItem]
-    }
+  switch(action.type) {
+    case FETCH_GROCERIES_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+    case FETCH_GROCERIES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        groceries: action.groceries || []
+      }
+    case FETCH_GROCERIES_ERROR:
+      console.log('fetch groceries action error', action.error)
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      }
+    case ADD_GROCERY_ITEM_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+    case ADD_GROCERY_ITEM_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        groceries: [...state.groceries, {
+          id: action.item.id,
+          name: action.item.name,
+          checked: action.item.checked
+        }]
+      }
+    case ADD_GROCERY_ITEM_ERROR:
+      console.log('add grocery action error', action.error)
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      }
+    case TOGGLE_CHECKED_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+    case TOGGLE_CHECKED_SUCCESS:
+      return {
+        ...state,
+        groceries: state.groceries.map( item => item.id === action.item.id
+          ? {...item, checked: action.item.checked}
+          : item
+        )
+      }
+    case TOGGLE_CHECKED_ERROR:
+      console.log('toggle action error', action.error)
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      }
+    case REMOVE_CHECKED_ITEMS_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+    case REMOVE_CHECKED_ITEMS_SUCCESS:
+      return {
+        ...state,
+        groceries: state.groceries.filter( item => item.checked === false )
+      }
+    case REMOVE_CHECKED_ITEMS_ERROR:
+      console.log('remove checked items error', action.error)
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      }
+    default:
+      return state;
   }
-
-  if (action.type === TOGGLE_CHECKED) {
-    return {
-      ...state,
-      groceries: state.groceries.map( item => item.id === parseInt(action.id, 10)
-        ? {...item, checked: !item.checked}
-        : item
-      )
-    }
-  }
-
-  if (action.type === REMOVE_CHECKED_ITEMS) {
-    return {
-      ...state,
-      groceries: state.groceries.filter( item => item.checked === false )
-    }
-  }
-
-  return state;
 };
