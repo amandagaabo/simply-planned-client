@@ -1,6 +1,5 @@
 import React from 'react';
 import {reduxForm, Field, focus} from 'redux-form';
-import {Link} from 'react-router-dom';
 import Input from './../input';
 import {registerUser, login} from '../../actions';
 import {required, nonEmpty, matches, length, isTrimmed} from './../validators';
@@ -82,8 +81,6 @@ export function SignUpForm(props) {
           submit
         </button>
       </form>
-
-      <p>Already have an account, <Link to="/login" className="underline">log in</Link></p>
     </div>
   );
 };

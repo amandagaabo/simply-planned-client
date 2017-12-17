@@ -107,35 +107,93 @@
     left: 0;
   }
 
-  .header-link {
+  .header-link-container {
     display: block;
     position: absolute;
-    bottom: 5px;
-    right: 0px;
+    bottom: 10px;
+    right: 0;
   }
 
   .header-link:hover {
     text-decoration: underline;
   }
 
-  form {
+  .header-list {
+    margin: 0;
+    display: inline;
+  }
+
+
+  form, .form-error {
     width: 500px;
   }
 
-  label, input {
+  label, input, .form-error {
     float:left;
+    display: inline-block;
   }
 
   input {
     text-align: left;
+    width: 300px;
+    margin-top: 10px;
   }
 
-  #hero-section {
-    padding: 12% 0;
+  label {
+    width: 200px;
+    margin-top: 10px;
   }
 
   section {
-    padding: 6% 0;
+    padding: 60px 0;
+  }
+
+  .hero-section {
+    padding: 200px 0;
+  }
+
+  .edit-menu {
+    top: 92px;
+  }
+
+}
+
+/* sidebar desktop setup */
+@media only screen and (min-width: 840px) {
+  .toggle-side-bar {
+    right: 20px;
+  }
+
+  .meals-container {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    transition: transform .2s ease-in-out;
+  }
+
+  .groceries-side-bar {
+    display: inline-block;
+    position: fixed;
+    overflow: scroll;
+    width: 420px;
+    height: 100vh;
+    top: 0;
+    right: -400px;
+  }
+
+  .meals-container__with-sidebar {
+    width: calc(100% - 420px);
+    float: left;
+  }
+
+  .groceries-side-bar__visible {
+    transform: translateX(-400px);
+    z-index: 1;
+  }
+
+  .toggle-side-bar__with-sidebar {
+    right: 380px;
   }
 
 }

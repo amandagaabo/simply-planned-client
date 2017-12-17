@@ -14,13 +14,31 @@ export function Nav(props) {
     clearAuthToken();
   }
 
-  if (props.isLoggedIn) {
+  if (props.isLoggedIn && props.pathname === '/dashboard') {
     return (
-      <button className="header-link" onClick={e => logOut(e)}>Log Out</button>
+      <div className="header-link-container">
+        <span className="header-link" onClick={e => logOut(e)}>Log Out</span>
+      </div>
+    );
+  } else if (props.isLoggedIn) {
+    return (
+      <ul className="header-list header-link-container">
+        <li><Link to="/dashboard" className="header-link">Dashboard</Link></li>
+        <li><span className="header-link" onClick={e => logOut(e)}>Log Out</span></li>
+      </ul>
+    );
+
+  } else if (props.pathname === "/login") {
+    return (
+      <div className="header-link-container">
+        <Link to="/sign-up" className="header-link">Sign Up</Link>
+      </div>
     );
   } else {
     return (
-      <Link to="/login" className="header-link">Log In</Link>
+      <div className="header-link-container">
+        <Link to="/login" className="header-link">Log In</Link>
+      </div>
     );
   }
 };

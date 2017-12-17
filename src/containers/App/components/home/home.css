@@ -1,26 +1,29 @@
-section {
-  min-height: 200px;
-  padding: 12% 0;
-  background-color: #ccc;
-}
-
-section:nth-child(odd) {
-  background-color: #eee;
-}
-
-#hero-section {
-  padding: 20% 0;
-  background-image: url(http://valleyparentmagazine.com/wp-content/uploads/2017/05/meal-prep-list.jpg);
+.hero-section {
+  padding: 170px 0;
+  background-image: url(https://res.cloudinary.com/amhprojects/image/upload/v1513477659/meal-planner/meal-prep-img.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-#photo-caption {
+.photo-caption {
   margin-top: 40px;
 }
 
 .home-img {
   width: 100%;
   max-width: 500px;
+}
+
+.sign-up-button {
+  width: 200px;
+  height: 40px;
+  border-radius: 3px;
+  background-color: black;
+  margin-bottom: 0px;
+}
+
+.sign-up-button a {
+  color: white;
+  font-size: 20px;
 }
