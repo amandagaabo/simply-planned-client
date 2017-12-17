@@ -5,9 +5,11 @@ header {
   right: 0;
   z-index: 10;
   background-color: white;
+  border-bottom: 2px solid #f35001;
 }
 
 .main-logo {
   font-size: 30px;
   margin: 0;
+  color: #f35001;
 }

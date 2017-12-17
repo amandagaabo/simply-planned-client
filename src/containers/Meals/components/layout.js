@@ -4,12 +4,14 @@ import moment from 'moment';
 import MealsNav from './meals-nav';
 import MealField from './meal-field';
 
+import './layout.css'
+
 export default function Layout(props) {
   const dayMeals = props.meals.map( meal => {
     const dayName = moment(meal.date).format('dddd');
     return (
       <div key={meal.date}>
-        <h3>{dayName}</h3>
+        <h3 className="day-header">{dayName}</h3>
           <MealField mealName={meal.breakfast} mealType="breakfast" mealDate={meal.date} onUpdateMeal={props.onUpdateMeal} authToken={props.authToken} />
           <MealField mealName={meal.lunch} mealType="lunch" mealDate={meal.date} onUpdateMeal={props.onUpdateMeal} authToken={props.authToken} />
           <MealField mealName={meal.dinner} mealType="dinner" mealDate={meal.date} onUpdateMeal={props.onUpdateMeal} authToken={props.authToken} />

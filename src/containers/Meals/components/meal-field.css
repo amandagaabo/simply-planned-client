@@ -4,6 +4,9 @@
   border:1px solid black;
   border-radius: 3px;
   margin-bottom: 5px;
+  -webkit-box-shadow: 10px 5px 33px -2px rgba(242,234,242,1);
+  -moz-box-shadow: 10px 5px 33px -2px rgba(242,234,242,1);
+  box-shadow: 10px 5px 33px -2px rgba(242,234,242,1);
 }
 
 .meal-input, .meal-label {
@@ -12,13 +15,15 @@
 
 .meal-input {
   width: 100%;
-  min-height: 50px;
+  min-height: 40px;
   font-size: 20px;
-  padding-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 30px;
   border: none;
   resize: none;
   overflow: hidden;
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .meal-label {
