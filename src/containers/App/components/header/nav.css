@@ -4,6 +4,20 @@
 }
 
 .header-link:hover {
-  background-color: white;
-  color: black;
+  color: #f35001;
+}
+
+.header-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header-list li {
+  float: left;
+}
+
+.header-list li a {
+  text-align: center;
+  padding: 0 15px;
 }

@@ -3,7 +3,6 @@
   display: inline-block;
   height: 100%;
   width: 100%;
-  background-color: #1e2835;
   transition: transform .2s ease-in-out;
 }
 
@@ -30,7 +29,7 @@
 .toggle-side-bar {
   position: fixed;
   right: 20px;
-  background-color: #ccc;
+  background-color: #f35001;
   width: 30px;
 }
 

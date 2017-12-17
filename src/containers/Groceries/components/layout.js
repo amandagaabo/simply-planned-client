@@ -1,4 +1,5 @@
 import React from 'react';
+import {Icon} from 'react-fa';
 
 import AddGroceryForm from './add-grocery-form';
 import './layout.css';
@@ -28,14 +29,24 @@ export default function Layout(props) {
 
   return (
     <div className="row">
-      <h2>Grocery List</h2>
+      <ul className="edit-menu">
+        <li className="dropdown">
+          <a href="no-javascript.html" class="dropbtn"><Icon name="trash-o" /></a>
+          <div className="dropdown-content">
+            <a href="no-javascript.html" onClick={onRemoveButtonClick}>Delete Crossed Items</a>
+          </div>
+        </li>
+      </ul>
+
+      <h2 className="list-header">Grocery List</h2>
+
       <ul className="grocery-list">
         {itemList}
       </ul>
 
       <AddGroceryForm onAddGroceryItem={values => props.onAddGroceryItem(props.authToken, values)}/>
 
-      <button className="remove-items" onClick={onRemoveButtonClick}>Remove crossed out items</button>
+
     </div>
   );
 

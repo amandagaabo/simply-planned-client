@@ -4,11 +4,35 @@ body {
   text-align: center;
   line-height: 1.5;
   font-size: 20px;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.dark-section {
-  background-color: #ccc;
+.x-light-green-background {
+  background-color: #d3e29d;
+}
+
+.light-green-background {
+  background-color: #acc864;
+}
+
+.green-background {
+  background-color: #8ab446;
+}
+
+.dark-green-background {
+  background-color: #2d6b22;
+}
+
+.yellow-background {
+  background-color: #fee71a;
+}
+
+.orange-background {
+  background-color: #feaf17;
+}
+
+.red-orange-background {
+  background-color: #f35001;
 }
 
 .full-length {
@@ -20,19 +44,13 @@ a {
   color: black;
 }
 
-.link:hover {
+.page-link {
   text-decoration: underline;
 }
 
-.button {
-  background-color: #bbb;
-  border: 1px solid black;
-  border-radius: 3px;
-  padding: 5px;
-}
-
-.underline {
+.page-link:hover {
   text-decoration: underline;
+  color: #f35001;
 }
 
 /* forms */
@@ -44,12 +62,10 @@ form {
 
 label, input, .form-error {
   height: 30px;
-  margin-bottom: 10px;
-  display: inline-block;
 }
 
 label {
-  width: 200px;
+  width: 300px;
   text-align: right;
   vertical-align: bottom;
   padding-right: 10px;
@@ -62,22 +78,24 @@ input {
 
 .form-error {
   color: red;
-  width: 500px;
+  width: 300px;
+  margin-bottom: 10px;
 }
 
 button[type="submit"], button[type="button"] {
-  float: none;
-  clear: both;
-  display: block;
-  margin: 0 auto;
+  margin: 10px auto;
   height: 30px;
+  width: 100px;
   border: 1px solid #aaa;
   border-radius: 3px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
 }
 
 button:hover {
   cursor: pointer;
-  background-color: #aaa;
+  background-color: #262626;
   color: white;
 }
 

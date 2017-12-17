@@ -30,7 +30,7 @@ export default class Dashboard extends React.Component {
     }
     return (
       <main role="main">
-        <section className={this.state.showSideBar ? "meals-container meals-container__with-sidebar" : "meals-container"}>
+        <section className={this.state.showSideBar ? "meals-container meals-container__with-sidebar green-background" : "meals-container green-background"}>
           <div className={this.state.showSideBar ? "toggle-side-bar toggle-side-bar__with-sidebar" : "toggle-side-bar"}
             onClick={this.onToggleSideBar}>
             <Icon name="chevron-left" />
@@ -39,7 +39,7 @@ export default class Dashboard extends React.Component {
           <Meals />
         </section>
 
-        <section className={this.state.showSideBar ? "groceries-side-bar groceries-side-bar__visible" : "groceries-side-bar"}>
+        <section className={this.state.showSideBar ? "groceries-side-bar groceries-side-bar__visible red-orange-background" : "groceries-side-bar red-orange-background"}>
           <Groceries />
         </section>
       </main>

@@ -1,18 +1,20 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 import Nav from './nav';
 import './header.css';
 
 export default function Header(props) {
+  const pathname = window.location.pathname;
+
   return (
     <header role="banner">
       <div className="row">
         <div className="col-6 header-content">
-          <h1 className="main-logo desktop-left">Simply Planned</h1>
+          <Link to='/' className="main-logo desktop-left">Simply Planned</Link>
         </div>
 
         <div className="col-6 header-content mobile-short-height">
-          <Nav />
+          <Nav  pathname={pathname}/>
         </div>
       </div>
     </header>
