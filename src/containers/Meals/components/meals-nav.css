@@ -2,7 +2,7 @@
   margin-bottom: 0;
 }
 
-.prev {
+.today {
   margin-right: 5px;
   margin-left: 10px;
 }
@@ -17,4 +17,7 @@
   border: 1px solid black;
   border-radius: 5px;
   font-size: 16px;
+  -webkit-box-shadow: 10px 5px 33px -2px rgba(242,234,242,1);
+  -moz-box-shadow: 10px 5px 33px -2px rgba(242,234,242,1);
+  box-shadow: 10px 5px 33px -2px rgba(242,234,242,1);
 }

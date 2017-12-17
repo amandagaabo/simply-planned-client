@@ -1,7 +1,7 @@
 .toggle-side-bar {
   position: fixed;
   right: 0;
-  background-color: #f35001;
+  background-color: #d3e29d;
   width: 30px;
 }
 
@@ -13,7 +13,7 @@
 .toggle-side-bar__with-sidebar {
   left: 0;
   transform: rotateY(-180deg);
-  background-color: #acc864;
+  background-color: #d3e29d;
 }
 
 .meals-container {

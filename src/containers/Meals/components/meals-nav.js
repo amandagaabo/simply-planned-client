@@ -46,8 +46,8 @@ export default function MealsNav(props) {
         <h2>{pageTitle}</h2>
       </div>
       <div className="col-12 nav-buttons">
-        <button className="today" onClick={onTodayClick}>today</button>
         <button className="prev" onClick={onPrevClick}><Icon name="chevron-left" /></button>
+        <button className="today" onClick={onTodayClick}>this week</button>      
         <button className="next"onClick={onNextClick}><Icon name="chevron-right" /></button>
       </div>
     </div>
