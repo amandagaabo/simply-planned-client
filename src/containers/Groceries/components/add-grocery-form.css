@@ -1,7 +1,8 @@
 #add-grocery-form input {
   float: none;
   text-align: center;
-  width: 225px;
+  width: 250px;
+  font-size: 20px;
 }
 
 #add-grocery-form {

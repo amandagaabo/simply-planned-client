@@ -12,7 +12,7 @@ export default class Dashboard extends React.Component {
     super(props);
 
     this.state = {
-      showSideBar: true
+      showSideBar: false
     };
 
     this.onToggleSideBar = this.onToggleSideBar.bind(this);
@@ -30,16 +30,16 @@ export default class Dashboard extends React.Component {
     }
     return (
       <main role="main">
-        <section className={this.state.showSideBar ? "meals-container meals-container__with-sidebar green-background" : "meals-container green-background"}>
+        <section className={this.state.showSideBar ? "meals-container meals-container__with-sidebar light-green-background" : "meals-container light-green-background"}>
+          <Meals />
+        </section>
+
+        <section className={this.state.showSideBar ? "groceries-side-bar groceries-side-bar__visible red-orange-background" : "groceries-side-bar red-orange-background"}>
           <div className={this.state.showSideBar ? "toggle-side-bar toggle-side-bar__with-sidebar" : "toggle-side-bar"}
             onClick={this.onToggleSideBar}>
             <Icon name="chevron-left" />
           </div>
 
-          <Meals />
-        </section>
-
-        <section className={this.state.showSideBar ? "groceries-side-bar groceries-side-bar__visible red-orange-background" : "groceries-side-bar red-orange-background"}>
           <Groceries />
         </section>
       </main>

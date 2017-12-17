@@ -26,19 +26,19 @@ export default function Home(props) {
           name of the  meal.  If you want you can paste a link to the recipe or add the name of the cook book
           and page number it is on so you can easily reference it later.  Use this free form
           meal planner to plan your meals the way that works best for you.</p>
-          <img  className= "home-img" src="https://dummyimage.com/400x300/424142/ffffff%26text=meal+planning+img" alt="meal img" />
+          <img  className= "home-img" src="https://res.cloudinary.com/amhprojects/image/upload/v1513480043/meal-planner/meal-prep-tupperware.jpg" alt="meal img" />
         </div>
       </section>
 
       <section className="light-green-background">
         <div className="row">
           <h1>Make your Grocery List</h1>
-          <p>While planning your meals and looking through recieps you will need to have a
+          <p>While planning your meals and looking through recipes you will need to have a
           grocery list going.  Simply Planned has an easy to use grocery list so you can
           add items as you think of them.  Type the name of the item you want, hit enter and
           it is added to your list.  After you shop, cross everything off your list so you are
           ready for next week.</p>
-          <img className= "home-img" src="https://dummyimage.com/400x300/424142/ffffff%26text=grocery+list+img" alt="grocery list img" />
+          <img className= "home-img" src="https://res.cloudinary.com/amhprojects/image/upload/v1513479980/meal-planner/shopping-list.jpg" alt="grocery list img" />
         </div>
       </section>
     </main>

@@ -7,7 +7,6 @@ import {clearAuthToken} from '../../local-storage';
 import './nav.css';
 
 export function Nav(props) {
-  console.log('props path', props.pathname)
   function logOut(e) {
     e.preventDefault();
     props.dispatch(setCurrentUser(null));
@@ -18,14 +17,14 @@ export function Nav(props) {
   if (props.isLoggedIn && props.pathname === '/dashboard') {
     return (
       <div className="header-link-container">
-        <a href="no-javascript.html" className="header-link" onClick={e => logOut(e)}>Log Out</a>
+        <span className="header-link" onClick={e => logOut(e)}>Log Out</span>
       </div>
     );
   } else if (props.isLoggedIn) {
     return (
       <ul className="header-list header-link-container">
         <li><Link to="/dashboard" className="header-link">Dashboard</Link></li>
-        <li><a href="no-javascript.html" className="header-link" onClick={e => logOut(e)}>Log Out</a></li>
+        <li><span className="header-link" onClick={e => logOut(e)}>Log Out</span></li>
       </ul>
     );
 

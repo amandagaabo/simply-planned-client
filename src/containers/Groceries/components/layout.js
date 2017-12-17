@@ -31,9 +31,9 @@ export default function Layout(props) {
     <div className="row">
       <ul className="edit-menu">
         <li className="dropdown">
-          <a href="no-javascript.html" class="dropbtn"><Icon name="trash-o" /></a>
+          <span className="dropbtn"><Icon name="trash-o" /></span>
           <div className="dropdown-content">
-            <a href="no-javascript.html" onClick={onRemoveButtonClick}>Delete Crossed Items</a>
+            <span onClick={onRemoveButtonClick}>Delete Crossed Items</span>
           </div>
         </li>
       </ul>

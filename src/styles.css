@@ -7,6 +7,11 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+section {
+  min-height: 200px;
+  padding: 75px 0;
+}
+
 .x-light-green-background {
   background-color: #d3e29d;
 }
@@ -17,18 +22,6 @@ body {
 
 .green-background {
   background-color: #8ab446;
-}
-
-.dark-green-background {
-  background-color: #2d6b22;
-}
-
-.yellow-background {
-  background-color: #fee71a;
-}
-
-.orange-background {
-  background-color: #feaf17;
 }
 
 .red-orange-background {
@@ -86,8 +79,8 @@ button[type="submit"], button[type="button"] {
   margin: 10px auto;
   height: 30px;
   width: 100px;
-  border: 1px solid #aaa;
-  border-radius: 3px;
+  border: 1px solid black;
+  border-radius: 5px;
   background-color: black;
   color: white;
   font-size: 16px;
@@ -102,6 +95,7 @@ button:hover {
 button[disabled] {
   color: #aaa;
   background-color: white;
+  border: 1px solid #aaa;
 }
 
 button[disabled]:hover {

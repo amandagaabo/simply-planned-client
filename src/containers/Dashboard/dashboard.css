@@ -1,3 +1,21 @@
+.toggle-side-bar {
+  position: fixed;
+  right: 0;
+  background-color: #f35001;
+  width: 30px;
+}
+
+.toggle-side-bar:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.toggle-side-bar__with-sidebar {
+  left: 0;
+  transform: rotateY(-180deg);
+  background-color: #acc864;
+}
+
 .meals-container {
   position: relative;
   display: inline-block;
@@ -13,27 +31,14 @@
   width: 420px;
   height: 100vh;
   top: 0;
-  right: -400px;
+  right: -420px;
 }
 
 .meals-container__with-sidebar {
-  width: calc(100% - 420px);
-  float: left;
+  display: none;
 }
 
 .groceries-side-bar__visible {
-  transform: translateX(-400px);
-  z-index: 1;
-}
-
-.toggle-side-bar {
-  position: fixed;
-  right: 20px;
-  background-color: #f35001;
-  width: 30px;
-}
-
-.toggle-side-bar__with-sidebar {
-  right: 420px;
-  transform: rotateY(-180deg);
+  width: 100%;
+  right: 0;
 }
