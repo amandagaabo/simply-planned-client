@@ -10,7 +10,7 @@ import {
   UPDATE_MEAL_CLIENT
 } from './actions';
 
-function getMealStarter(sunday) {
+export function getMealStarter(sunday) {
   const mealStarter = [{'date': sunday}];
   for (let i = 1; i < 7; i++) {
     mealStarter.push({'date': moment(sunday).add(i, 'd').toISOString()})
@@ -20,7 +20,7 @@ function getMealStarter(sunday) {
 
 // set initial state to this week
 const thisSunday = moment().startOf('week').toISOString();
-const meals = getMealStarter(thisSunday)
+const meals = getMealStarter(thisSunday);
 
 const initialState = {
   sunday: thisSunday,
@@ -56,7 +56,6 @@ export default function (state=initialState, action) {
       }
 
     case FETCH_MEALS_ERROR:
-      console.log('fetch meals action error', action.error)
       return {
         ...state,
         loading: false,
@@ -77,7 +76,6 @@ export default function (state=initialState, action) {
       }
 
     case UPDATE_MEAL_ERROR:
-      console.log('update meal action error', action.error)
       return {
         ...state,
         loading: false,
@@ -89,9 +87,10 @@ export default function (state=initialState, action) {
         date: action.date,
         [action.name]: action.item
       }
-
+      
       return {
         ...state,
+        loading: false,
         meals: state.meals.map( meal => meal.date ===  updatedMeal.date
           ? {...meal, ...updatedMeal}
           : meal
