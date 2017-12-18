@@ -11,7 +11,7 @@ export default function SignUp(props) {
   }
 
   return (
-    <main role="main">
+    <main role="main" className="sign-up-page">
         <section className="x-light-green-background full-length">
           <ReduxForm />
         </section>
