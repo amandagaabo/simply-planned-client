@@ -12,7 +12,7 @@ export default class Dashboard extends React.Component {
     super(props);
 
     this.state = {
-      showSideBar: false
+      showSideBar: true
     };
 
     this.onToggleSideBar = this.onToggleSideBar.bind(this);
