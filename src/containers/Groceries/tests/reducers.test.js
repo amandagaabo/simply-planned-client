@@ -12,8 +12,7 @@ import {
   toggleCheckedError,
   removeCheckedItemsRequest,
   removeCheckedItemsSuccess,
-  removeCheckedItemsError,
-
+  removeCheckedItemsError
 } from './../actions'
 
 // initial state
