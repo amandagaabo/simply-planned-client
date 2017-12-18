@@ -33,7 +33,6 @@ export default function (state=initialState, action) {
         groceries: action.groceries || []
       }
     case FETCH_GROCERIES_ERROR:
-      console.log('fetch groceries action error', action.error)
       return {
         ...state,
         loading: false,
@@ -55,7 +54,6 @@ export default function (state=initialState, action) {
         }]
       }
     case ADD_GROCERY_ITEM_ERROR:
-      console.log('add grocery action error', action.error)
       return {
         ...state,
         loading: false,
@@ -69,13 +67,13 @@ export default function (state=initialState, action) {
     case TOGGLE_CHECKED_SUCCESS:
       return {
         ...state,
+        loading: false,
         groceries: state.groceries.map( item => item.id === action.item.id
           ? {...item, checked: action.item.checked}
           : item
         )
       }
     case TOGGLE_CHECKED_ERROR:
-      console.log('toggle action error', action.error)
       return {
         ...state,
         loading: false,
@@ -89,10 +87,10 @@ export default function (state=initialState, action) {
     case REMOVE_CHECKED_ITEMS_SUCCESS:
       return {
         ...state,
+        loading: false,
         groceries: state.groceries.filter( item => item.checked === false )
       }
     case REMOVE_CHECKED_ITEMS_ERROR:
-      console.log('remove checked items error', action.error)
       return {
         ...state,
         loading: false,
