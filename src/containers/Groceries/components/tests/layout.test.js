@@ -14,7 +14,6 @@ describe('Groceries <Layout />', () => {
   });
 
   it('Renders the groceries', () => {
-
     const wrapper = shallow(<Layout groceries={groceries} />);
     expect(wrapper.find('.grocery-list li')).toHaveLength(groceries.length)
   });
