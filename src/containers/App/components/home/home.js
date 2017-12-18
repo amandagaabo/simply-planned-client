@@ -9,7 +9,7 @@ export default function Home(props) {
       <section className="hero-section">
         <div className="row">
           <h1 className="photo-caption">Planning meals made easy</h1>
-          <button className="sign-up-button"><Link to="/sign-up">Sign up</Link></button>
+          <Link to="/sign-up" className="sign-up-link">Sign up</Link>
         </div>
       </section>
 

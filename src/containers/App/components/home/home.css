@@ -15,15 +15,16 @@
   max-width: 500px;
 }
 
-.sign-up-button {
-  width: 200px;
-  height: 40px;
+.sign-up-link {
+  display: inline-block;
   border-radius: 3px;
   background-color: black;
   margin-bottom: 0px;
-}
-
-.sign-up-button a {
   color: white;
   font-size: 20px;
+  padding: 5px 75px;
+}
+
+.sign-up-link:hover {
+  background-color: #262626;
 }

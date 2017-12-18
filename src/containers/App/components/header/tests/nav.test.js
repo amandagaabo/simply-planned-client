@@ -1,6 +1,5 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-
 import {Nav} from '../nav';
 
 describe('<Nav />', () => {
@@ -43,7 +42,7 @@ describe('<Nav />', () => {
   it('Logs the user out when log out is clicked', () => {
     const dispatch = jest.fn();
     const wrapper = shallow(<Nav loggedIn={true} pathname={'/dashboard'} dispatch={dispatch} />);
-    wrapper.find('.header-link').simulate('click')
+    wrapper.find('.header-link').simulate('click');
     expect(dispatch).toHaveBeenCalledTimes(2);
   })
 });
