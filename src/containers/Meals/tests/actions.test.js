@@ -20,8 +20,6 @@ import {
   updateMealClient
 } from '../actions';
 
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
 
 
 describe('fetchMealsRequest', () => {
@@ -52,30 +50,32 @@ describe('fetchMealsError', () => {
   });
 });
 
-// describe('fetchMeals', () => {
-//   it('Should dispatch fetchMealsRequest and fetchMealsSuccess', () => {
-//     const token = '';
-//     const sunday = '2017-12-10';
-//     const fetchMealsMock = {
-//       meals: [{date: '2017-12-12', breakfast: 'pancakes'}],
-//       sunday: '2017-12-10'
-//     };
-//
-//     const addGroceryToDB = jest.fn().mockImplementation((token, sunday) => fetchMealsMock )
-//
-//     const expectedActions = [
-//       { type: FETCH_MEALS_REQUEST },
-//       { type: FETCH_MEALS_SUCCESS, meals: fetchMealsMock },
-//     ];
-//
-//     const store = mockStore({ meals: {} })
-//
-//     return store.dispatch(fetchMeals(token, sunday)).then(() => {
-//       // return of async actions
-//       expect(store.getActions()).toEqual(expectedActions);
-//     });
-//   });
-// });
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+
+describe.skip('fetchMeals', () => {
+  it('Should dispatch fetchMealsRequest and fetchMealsSuccess', () => {
+    const token = '';
+    const sunday = '2017-12-10';
+    const fetchMealsMock = {
+      meals: [{date: '2017-12-12', breakfast: 'pancakes'}],
+      sunday: '2017-12-10'
+    };
+
+    const getMealsFromDB = jest.fn().mockImplementation((token, sunday) => fetchMealsMock );
+
+    const expectedActions = [
+      { type: FETCH_MEALS_REQUEST },
+      { type: FETCH_MEALS_SUCCESS, meals: fetchMealsMock },
+    ];
+
+    const store = mockStore({ meals: {} })
+
+    return store.dispatch(fetchMeals(token, sunday)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+});
 
 describe('updateMealRequest', () => {
   const action = updateMealRequest();
