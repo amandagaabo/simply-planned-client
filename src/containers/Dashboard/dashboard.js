@@ -29,7 +29,7 @@ export default class Dashboard extends React.Component {
       return <Redirect to="/" />;
     }
     return (
-      <main role="main">
+      <main role="main" className="dashboard">
         <section className={this.state.showSideBar ? "meals-container meals-container__with-sidebar " : "meals-container"}>
           <Meals />
         </section>
