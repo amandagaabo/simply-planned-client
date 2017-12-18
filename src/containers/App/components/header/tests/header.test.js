@@ -3,6 +3,13 @@ import {shallow} from 'enzyme';
 
 import Header from '../header';
 
-it('Renders without crashing', () => {
-  shallow(<Header />);
+describe('<Header />', () => {
+  it('Renders without crashing', () => {
+    shallow(<Header />);
+  });
+
+  it('Renders the header', () => {
+    const wrapper = shallow(<Header />);
+    expect(wrapper.hasClass('header')).toEqual(true);
+  });
 });
