@@ -33,7 +33,7 @@ export default function Layout(props) {
         <li className="dropdown">
           <span className="dropbtn"><Icon name="trash-o" /></span>
           <div className="dropdown-content">
-            <span onClick={onRemoveButtonClick}>Delete Crossed Items</span>
+            <span className="remove-items" onClick={onRemoveButtonClick}>Delete Crossed Items</span>
           </div>
         </li>
       </ul>
@@ -45,8 +45,6 @@ export default function Layout(props) {
       </ul>
 
       <AddGroceryForm onAddGroceryItem={values => props.onAddGroceryItem(props.authToken, values)}/>
-
-
     </div>
   );
 
