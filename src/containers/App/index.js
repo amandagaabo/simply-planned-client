@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {refreshAuthToken, setReady} from './actions';
-
 import Layout from './components/layout';
 
 export class App extends React.Component {
@@ -9,8 +8,9 @@ export class App extends React.Component {
     if (this.props.hasAuthToken) {
       // Try to get a fresh auth token if we had an existing one in localStorage
       this.props.dispatch(refreshAuthToken());
+    } else {
+      this.props.dispatch(setReady(true));
     }
-    this.props.dispatch(setReady(true));
   }
 
   componentWillReceiveProps(nextProps) {
