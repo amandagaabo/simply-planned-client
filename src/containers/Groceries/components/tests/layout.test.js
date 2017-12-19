@@ -33,6 +33,7 @@ describe('Groceries <Layout />', () => {
   it('Calls onRemoveItems function when delete crossed items is clicked', () => {
     const onRemoveItems = jest.fn();
     const wrapper = shallow(<Layout groceries={groceries} onRemoveItems={onRemoveItems} />);
+    global.confirm = () => true;
     wrapper.find('.remove-items').simulate('click');
     expect(onRemoveItems).toHaveBeenCalledTimes(1);
   });

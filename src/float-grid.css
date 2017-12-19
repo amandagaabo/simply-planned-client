@@ -158,7 +158,7 @@
 
 }
 
-/* sidebar desktop setup */
+/* sidebar desktop setup (double width of grocery side bar) */
 @media only screen and (min-width: 840px) {
 
   .meals-container {
@@ -171,6 +171,7 @@
 
   .groceries-side-bar {
     display: inline-block;
+    border-left: 2px solid #f35001;
     position: fixed;
     overflow: scroll;
     width: 420px;

@@ -23,7 +23,6 @@
 }
 
 .groceries-side-bar {
-  border-left: 2px solid #f35001;
   display: inline-block;
   position: fixed;
   overflow: scroll;

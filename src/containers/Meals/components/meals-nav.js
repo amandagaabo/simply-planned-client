@@ -39,6 +39,15 @@ export default function MealsNav(props) {
     pageTitle = `${startMonth} ${startDay} - ${endMonth} ${endDay}`
   }
 
+  // disable this week button if on this week
+  let thisWeek;
+  const thisWeekStart = moment().startOf('week').toISOString();
+  if(startDayString === thisWeekStart) {
+    thisWeek = <button disabled className="today" onClick={onTodayClick} value="today">this week</button>
+  } else {
+    thisWeek = <button className="today" onClick={onTodayClick} aria-label="today">this week</button>
+  };
+
   // render nav
   return (
     <div className="calendar-nav">
@@ -46,9 +55,9 @@ export default function MealsNav(props) {
         <h2>{pageTitle}</h2>
       </div>
       <div className="col-12 nav-buttons">
-        <button className="prev" onClick={onPrevClick}><Icon name="chevron-left" /></button>
-        <button className="today" onClick={onTodayClick}>this week</button>      
-        <button className="next"onClick={onNextClick}><Icon name="chevron-right" /></button>
+        <button className="prev" onClick={onPrevClick} aria-label="previous"><Icon name="chevron-left" /></button>
+        {thisWeek}
+        <button className="next"onClick={onNextClick} aria-label="next"><Icon name="chevron-right" /></button>
       </div>
     </div>
   );

@@ -30,8 +30,8 @@ export default function Layout(props) {
 
   return (
     <div className="row">
-      <div className="remove-items">
-        <span onClick={onRemoveButtonClick} ><Icon name="trash-o" /></span>
+      <div>
+        <span className="remove-items" onClick={onRemoveButtonClick} ><Icon name="trash-o" /></span>
       </div>
 
       <h2 className="list-header">Grocery List</h2>

@@ -89,7 +89,7 @@ button:hover {
   box-shadow: 1px 2px 2px 2px #eee;
 }
 
-button:focus {
+button:focus, input:focus {
   outline: 0;
 }
 
@@ -101,4 +101,5 @@ button[disabled] {
 
 button[disabled]:hover {
   cursor: not-allowed;
+  box-shadow: none;
 }

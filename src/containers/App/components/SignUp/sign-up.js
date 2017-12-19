@@ -13,7 +13,7 @@ export class SignUp extends React.Component {
 
     return (
       <main role="main" className="sign-up-page">
-          <section className="x-light-green-background full-length">
+          <section className="full-length">
             <ReduxForm />
           </section>
       </main>
