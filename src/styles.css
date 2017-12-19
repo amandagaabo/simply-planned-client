@@ -63,6 +63,8 @@ label {
 input {
   width: 300px;
   text-align: center;
+  font-size: 20px;
+  border: 1px solid #aaa;
 }
 
 .form-error {
