@@ -25,5 +25,4 @@ export const mapStateToProps = state => ({
   loggedIn: state.app.auth.currentUser !== null
 });
 
-
 export default connect(mapStateToProps)(Login)

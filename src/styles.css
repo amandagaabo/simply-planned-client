@@ -89,6 +89,10 @@ button:hover {
   box-shadow: 1px 2px 2px 2px #eee;
 }
 
+button:focus {
+  outline: 0;
+}
+
 button[disabled] {
   color: #aaa;
   background-color: white;

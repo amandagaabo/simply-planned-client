@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {shallow} from 'enzyme';
-import Home from '../home';
+import {Home} from '../home';
 
 describe('<Home />', () => {
   it('Renders without crashing', () => {
