@@ -14,7 +14,7 @@ export class Login extends React.Component {
     return (
       <main role="main" className='login-page'>
           <section className="x-light-green-background full-length">
-            <ReduxForm {...this.props}/>
+            <ReduxForm />
           </section>
       </main>
     );
