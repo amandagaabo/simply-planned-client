@@ -18,10 +18,15 @@ describe('Groceries <Layout />', () => {
     expect(wrapper.find('.grocery-list li')).toHaveLength(groceries.length)
   });
 
-  it.skip('Calls onToggle function when item is clicked', () => {
+  it('Calls onToggle function when item is clicked', () => {
     const onToggle = jest.fn();
-    const wrapper = shallow(<Layout groceries={groceries} />);
-    wrapper.find('.grocery-list li').first().simulate('click');
+    const mockTarget = {
+      id: 123,
+      className: 'checked'
+    }
+
+    const wrapper = shallow(<Layout groceries={groceries} onToggle={onToggle} />);
+    wrapper.find('.grocery-list li').first().simulate('click', { target: mockTarget });
     expect(onToggle).toHaveBeenCalledTimes(1);
   });
 

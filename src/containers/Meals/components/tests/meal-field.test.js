@@ -17,10 +17,18 @@ describe('<MealField />', () => {
     expect(wrapper.hasClass(mealType)).toBe(true);
   });
 
-  it.skip('Calls handle change', () => {
+  it('Calls handle change', () => {
     const onUpdateMeal = jest.fn();
+    const mockTarget = {
+      dataset: {
+        date: '2017-12-12',
+        meal: 'lunch'
+      },
+      value: 'chicken sandwich'
+    }
+
     const wrapper = shallow(<MealField onUpdateMeal={onUpdateMeal} />);
-    wrapper.find('textarea').simulate('change');
+    wrapper.find('textarea').simulate('change', {target: mockTarget});
     expect(onUpdateMeal).toHaveBeenCalledTimes(1);
   });
 });
