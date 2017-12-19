@@ -29,6 +29,12 @@ import {
   removeCheckedItems
 } from '../actions';
 
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+
 describe('fetchGroceriesRequest', () => {
   const action = fetchGroceriesRequest();
   it('Should return the action', () => {
@@ -54,28 +60,29 @@ describe('fetchGroceriesError', () => {
   });
 });
 
-// describe.only('fetchGroceries', () => {
-//   it('Should dispatch fetchGroceriesRequest', () => {
-//     const token = '';
-//
-//     const groceries = []
-//
-//     const dispatch = jest.fn();
-//
-//     global.getGroceriesFromDB = jest.fn().mockImplementation(() =>
-//       Promise.resolve({
-//         ok: true,
-//         json() {
-//           return groceries;
-//         }
-//       })
-//     );
-//
-//     return fetchGroceries(token)(dispatch).then(() => {
-//       expect(dispatch).toHaveBeenCalledWith(fetchGroceriesRequest());
-//     });
-//   });
-// });
+describe('fetchGroceries', () => {
+  it('Should dispatch fetchGroceriesRequest and fetchGroceriesSuccess', () => {
+    const token = '';
+    const fetchGroceriesMock = [
+      {id: 123, name:'apples', checked: true},
+      {id: 456, name:'bread', checked: true},
+      {id: 789, name:'bananas', checked: true}
+    ];
+
+    const mockGetGroceriesFromDB = jest.fn().mockImplementation(token => Promise.resolve(fetchGroceriesMock) );
+
+    const expectedActions = [
+      { type: FETCH_GROCERIES_REQUEST },
+      { type: FETCH_GROCERIES_SUCCESS, groceries: fetchGroceriesMock },
+    ];
+
+    const store = mockStore({})
+
+    return store.dispatch(fetchGroceries(token, mockGetGroceriesFromDB)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+});
 
 describe('addGroceryItemRequest', () => {
   const action = addGroceryItemRequest();
@@ -104,28 +111,26 @@ describe('addGroceryItemError', () => {
   });
 });
 
-// describe.only('addGroceryItem', () => {
-//   it('Should dispatch addGroceryItemRequest', () => {
-//     const token = '';
-//     const itemName = 'jello';
-//     const result = {id: 123, name: 'jello', checked: false}
-//
-//     const dispatch = jest.fn();
-//
-//     global.addGroceryToDB = jest.fn().mockImplementation(() =>
-//       Promise.resolve({
-//         ok: true,
-//         json() {
-//           return result;
-//         }
-//       })
-//     );
-//
-//     return addGroceryItem(token, itemName)(dispatch).then(() => {
-//       expect(dispatch).toHaveBeenCalledWith(addGroceryItemRequest());
-//     });
-//   });
-// });
+describe('addGroceryItem', () => {
+  it('Should dispatch addGroceryItemRequest and addGroceryItemSuccess', () => {
+    const token = '';
+    const itemName = 'jello';
+    const addGroceryMock = {id: 123, name: 'jello', checked: false}
+
+    const mockAddGroceryToDB = jest.fn().mockImplementation( (token, itemName) => Promise.resolve(addGroceryMock) );
+
+    const expectedActions = [
+      { type: ADD_GROCERY_ITEM_REQUEST },
+      { type: ADD_GROCERY_ITEM_SUCCESS, item: addGroceryMock },
+    ];
+
+    const store = mockStore({})
+
+    return store.dispatch(addGroceryItem(token, itemName, mockAddGroceryToDB)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+});
 
 describe('toggleCheckedRequest', () => {
   const action = toggleCheckedRequest();
@@ -153,28 +158,27 @@ describe('toggleCheckedError', () => {
   });
 });
 
-// describe.only('toggleChecked', () => {
-//   it('Should dispatch toggleCheckedRequest', () => {
-//     const token = '';
-//
-//     const result = {}
-//
-//     const dispatch = jest.fn();
-//
-//     global.getGroceriesFromDB = jest.fn().mockImplementation(() =>
-//       Promise.resolve({
-//         ok: true,
-//         json() {
-//           return result;
-//         }
-//       })
-//     );
-//
-//     return toggleChecked(token)(dispatch).then(() => {
-//       expect(dispatch).toHaveBeenCalledWith(toggleCheckedRequest(result));
-//     });
-//   });
-// });
+describe('toggleChecked', () => {
+  it('Should dispatch addGroceryItemRequest and addGroceryItemSuccess', () => {
+    const token = '';
+    const itemID = 123;
+    const checked = true;
+    const toggleCheckedMock = {id: 123, name: 'jello', checked: true};
+
+    const mockToggleCheckedInDB = jest.fn().mockImplementation( (token, itemID, checked) => Promise.resolve(toggleCheckedMock) );
+
+    const expectedActions = [
+      { type: TOGGLE_CHECKED_REQUEST },
+      { type: TOGGLE_CHECKED_SUCCESS, item: toggleCheckedMock },
+    ];
+
+    const store = mockStore({})
+
+    return store.dispatch(toggleChecked(token, itemID, checked, mockToggleCheckedInDB)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+});
 
 describe('removeCheckedItemsRequest', () => {
   const action = removeCheckedItemsRequest();
@@ -199,20 +203,24 @@ describe('removeCheckedItemsError', () => {
   });
 });
 
-// describe.only('removeCheckedItems', () => {
-//   it('Should dispatch fetchGroceriesRequest', () => {
-//     const token = '';
-//
-//     const dispatch = jest.fn();
-//
-//     global.removeCheckedInDB = jest.fn().mockImplementation(() =>
-//       Promise.resolve({
-//         ok: true
-//       })
-//     );
-//
-//     return removeCheckedItems(token)(dispatch).then(() => {
-//       expect(dispatch).toHaveBeenCalledWith(removeCheckedItemsRequest());
-//     });
-//   });
-// });
+describe('removeCheckedItems', () => {
+  it('Should dispatch addGroceryItemRequest and addGroceryItemSuccess', () => {
+    const token = '';
+    const itemID = 123;
+    const checked = true;
+    const toggleCheckedMock = {status: 'ok'};
+
+    const mockRemovedCheckedInDB = jest.fn().mockImplementation( token => Promise.resolve(toggleCheckedMock) );
+
+    const expectedActions = [
+      { type: REMOVE_CHECKED_ITEMS_REQUEST },
+      { type: REMOVE_CHECKED_ITEMS_SUCCESS },
+    ];
+
+    const store = mockStore({})
+
+    return store.dispatch(removeCheckedItems(token, mockRemovedCheckedInDB)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+});

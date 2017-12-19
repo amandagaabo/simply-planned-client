@@ -59,11 +59,11 @@ export const updateMealError = error => ({
   error
 });
 
-export const updateMealServer = (token, date, name, item) => dispatch => {
+export const updateMealServer = (token, date, name, item, fetch=updateMealInDB) => dispatch => {
   // dispatch the request action to start the request and show loading
   dispatch(updateMealRequest());
   // search for the users meals in the database by user id (in req.user)
-  updateMealInDB(token, date, name, item).then( () => {
+  return fetch(token, date, name, item).then( () => {
     // dispatch the success function and pass in the result from the db search on success
     dispatch(updateMealSuccess());
   }).catch(err => {

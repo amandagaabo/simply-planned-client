@@ -1,6 +1,3 @@
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-
 import {
   FETCH_MEALS_REQUEST,
   fetchMealsRequest,
@@ -20,6 +17,11 @@ import {
   updateMealClient
 } from '../actions';
 
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
 
 describe('fetchMealsRequest', () => {
   const action = fetchMealsRequest();
@@ -48,9 +50,6 @@ describe('fetchMealsError', () => {
     expect(action.error).toEqual(error);
   });
 });
-
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
 
 describe('fetchMeals', () => {
   it('Should dispatch fetchMealsRequest and fetchMealsSuccess', () => {
@@ -109,5 +108,29 @@ describe('updateMealClient', () => {
     expect(action.date).toEqual(date);
     expect(action.name).toEqual(name);
     expect(action.item).toEqual(item);
+  });
+});
+
+describe('updateMealsServer', () => {
+  it('Should dispatch updateMealRequest and updateMealSuccess', () => {
+    const token = '';
+    const date = '2017-12-10';
+    const name = 'lunch';
+    const item = 'pie';
+
+    const updateMealsMock = { status: 'ok' };
+
+    const mockUpdateMealInDB = jest.fn().mockImplementation((token, date, name, item) => Promise.resolve(updateMealsMock) );
+
+    const expectedActions = [
+      { type: UPDATE_MEAL_REQUEST },
+      { type: UPDATE_MEAL_SUCCESS },
+    ];
+
+    const store = mockStore({ meals: {} })
+
+    return store.dispatch(updateMealServer(token, date, name, item, mockUpdateMealInDB)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
   });
 });
