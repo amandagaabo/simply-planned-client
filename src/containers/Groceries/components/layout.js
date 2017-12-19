@@ -5,7 +5,6 @@ import AddGroceryForm from './add-grocery-form';
 import './layout.css';
 
 export default function Layout(props) {
-
   function onItemClick(e) {
     const id= e.target.id;
     const checked = e.target.className === 'checked';
@@ -25,7 +24,6 @@ export default function Layout(props) {
       {item.name}
     </li>
   })
-
 
   return (
     <div className="row">

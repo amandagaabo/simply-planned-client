@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import Dashboard from './dashboard';
+import {Dashboard} from './dashboard';
 import Groceries from '../Groceries/index';
 import Meals from '../Meals/index';
 

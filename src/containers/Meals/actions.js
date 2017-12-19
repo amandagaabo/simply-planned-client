@@ -1,5 +1,4 @@
-import getMealsFromDB from './get-meals';
-import updateMealInDB from './update-meal';
+import {getMealsFromDB, updateMealInDB} from './api';
 
 // FETCH MEALS
 export const FETCH_MEALS_REQUEST = 'FETCH_MEALS_REQUEST';

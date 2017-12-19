@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {setCurrentUser, setAuthToken} from '../../actions';
-import {clearAuthToken} from '../../local-storage';
+import {clearAuthToken} from '../../../../utils/local-storage';
 
 import './nav.css';
 

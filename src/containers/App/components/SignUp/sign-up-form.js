@@ -1,8 +1,8 @@
 import React from 'react';
 import {reduxForm, Field, focus} from 'redux-form';
-import Input from './../input';
+import Input from '../../components/input';
 import {registerUser, login} from '../../actions';
-import {required, nonEmpty, matches, length, isTrimmed} from './../validators';
+import {required, nonEmpty, matches, length, isTrimmed} from '../../../../utils/validators';
 
 export function SignUpForm(props) {
   function onSubmit(values) {
@@ -12,8 +12,8 @@ export function SignUpForm(props) {
     return props.dispatch(registerUser(user))
     .then(() => {
       return props.dispatch(login(email, password));
-    })
-  }
+    });
+  };
 
   let error;
   if (props.error) {
@@ -22,7 +22,7 @@ export function SignUpForm(props) {
         {props.error}
       </div>
     );
-  }
+  };
 
   return (
     <div className="row">

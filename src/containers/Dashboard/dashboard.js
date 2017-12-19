@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {Icon} from 'react-fa';
 import Groceries from '../Groceries/index';
@@ -6,7 +7,7 @@ import Meals from '../Meals/index';
 
 import './dashboard.css'
 
-export default class Dashboard extends React.Component {
+export class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
@@ -45,3 +46,10 @@ export default class Dashboard extends React.Component {
     );
   }
 };
+
+export const mapStateToProps = state => ({
+  loggedIn: state.app.auth.currentUser !== null
+});
+
+
+export default connect(mapStateToProps)(Dashboard)

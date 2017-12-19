@@ -4,8 +4,8 @@ import {BrowserRouter as Router, Route, Switch}  from 'react-router-dom';
 import Layout from '../layout';
 import Header from '../header/header';
 import Home from '../home/home';
-import Login from '../login/login';
-import SignUp from '../sign-up/sign-up';
+import Login from '../Login/login';
+import SignUp from '../SignUp/sign-up';
 import Dashboard from '../../../../containers/Dashboard/dashboard';
 import NotFoundPage from '../not-found/not-found-page';
 
@@ -14,7 +14,7 @@ describe('App <Layout />', () => {
     shallow(<Layout  />);
   });
 
-  it('Redirects to not found page on invalid path', () => {
+  it('Redirects to correct page for each given endpoint', () => {
     const wrapper = shallow(<Layout />);
     const pathMap = wrapper.find(Route).reduce((pathMap, route) => {
       const routeProps = route.props();
@@ -22,6 +22,10 @@ describe('App <Layout />', () => {
       return pathMap;
     }, {});
 
+    expect(pathMap['/']).toBe(Home);
+    expect(pathMap['/sign-up']).toBe(SignUp);
+    expect(pathMap['/login']).toBe(Login);
+    expect(pathMap['/dashboard']).toBe(Dashboard);
     expect(pathMap['undefined']).toBe(NotFoundPage);
   });
 });

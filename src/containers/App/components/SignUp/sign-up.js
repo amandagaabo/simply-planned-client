@@ -1,20 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import ReduxForm from './login-form';
+import ReduxForm from './sign-up-form';
 
-export class Login extends React.Component {
+export class SignUp extends React.Component {
   render() {
     if(this.props.loggedIn) {
       return (
         <Redirect to='/dashboard' />
-      );
-    };
+      )
+    }
 
     return (
-      <main role="main" className='login-page'>
+      <main role="main" className="sign-up-page">
           <section className="x-light-green-background full-length">
-            <ReduxForm {...this.props}/>
+            <ReduxForm />
           </section>
       </main>
     );
@@ -26,4 +26,4 @@ export const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps)(Login)
+export default connect(mapStateToProps)(SignUp)

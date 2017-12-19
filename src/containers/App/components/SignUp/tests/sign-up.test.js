@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {Redirect} from 'react-router-dom';
-import SignUp from './../sign-up';
+import {SignUp} from './../sign-up';
 import ReduxForm from '../sign-up-form';
 
 describe('<SignUp />', () => {

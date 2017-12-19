@@ -1,7 +1,4 @@
-import getGroceriesFromDB from './get-groceries';
-import addGroceryToDB from './add-grocery';
-import toggleCheckedInDB from './toggle-checked';
-import removeCheckedInDB from './remove-checked';
+import {getGroceriesFromDB, addGroceryToDB, toggleCheckedInDB, removeCheckedInDB} from './api';
 
 // FETCH GROCERIES
 export const FETCH_GROCERIES_REQUEST = 'FETCH_GROCERIES_REQUEST';
