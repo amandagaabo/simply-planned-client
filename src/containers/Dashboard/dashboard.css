@@ -7,7 +7,7 @@
 
 .toggle-side-bar:hover {
   cursor: pointer;
-  color: white;
+  color: #f35001;
 }
 
 .toggle-side-bar__with-sidebar {

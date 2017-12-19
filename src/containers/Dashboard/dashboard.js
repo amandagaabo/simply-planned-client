@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {Icon} from 'react-fa';
+import {isMobile} from 'react-device-detect';
 import Groceries from '../Groceries/index';
 import Meals from '../Meals/index';
 
@@ -11,10 +12,16 @@ export class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      showSideBar: true
-    };
-
+    if(isMobile) {
+      this.state = {
+        showSideBar: false
+      };
+    } else {
+      this.state = {
+        showSideBar: true
+      };
+    }
+    
     this.onToggleSideBar = this.onToggleSideBar.bind(this);
   };
 

@@ -8,6 +8,7 @@
 
 .grocery-list li:hover {
   cursor: pointer;
+  text-decoration: line-through;
 }
 
 .grocery-container {
@@ -17,6 +18,7 @@
 .checked {
   text-decoration: line-through;
 }
+
 .list-header {
   clear: both;
 }
