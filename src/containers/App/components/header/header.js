@@ -7,8 +7,8 @@ export default function Header(props) {
   const pathname = window.location.pathname;
 
   return (
-    <header role="banner">
-      <div className="row">
+    <header role="banner" className="header">
+      <div className="header-container">
         <div className="col-6 header-content">
           <Link to='/' className="main-logo desktop-left">Simply Planned</Link>
         </div>

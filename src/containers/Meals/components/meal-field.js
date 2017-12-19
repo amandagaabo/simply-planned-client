@@ -26,6 +26,7 @@ export default function MealField(props) {
     <div className={`meal ${props.mealType}`}>
       <p className="meal-label">{props.mealType}</p>
       <textarea className="meal-input"
+        aria-label="meal input"
         onChange={handleChange}
         value={value}
         data-date={props.mealDate}

@@ -9,6 +9,7 @@ export function AddGroceryForm(props) {
     <form id="add-grocery-form" onSubmit={props.handleSubmit(props.onAddGroceryItem)}>
       <Field
           component="input"
+          aria-label="grocery item"
           name="item"
           id="item"
           type="text"

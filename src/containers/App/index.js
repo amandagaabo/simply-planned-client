@@ -1,14 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {refreshAuthToken} from './actions';
-
+import {refreshAuthToken, setReady} from './actions';
 import Layout from './components/layout';
 
 export class App extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.hasAuthToken) {
       // Try to get a fresh auth token if we had an existing one in localStorage
       this.props.dispatch(refreshAuthToken());
+    } else {
+      this.props.dispatch(setReady(true));
     }
   }
 
@@ -42,15 +43,23 @@ export class App extends React.Component {
   }
 
   render() {
-    return (
-      <Layout {...this.props} />
-    );
+    if(this.props.ready) {
+      return (
+        <Layout {...this.props} />
+      );
+    } else {
+      return (
+        <div></div>
+      );
+    }
+
   }
 };
 
 export const mapStateToProps = state => ({
   hasAuthToken: state.app.auth.authToken !== null,
-  loggedIn: state.app.auth.currentUser !== null
+  loggedIn: state.app.auth.currentUser !== null,
+  ready: state.app.auth.ready
 });
 
 

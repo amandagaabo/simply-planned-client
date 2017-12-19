@@ -8,6 +8,7 @@
 
 .grocery-list li:hover {
   cursor: pointer;
+  text-decoration: line-through;
 }
 
 .grocery-container {
@@ -17,65 +18,21 @@
 .checked {
   text-decoration: line-through;
 }
+
 .list-header {
   clear: both;
 }
+
 /* edit menu */
-.edit-menu {
+.remove-items {
   position: absolute;
-  right: 20px;
-  top: 108px;
-  list-style-type: none;
+  right: 30px;
+  top: 93px;
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
-.edit-menu li {
-  float: right;
-}
-
-.edit-menu li span, .dropbtn {
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
-}
-
-.dropdown-content span:hover {
+.remove-items:hover {
   color: #f35001;
   cursor: pointer;
-}
-
-.dropbtn {
-  color: black;
-}
-
-.dropbtn:hover {
-  cursor: pointer;
-}
-
-.edit-menu li.dropdown {
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: fixed;
-  right: 10px;
-  background-color: white;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content span {
-  color: black;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-  padding: 5px 10px;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
 }

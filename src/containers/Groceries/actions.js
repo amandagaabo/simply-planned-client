@@ -1,7 +1,4 @@
-import getGroceriesFromDB from './get-groceries';
-import addGroceryToDB from './add-grocery';
-import toggleCheckedInDB from './toggle-checked';
-import removeCheckedInDB from './remove-checked';
+import {getGroceriesFromDB, addGroceryToDB, toggleCheckedInDB, removeCheckedInDB} from './api';
 
 // FETCH GROCERIES
 export const FETCH_GROCERIES_REQUEST = 'FETCH_GROCERIES_REQUEST';
@@ -21,11 +18,11 @@ export const fetchGroceriesError = error => ({
   error
 });
 
-export const fetchGroceries = token => dispatch => {
+export const fetchGroceries = (token, fetch=getGroceriesFromDB) => dispatch => {
   // dispatch the request action to start the request and show loading
   dispatch(fetchGroceriesRequest());
   // search for the users groceries in the database by user id
-  getGroceriesFromDB(token).then(result => {
+  return fetch(token).then(result => {
     // dispatch the success function and pass in the result from the db search on success
     dispatch(fetchGroceriesSuccess(result));
   }).catch(err => {
@@ -52,11 +49,11 @@ export const addGroceryItemError = error => ({
   error
 });
 
-export const addGroceryItem = (token, itemName) => dispatch => {
+export const addGroceryItem = (token, itemName, add=addGroceryToDB) => dispatch => {
   // dispatch the request action to start the request and show loading
   dispatch(addGroceryItemRequest());
   // search for the users groceries in the database by user id
-  addGroceryToDB(token, itemName).then(result => {
+  return add(token, itemName).then(result => {
     // dispatch the success function and pass in the result from the db search on success
     dispatch(addGroceryItemSuccess(result));
   }).catch(err => {
@@ -83,11 +80,11 @@ export const toggleCheckedError = error => ({
   error
 });
 
-export const toggleChecked = (token, itemID, checked) => dispatch => {
+export const toggleChecked = (token, itemID, checked, toggle=toggleCheckedInDB) => dispatch => {
   // dispatch the request action to start the request and show loading
   dispatch(toggleCheckedRequest());
   // search for the users groceries in the database by user id
-  toggleCheckedInDB(token, itemID, checked).then(result => {
+  return toggle(token, itemID, checked).then(result => {
     // dispatch the success function and pass in the result from the db search on success
     dispatch(toggleCheckedSuccess(result));
   }).catch(err => {
@@ -113,11 +110,11 @@ export const removeCheckedItemsError = error => ({
   error
 });
 
-export const removeCheckedItems = (token) => dispatch => {
+export const removeCheckedItems = (token, remove=removeCheckedInDB) => dispatch => {
   // dispatch the request action to start the request and show loading
   dispatch(removeCheckedItemsRequest());
   // search for the users groceries in the database by user id
-  removeCheckedInDB(token).then(result => {
+  return remove(token).then(result => {
     // dispatch the success function and pass in the result from the db search on success
     dispatch(removeCheckedItemsSuccess(result));
   }).catch(err => {

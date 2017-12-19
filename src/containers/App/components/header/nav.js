@@ -2,25 +2,24 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {setCurrentUser, setAuthToken} from '../../actions';
-import {clearAuthToken} from '../../local-storage';
+import {clearAuthToken} from '../../../../utils/local-storage';
 
 import './nav.css';
 
 export function Nav(props) {
-  function logOut(e) {
-    e.preventDefault();
+  function logOut() {
     props.dispatch(setCurrentUser(null));
     props.dispatch(setAuthToken(null));
     clearAuthToken();
   }
 
-  if (props.isLoggedIn && props.pathname === '/dashboard') {
+  if (props.loggedIn && props.pathname === '/dashboard') {
     return (
       <div className="header-link-container">
-        <span className="header-link" onClick={e => logOut(e)}>Log Out</span>
+        <span className="header-link" onClick={logOut}>Log Out</span>
       </div>
     );
-  } else if (props.isLoggedIn) {
+  } else if (props.loggedIn) {
     return (
       <ul className="header-list header-link-container">
         <li><Link to="/dashboard" className="header-link">Dashboard</Link></li>
@@ -44,7 +43,7 @@ export function Nav(props) {
 };
 
 export const mapStateToProps = state => ({
-  isLoggedIn: state.app.auth.currentUser !== null
+  loggedIn: state.app.auth.currentUser !== null
 });
 
 export default connect(mapStateToProps)(Nav);

@@ -9,9 +9,11 @@ import './layout.css'
 export default function Layout(props) {
   const dayMeals = props.meals.map( meal => {
     const dayName = moment(meal.date).format('dddd');
+    const shortMonth = moment(meal.date).format('MMM');
+    const dayNumber = moment(meal.date).format('Do');
     return (
-      <div key={meal.date}>
-        <h3 className="day-header">{dayName}</h3>
+      <div key={meal.date} className="meal-container">
+        <h3 className="day-header">{`${dayName} - ${shortMonth} ${dayNumber}`}</h3>
           <MealField mealName={meal.breakfast} mealType="breakfast" mealDate={meal.date} onUpdateMeal={props.onUpdateMeal} authToken={props.authToken} />
           <MealField mealName={meal.lunch} mealType="lunch" mealDate={meal.date} onUpdateMeal={props.onUpdateMeal} authToken={props.authToken} />
           <MealField mealName={meal.dinner} mealType="dinner" mealDate={meal.date} onUpdateMeal={props.onUpdateMeal} authToken={props.authToken} />

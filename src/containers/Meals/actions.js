@@ -1,5 +1,4 @@
-import getMealsFromDB from './get-meals';
-import updateMealInDB from './update-meal';
+import {getMealsFromDB, updateMealInDB} from './api';
 
 // FETCH MEALS
 export const FETCH_MEALS_REQUEST = 'FETCH_MEALS_REQUEST';
@@ -19,11 +18,11 @@ export const fetchMealsError = error => ({
   error
 });
 
-export const fetchMeals = (token, sunday) => dispatch => {
+export const fetchMeals = (token, sunday, fetch=getMealsFromDB) => dispatch => {
   // dispatch the request action to start the request
   dispatch(fetchMealsRequest());
   // search for the users meals in the database (AJAX)
-  getMealsFromDB(token, sunday).then(result => {
+  return fetch(token, sunday).then(result => {
     // dispatch the success action and pass in the result from the db search on success
     dispatch(fetchMealsSuccess(result));
   }).catch(err => {
@@ -59,11 +58,11 @@ export const updateMealError = error => ({
   error
 });
 
-export const updateMealServer = (token, date, name, item) => dispatch => {
+export const updateMealServer = (token, date, name, item, fetch=updateMealInDB) => dispatch => {
   // dispatch the request action to start the request and show loading
   dispatch(updateMealRequest());
   // search for the users meals in the database by user id (in req.user)
-  updateMealInDB(token, date, name, item).then( () => {
+  return fetch(token, date, name, item).then( () => {
     // dispatch the success function and pass in the result from the db search on success
     dispatch(updateMealSuccess());
   }).catch(err => {

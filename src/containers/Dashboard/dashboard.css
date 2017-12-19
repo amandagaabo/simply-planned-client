@@ -1,19 +1,17 @@
 .toggle-side-bar {
   position: fixed;
-  right: 0;
-  background-color: #d3e29d;
+  right: 2px;
   width: 30px;
 }
 
 .toggle-side-bar:hover {
   cursor: pointer;
-  color: white;
+  color: #f35001;
 }
 
 .toggle-side-bar__with-sidebar {
   left: 0;
   transform: rotateY(-180deg);
-  background-color: #d3e29d;
 }
 
 .meals-container {

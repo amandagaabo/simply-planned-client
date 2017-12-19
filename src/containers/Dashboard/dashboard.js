@@ -1,19 +1,26 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {Icon} from 'react-fa';
-
+import {isMobile} from 'react-device-detect';
 import Groceries from '../Groceries/index';
 import Meals from '../Meals/index';
 
 import './dashboard.css'
 
-export default class Dashboard extends React.Component {
+export class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      showSideBar: false
-    };
+    if(isMobile) {
+      this.state = {
+        showSideBar: false
+      };
+    } else {
+      this.state = {
+        showSideBar: true
+      };
+    }
 
     this.onToggleSideBar = this.onToggleSideBar.bind(this);
   };
@@ -29,7 +36,7 @@ export default class Dashboard extends React.Component {
       return <Redirect to="/" />;
     }
     return (
-      <main role="main">
+      <main role="main" className="dashboard">
         <section className={this.state.showSideBar ? "meals-container meals-container__with-sidebar " : "meals-container"}>
           <Meals />
         </section>
@@ -46,3 +53,10 @@ export default class Dashboard extends React.Component {
     );
   }
 };
+
+export const mapStateToProps = state => ({
+  loggedIn: state.app.auth.currentUser !== null
+});
+
+
+export default connect(mapStateToProps)(Dashboard)
