@@ -19,11 +19,11 @@ export const fetchMealsError = error => ({
   error
 });
 
-export const fetchMeals = (token, sunday) => dispatch => {
+export const fetchMeals = (token, sunday, fetch=getMealsFromDB) => dispatch => {
   // dispatch the request action to start the request
   dispatch(fetchMealsRequest());
   // search for the users meals in the database (AJAX)
-  getMealsFromDB(token, sunday).then(result => {
+  return fetch(token, sunday).then(result => {
     // dispatch the success action and pass in the result from the db search on success
     dispatch(fetchMealsSuccess(result));
   }).catch(err => {

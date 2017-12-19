@@ -21,7 +21,7 @@ export default function getMealsFromDB(token, sunday) {
       meals: data.meals,
       sunday: `${sunday}`
     }
-    
+
     return results
   });
 };

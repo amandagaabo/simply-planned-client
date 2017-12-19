@@ -1,7 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {Meals} from '../index';
-import Layout from '../components/layout';
 
 const onLoad = jest.fn()
 

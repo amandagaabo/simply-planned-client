@@ -2,14 +2,16 @@ import reducer from './../reducer';
 
 import {
   setAuthToken,
-  setCurrentUser
+  setCurrentUser,
+  setReady
 } from './../actions'
 
 // initial state
 const initialState = {
   authToken: null,
   currentUser: null,
-  userId: null
+  userId: null,
+  ready: false
 };
 
 
@@ -35,5 +37,11 @@ describe('App reducer', () => {
     const currentUser = 456;
     const state = reducer(undefined, setCurrentUser(currentUser));
     expect(state.currentUser).toEqual(currentUser);
+  });
+
+  it('Should set ready on setReady', () => {
+    const ready = true;
+    const state = reducer(undefined, setReady(ready));
+    expect(state.ready).toEqual(ready);
   });
 });

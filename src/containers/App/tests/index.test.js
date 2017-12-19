@@ -1,7 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {App} from '../index';
-import Layout from '../components/layout'
 
 describe('<App />', () => {
   it('Renders without crashing', () => {
@@ -9,7 +8,7 @@ describe('<App />', () => {
   });
 
   it('Renders the layout', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.contains(<Layout/>)).toBe(true);
+    const wrapper = shallow(<App loggedIn={true} ready={true}/>);
+    expect(wrapper.find('Layout')).toHaveLength(1);
   });
 });

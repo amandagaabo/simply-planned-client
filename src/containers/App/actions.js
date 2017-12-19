@@ -17,12 +17,19 @@ export const setCurrentUser = currentUser => ({
   currentUser
 });
 
+export const SET_READY = 'SET_READY';
+export const setReady = ready => ({
+  type: SET_READY,
+  ready
+});
+
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
 const storeAuthInfo = (authToken, dispatch) => {
   const decodedToken = jwtDecode(authToken);
   dispatch(setAuthToken(authToken));
   dispatch(setCurrentUser(decodedToken.user));
+  dispatch(setReady(true));
   saveAuthToken(authToken);
 };
 

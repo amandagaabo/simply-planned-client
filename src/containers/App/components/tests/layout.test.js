@@ -24,16 +24,4 @@ describe('App <Layout />', () => {
 
     expect(pathMap['undefined']).toBe(NotFoundPage);
   });
-
-  it.skip('Redirects to the correct page on valid path', () => {
-    const wrapper = shallow(<Layout />);
-    const pathMap = wrapper.find(Route).reduce((pathMap, route) => {
-      const routeProps = route.props();
-      console.log(routeProps.children)
-      pathMap[routeProps.path] = routeProps.children;
-      return pathMap;
-    }, {});
-
-    expect(pathMap['/']).toBe(Home);
-  });
 });

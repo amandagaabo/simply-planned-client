@@ -1,7 +1,6 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 import {Icon} from 'react-fa';
-
 import Groceries from '../Groceries/index';
 import Meals from '../Meals/index';
 

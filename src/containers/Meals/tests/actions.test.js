@@ -21,7 +21,6 @@ import {
 } from '../actions';
 
 
-
 describe('fetchMealsRequest', () => {
   const action = fetchMealsRequest();
   it('Should return the action', () => {
@@ -53,7 +52,7 @@ describe('fetchMealsError', () => {
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe.skip('fetchMeals', () => {
+describe('fetchMeals', () => {
   it('Should dispatch fetchMealsRequest and fetchMealsSuccess', () => {
     const token = '';
     const sunday = '2017-12-10';
@@ -62,16 +61,16 @@ describe.skip('fetchMeals', () => {
       sunday: '2017-12-10'
     };
 
-    const getMealsFromDB = jest.fn().mockImplementation((token, sunday) => fetchMealsMock );
+    const mockGetMealsFromDB = jest.fn().mockImplementation((token, sunday) => Promise.resolve(fetchMealsMock) );
 
     const expectedActions = [
       { type: FETCH_MEALS_REQUEST },
-      { type: FETCH_MEALS_SUCCESS, meals: fetchMealsMock },
+      { type: FETCH_MEALS_SUCCESS, results: fetchMealsMock },
     ];
 
     const store = mockStore({ meals: {} })
 
-    return store.dispatch(fetchMeals(token, sunday)).then(() => {
+    return store.dispatch(fetchMeals(token, sunday, mockGetMealsFromDB)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
