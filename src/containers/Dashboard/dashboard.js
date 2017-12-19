@@ -21,7 +21,7 @@ export class Dashboard extends React.Component {
         showSideBar: true
       };
     }
-    
+
     this.onToggleSideBar = this.onToggleSideBar.bind(this);
   };
 
