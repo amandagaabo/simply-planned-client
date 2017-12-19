@@ -160,9 +160,6 @@
 
 /* sidebar desktop setup */
 @media only screen and (min-width: 840px) {
-  .toggle-side-bar {
-    right: 20px;
-  }
 
   .meals-container {
     position: relative;
@@ -179,7 +176,7 @@
     width: 420px;
     height: 100vh;
     top: 0;
-    right: -400px;
+    right: -385px;
   }
 
   .meals-container__with-sidebar {
@@ -188,7 +185,7 @@
   }
 
   .groceries-side-bar__visible {
-    transform: translateX(-400px);
+    transform: translateX(-385px);
     z-index: 1;
   }
 
