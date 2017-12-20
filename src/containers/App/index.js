@@ -43,15 +43,14 @@ export class App extends React.Component {
   }
 
   render() {
-    if(this.props.ready) {
+    if (this.props.ready) {
       return (
         <Layout {...this.props} />
       );
-    } else {
-      return (
-        <div></div>
-      );
     }
+    return (
+      <div></div>
+    );
   }
 }
 
@@ -62,4 +61,4 @@ export const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps)(App);
