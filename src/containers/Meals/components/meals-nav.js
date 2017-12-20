@@ -1,7 +1,6 @@
 import React from 'react';
 import moment from 'moment';
 import {Icon} from 'react-fa';
-
 import './meals-nav.css';
 
 export default function MealsNav(props) {

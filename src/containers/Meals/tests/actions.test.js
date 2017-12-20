@@ -1,3 +1,5 @@
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import {
   FETCH_MEALS_REQUEST,
   fetchMealsRequest,
@@ -17,9 +19,6 @@ import {
   updateMealClient
 } from '../actions';
 
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
@@ -33,7 +32,7 @@ describe('fetchMealsRequest', () => {
 describe('fetchMealsSuccess', () => {
   it('Should return the action', () => {
     const results = {
-      meals: [{date: '2017-12-12', breakfast: 'pancakes'}],
+      meals: [{ date: '2017-12-12', breakfast: 'pancakes' }],
       sunday: '2017-12-10'
     };
     const action = fetchMealsSuccess(results);
@@ -44,7 +43,7 @@ describe('fetchMealsSuccess', () => {
 
 describe('fetchMealsError', () => {
   it('Should return the action', () => {
-    const error = { message: 'Internal server error'};
+    const error = { message: 'Internal server error' };
     const action = fetchMealsError(error);
     expect(action.type).toEqual(FETCH_MEALS_ERROR);
     expect(action.error).toEqual(error);
@@ -53,21 +52,20 @@ describe('fetchMealsError', () => {
 
 describe('fetchMeals', () => {
   it('Should dispatch fetchMealsRequest and fetchMealsSuccess', () => {
+    const store = mockStore({});
     const token = '';
     const sunday = '2017-12-10';
     const fetchMealsMock = {
-      meals: [{date: '2017-12-12', breakfast: 'pancakes'}],
+      meals: [{ date: '2017-12-12', breakfast: 'pancakes' }],
       sunday: '2017-12-10'
     };
 
-    const mockGetMealsFromDB = jest.fn().mockImplementation((token, sunday) => Promise.resolve(fetchMealsMock) );
+    const mockGetMealsFromDB = jest.fn().mockImplementation(() => Promise.resolve(fetchMealsMock));
 
     const expectedActions = [
       { type: FETCH_MEALS_REQUEST },
       { type: FETCH_MEALS_SUCCESS, results: fetchMealsMock },
     ];
-
-    const store = mockStore({ meals: {} })
 
     return store.dispatch(fetchMeals(token, sunday, mockGetMealsFromDB)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
@@ -91,7 +89,7 @@ describe('updateMealSuccess', () => {
 
 describe('updateMealError', () => {
   it('Should return the action', () => {
-    const error = { message: 'Internal server error'};
+    const error = { message: 'Internal server error' };
     const action = updateMealError(error);
     expect(action.type).toEqual(UPDATE_MEAL_ERROR);
     expect(action.error).toEqual(error);
@@ -113,6 +111,7 @@ describe('updateMealClient', () => {
 
 describe('updateMealsServer', () => {
   it('Should dispatch updateMealRequest and updateMealSuccess', () => {
+    const store = mockStore({});
     const token = '';
     const date = '2017-12-10';
     const name = 'lunch';
@@ -120,16 +119,15 @@ describe('updateMealsServer', () => {
 
     const updateMealsMock = { status: 'ok' };
 
-    const mockUpdateMealInDB = jest.fn().mockImplementation((token, date, name, item) => Promise.resolve(updateMealsMock) );
+    const mockUpdateMealInDB = jest.fn().mockImplementation(() => Promise.resolve(updateMealsMock));
 
     const expectedActions = [
       { type: UPDATE_MEAL_REQUEST },
       { type: UPDATE_MEAL_SUCCESS },
     ];
 
-    const store = mockStore({ meals: {} })
-
-    return store.dispatch(updateMealServer(token, date, name, item, mockUpdateMealInDB)).then(() => {
+    return store.dispatch(
+      updateMealServer(token, date, name, item, mockUpdateMealInDB)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });

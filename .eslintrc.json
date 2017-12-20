@@ -10,6 +10,7 @@
       "react/jsx-filename-extension": "off",
       "jsx-a11y/anchor-is-valid": "off",
       "import/no-named-as-default": "off",
+      "import/no-named-default": "off",
       "react/prop-types": "off",
       "comma-dangle": "off",
       "jsx-a11y/no-autofocus": "off",
