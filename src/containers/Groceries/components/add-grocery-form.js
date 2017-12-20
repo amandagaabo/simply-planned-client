@@ -1,5 +1,5 @@
 import React from 'react';
-import {reduxForm, Field} from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import './add-grocery-form.css';
 
 export function AddGroceryForm(props) {
@@ -15,8 +15,8 @@ export function AddGroceryForm(props) {
         placeholder="type item and hit enter to add"
       />
     </form>
-  )
-};
+  );
+}
 
 export default reduxForm({
   form: 'add-item'

@@ -12,7 +12,7 @@ export function Login(props) {
   }
 
   return (
-    <main role="main" className='login-page'>
+    <main role="main" className="login-page">
       <section className="full-length">
         <ReduxForm />
         <Demo />

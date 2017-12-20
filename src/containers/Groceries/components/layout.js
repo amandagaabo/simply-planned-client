@@ -6,32 +6,44 @@ import './layout.css';
 
 export default function Layout(props) {
   function onItemClick(e) {
-    const id = e.target.id;
+    const { id } = e.target;
     const checked = e.target.className === 'checked';
     props.onToggle(props.authToken, id, checked);
-  };
+  }
 
   function onRemoveButtonClick() {
     const confirmDelete = window.confirm('Delete all crossed off items?');
-    if(confirmDelete) {
-      props.onRemoveItems(props.authToken)
+    if (confirmDelete) {
+      props.onRemoveItems(props.authToken);
     }
   }
 
   const itemList = props.groceries.map((item) => {
-    return <li
-      key={item.id}
-      id={item.id}
-      className={item.checked ? "checked" : "not-checked"}
-      onClick={e => onItemClick(e)}>
-      {item.name}
-    </li>
-  })
+    return (
+      <li
+        key={item.id}
+        id={item.id}
+        className={item.checked ? 'checked' : 'not-checked'}
+        onClick={e => onItemClick(e)}
+        onKeyPress={e => onItemClick(e)}
+      >
+        {item.name}
+      </li>
+    );
+  });
 
   return (
     <div className="row">
       <div>
-        <span className="remove-items" onClick={onRemoveButtonClick}><Icon name="trash-o" /></span>
+        <span
+          className="remove-items"
+          onClick={onRemoveButtonClick}
+          role="button"
+          tabIndex={0}
+          onKeyPress={onRemoveButtonClick}
+        >
+          <Icon name="trash-o" />
+        </span>
       </div>
 
       <h2 className="list-header">Grocery List</h2>
@@ -40,8 +52,9 @@ export default function Layout(props) {
         {itemList}
       </ul>
 
-      <AddGroceryForm onAddGroceryItem={values => props.onAddGroceryItem(props.authToken, values)} />
+      <AddGroceryForm
+        onAddGroceryItem={values => props.onAddGroceryItem(props.authToken, values)}
+      />
     </div>
   );
-
-};
+}
