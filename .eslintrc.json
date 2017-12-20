@@ -1,0 +1,14 @@
+{
+    "extends": "airbnb",
+    "rules": {
+      "prefer-promise-reject-errors": "off",
+      "react/jsx-filename-extension": "off",
+      "jsx-a11y/anchor-is-valid": "off",
+      "import/no-named-as-default": "off",
+      "react/prop-types": "off",
+      "comma-dangle": "off"
+    },
+    "globals": {
+      "window": true
+    }
+}

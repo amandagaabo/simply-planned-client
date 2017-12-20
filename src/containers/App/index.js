@@ -1,6 +1,7 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {refreshAuthToken, setReady} from './actions';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { refreshAuthToken, setReady } from './actions';
 import Layout from './components/layout';
 
 export class App extends React.Component {
@@ -52,9 +53,8 @@ export class App extends React.Component {
         <div></div>
       );
     }
-
   }
-};
+}
 
 export const mapStateToProps = state => ({
   hasAuthToken: state.app.auth.authToken !== null,
