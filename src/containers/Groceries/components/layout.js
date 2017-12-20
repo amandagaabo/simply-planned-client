@@ -22,12 +22,14 @@ export default function Layout(props) {
     return (
       <li
         key={item.id}
-        id={item.id}
-        className={item.checked ? 'checked' : 'not-checked'}
-        onClick={e => onItemClick(e)}
-        onKeyPress={e => onItemClick(e)}
+        className="grocery-item"
       >
-        {item.name}
+        <button
+          id={item.id}
+          className={item.checked ? 'checked' : 'not-checked'}
+          onClick={e => onItemClick(e)}
+        > {item.name}
+        </button>
       </li>
     );
   });

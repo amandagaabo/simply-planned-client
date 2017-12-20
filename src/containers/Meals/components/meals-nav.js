@@ -49,7 +49,6 @@ export default function MealsNav(props) {
       <button className="today" onClick={onTodayClick} aria-label="today">this week</button>;
   }
 
-  // render nav
   return (
     <div className="calendar-nav">
       <div className="col-12 title">
