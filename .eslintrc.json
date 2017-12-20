@@ -1,5 +1,9 @@
 {
     "extends": "airbnb",
+    "env": {
+      "mocha": true,
+      "jest": true
+    },
     "rules": {
       "prefer-promise-reject-errors": "off",
       "react/jsx-filename-extension": "off",
@@ -9,6 +13,7 @@
       "comma-dangle": "off"
     },
     "globals": {
-      "window": true
+      "window": true,
+      "expect": true
     }
 }

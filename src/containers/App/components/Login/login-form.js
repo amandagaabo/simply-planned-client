@@ -1,8 +1,8 @@
 import React from 'react';
-import {Field, reduxForm, focus} from 'redux-form';
+import { Field, reduxForm, focus } from 'redux-form';
 import Input from '../../components/input';
-import {login} from '../../actions';
-import {required, nonEmpty} from '../../../../utils/validators';
+import { login } from '../../actions';
+import { required, nonEmpty } from '../../../../utils/validators';
 
 export function LoginForm(props) {
   function onSubmit(values) {
