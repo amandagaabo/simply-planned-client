@@ -1,0 +1,13 @@
+.demo {
+  margin: 0;
+  font-size: 18px;
+}
+
+.demo-info {
+  width: 500px;
+  margin: 0 auto;
+  border: 1px solid black;
+  background-color: #d3e29d;
+  margin-top: 80px;
+  padding: 0 10px 22px 10px;
+}
