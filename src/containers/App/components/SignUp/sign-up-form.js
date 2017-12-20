@@ -1,19 +1,22 @@
 import React from 'react';
-import {reduxForm, Field, focus} from 'redux-form';
+import { reduxForm, Field, focus } from 'redux-form';
 import Input from '../../components/input';
-import {registerUser, login} from '../../actions';
-import {required, nonEmpty, matches, length, isTrimmed} from '../../../../utils/validators';
+import { registerUser, login } from '../../actions';
+import { required, nonEmpty, matches, length, isTrimmed } from '../../../../utils/validators';
 
 export function SignUpForm(props) {
   function onSubmit(values) {
-    const {email, password, firstName, lastName} = values;
-    const user = {email, password, firstName, lastName};
+    const {
+      email, password, firstName, lastName
+    } = values;
+    const user = {
+      email, password, firstName, lastName
+    };
 
     return props.dispatch(registerUser(user))
-    .then(() => {
-      return props.dispatch(login(email, password));
-    });
-  };
+      .then(() =>
+        props.dispatch(login(email, password)));
+  }
 
   let error;
   if (props.error) {
@@ -22,15 +25,16 @@ export function SignUpForm(props) {
         {props.error}
       </div>
     );
-  };
+  }
 
   return (
     <div className="row">
       <h1>Sign Up</h1>
 
-      <form id="sign-up-form" onSubmit={props.handleSubmit(values =>
-        onSubmit(values)
-      )}>
+      <form
+        id="sign-up-form"
+        onSubmit={props.handleSubmit(values => onSubmit(values))}
+      >
 
         <Field
           component={Input}
@@ -62,7 +66,7 @@ export function SignUpForm(props) {
           name="password"
           type="password"
           label="Password"
-          validate={[required, length({min: 10, max: 72}), isTrimmed]}
+          validate={[required, length({ min: 10, max: 72 }), isTrimmed]}
         />
 
         <Field
@@ -77,13 +81,14 @@ export function SignUpForm(props) {
 
         <button
           type="submit"
-          disabled={!props.valid || props.submitting}>
+          disabled={!props.valid || props.submitting}
+        >
           submit
         </button>
       </form>
     </div>
   );
-};
+}
 
 export default reduxForm({
   form: 'sign-up',

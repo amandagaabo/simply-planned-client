@@ -1,6 +1,5 @@
 import React from 'react';
 import autosize from 'autosize';
-
 import './meal-field.css';
 
 export default function MealField(props) {

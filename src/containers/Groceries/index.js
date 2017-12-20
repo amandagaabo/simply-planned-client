@@ -1,7 +1,7 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {reset} from 'redux-form';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { reset } from 'redux-form';
 import {
   removeCheckedItems,
   toggleChecked,
@@ -12,7 +12,7 @@ import Layout from './components/layout';
 
 export class Groceries extends React.Component {
   componentDidMount() {
-    this.props.onLoad(this.props.authToken)
+    this.props.onLoad(this.props.authToken);
   }
 
   render() {
@@ -22,9 +22,9 @@ export class Groceries extends React.Component {
 
     return (
       <Layout {...this.props} />
-    )
+    );
   }
-};
+}
 
 export const mapStateToProps = state => ({
   groceries: state.app.groceries.groceries,
@@ -35,19 +35,19 @@ export const mapStateToProps = state => ({
 export const mapDispatchToProps = (dispatch) => {
   return {
     onAddGroceryItem: (authToken, formData) => {
-      dispatch(addGroceryItem(authToken, formData.item))
-      dispatch(reset('add-item'))
+      dispatch(addGroceryItem(authToken, formData.item));
+      dispatch(reset('add-item'));
     },
     onToggle: (token, itemID, checked) => {
-      dispatch(toggleChecked(token, itemID, checked))
+      dispatch(toggleChecked(token, itemID, checked));
     },
     onRemoveItems: (token) => {
-      dispatch(removeCheckedItems(token))
+      dispatch(removeCheckedItems(token));
     },
     onLoad: (token) => {
-      dispatch(fetchGroceries(token))
+      dispatch(fetchGroceries(token));
     }
-  }
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Groceries);

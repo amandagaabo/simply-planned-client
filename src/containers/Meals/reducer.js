@@ -11,10 +11,10 @@ import {
 } from './actions';
 
 export function getMealStarter(sunday) {
-  const mealStarter = [{'date': sunday}];
-  for (let i = 1; i < 7; i++) {
-    mealStarter.push({'date': moment(sunday).add(i, 'd').toISOString()})
-  };
+  const mealStarter = [{ date: sunday }];
+  for (let i = 1; i < 7; i += 1) {
+    mealStarter.push({ date: moment(sunday).add(i, 'd').toISOString() });
+  }
   return mealStarter;
 }
 
@@ -29,22 +29,20 @@ const initialState = {
   error: null
 };
 
-export default function (state=initialState, action) {
-  switch(action.type){
-
-    // FETCH MEALS
+export default function (state = initialState, action) {
+  switch (action.type) {
     case FETCH_MEALS_REQUEST:
       return {
         ...state,
         loading: true
-      }
+      };
 
-    case FETCH_MEALS_SUCCESS:
-      const sunday = action.results.sunday;
+    case FETCH_MEALS_SUCCESS: {
+      const { sunday } = action.results;
       const starterMeals = getMealStarter(sunday);
       const returnedMeals = action.results.meals;
 
-      const meals = _.map(starterMeals, function(day){
+      const meals = _.map(starterMeals, (day) => {
         return _.assign(day, _.find(returnedMeals, { date: day.date }));
       });
 
@@ -53,52 +51,52 @@ export default function (state=initialState, action) {
         loading: false,
         sunday,
         meals
-      }
+      };
+    }
 
     case FETCH_MEALS_ERROR:
       return {
         ...state,
         loading: false,
         error: action.error
-      }
+      };
 
-    // UPDATE MEAL
     case UPDATE_MEAL_REQUEST:
       return {
         ...state,
         loading: true
-      }
+      };
 
     case UPDATE_MEAL_SUCCESS:
       return {
         ...state,
         loading: false
-      }
+      };
 
     case UPDATE_MEAL_ERROR:
       return {
         ...state,
         loading: false,
         error: action.error
-      }
+      };
 
-    case UPDATE_MEAL_CLIENT:
+    case UPDATE_MEAL_CLIENT: {
       const updatedMeal = {
         date: action.date,
         [action.name]: action.item
-      }
-      
+      };
+
       return {
         ...state,
         loading: false,
-        meals: state.meals.map( meal => meal.date ===  updatedMeal.date
-          ? {...meal, ...updatedMeal}
+        meals: state.meals.map(meal => meal.date === updatedMeal.date
+          ? { ...meal, ...updatedMeal }
           : meal
         )
-      }
+      };
+    }
 
     default:
       return state;
   }
-
-};
+}

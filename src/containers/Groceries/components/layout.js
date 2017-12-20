@@ -1,5 +1,5 @@
 import React from 'react';
-import {Icon} from 'react-fa';
+import { Icon } from 'react-fa';
 
 import AddGroceryForm from './add-grocery-form';
 import './layout.css';
@@ -18,7 +18,7 @@ export default function Layout(props) {
     }
   }
 
-  const itemList = props.groceries.map( (item) => {
+  const itemList = props.groceries.map((item) => {
     return <li
       key={item.id}
       id={item.id}
@@ -31,7 +31,7 @@ export default function Layout(props) {
   return (
     <div className="row">
       <div>
-        <span className="remove-items" onClick={onRemoveButtonClick} ><Icon name="trash-o" /></span>
+        <span className="remove-items" onClick={onRemoveButtonClick}><Icon name="trash-o" /></span>
       </div>
 
       <h2 className="list-header">Grocery List</h2>
@@ -40,7 +40,7 @@ export default function Layout(props) {
         {itemList}
       </ul>
 
-      <AddGroceryForm onAddGroceryItem={values => props.onAddGroceryItem(props.authToken, values)}/>
+      <AddGroceryForm onAddGroceryItem={values => props.onAddGroceryItem(props.authToken, values)} />
     </div>
   );
 

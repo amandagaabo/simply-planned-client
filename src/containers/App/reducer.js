@@ -1,4 +1,4 @@
-import {SET_AUTH_TOKEN, SET_CURRENT_USER, SET_READY} from './actions';
+import { SET_AUTH_TOKEN, SET_CURRENT_USER, SET_READY } from './actions';
 
 const initialState = {
   authToken: null, // authToken !== null does not mean it has been validated
@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case SET_AUTH_TOKEN:
       return {
         ...state,

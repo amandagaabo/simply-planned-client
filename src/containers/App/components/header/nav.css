@@ -1,11 +1,14 @@
 .header-link {
   border: none;
   font-size: 18px;
+  margin: 0;
 }
 
 .header-link:hover {
   color: #f35001;
   cursor: pointer;
+  background-color: white;
+  box-shadow: none;
 }
 
 .header-list {

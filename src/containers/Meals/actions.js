@@ -1,4 +1,4 @@
-import {getMealsFromDB, updateMealInDB} from './api';
+import { getMealsFromDB, updateMealInDB } from './api';
 
 // FETCH MEALS
 export const FETCH_MEALS_REQUEST = 'FETCH_MEALS_REQUEST';
@@ -18,23 +18,23 @@ export const fetchMealsError = error => ({
   error
 });
 
-export const fetchMeals = (token, sunday, fetch=getMealsFromDB) => dispatch => {
+export const fetchMeals = (token, sunday, fetch = getMealsFromDB) => (dispatch) => {
   // dispatch the request action to start the request
   dispatch(fetchMealsRequest());
   // search for the users meals in the database (AJAX)
-  return fetch(token, sunday).then(result => {
+  return fetch(token, sunday).then((result) => {
     // dispatch the success action and pass in the result from the db search on success
     dispatch(fetchMealsSuccess(result));
-  }).catch(err => {
+  }).catch((err) => {
     // dispatch the error action if something goes wrong
     dispatch(fetchMealsError(err));
-  })
+  });
 };
 
 
 // UPDATE MEAL CLIENT SIDE
 export const UPDATE_MEAL_CLIENT = 'UPDATE_MEAL_CLIENT';
-export const updateMealClient =  (date, name, item) => ({
+export const updateMealClient = (date, name, item) => ({
   type: UPDATE_MEAL_CLIENT,
   date,
   name,
@@ -58,15 +58,15 @@ export const updateMealError = error => ({
   error
 });
 
-export const updateMealServer = (token, date, name, item, fetch=updateMealInDB) => dispatch => {
+export const updateMealServer = (token, date, name, item, fetch = updateMealInDB) => (dispatch) => {
   // dispatch the request action to start the request and show loading
   dispatch(updateMealRequest());
   // search for the users meals in the database by user id (in req.user)
-  return fetch(token, date, name, item).then( () => {
+  return fetch(token, date, name, item).then(() => {
     // dispatch the success function and pass in the result from the db search on success
     dispatch(updateMealSuccess());
-  }).catch(err => {
+  }).catch((err) => {
     // dispatch the error function if something goes wrong
     dispatch(updateMealError(err));
-  })
+  });
 };

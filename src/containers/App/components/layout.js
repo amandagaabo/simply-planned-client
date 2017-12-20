@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch}  from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Header from './header/header';
 import Home from './home/home';
@@ -8,7 +8,7 @@ import SignUp from './SignUp/sign-up';
 import Dashboard from '../../Dashboard/dashboard';
 import NotFoundPage from './not-found/not-found-page';
 
-export default function Layout(props) {
+export default function Layout() {
   return (
     <Router>
       <div className="app">
@@ -23,4 +23,4 @@ export default function Layout(props) {
       </div>
     </Router>
   );
-};
+}

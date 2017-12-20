@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import MealField from '../meal-field';
 
 
@@ -9,10 +9,10 @@ describe('<MealField />', () => {
   });
 
   it('Renders a meal', () => {
-    const mealType = "lunch";
-    const mealDate = "2017-12-12";
+    const mealType = 'lunch';
+    const mealDate = '2017-12-12';
 
-    const wrapper = shallow(<MealField mealType={mealType} mealDate={mealDate}/>);
+    const wrapper = shallow(<MealField mealType={mealType} mealDate={mealDate} />);
     expect(wrapper.hasClass('meal')).toBe(true);
     expect(wrapper.hasClass(mealType)).toBe(true);
   });
@@ -25,10 +25,10 @@ describe('<MealField />', () => {
         meal: 'lunch'
       },
       value: 'chicken sandwich'
-    }
+    };
 
     const wrapper = shallow(<MealField onUpdateMeal={onUpdateMeal} />);
-    wrapper.find('textarea').simulate('change', {target: mockTarget});
+    wrapper.find('textarea').simulate('change', { target: mockTarget });
     expect(onUpdateMeal).toHaveBeenCalledTimes(1);
   });
 });

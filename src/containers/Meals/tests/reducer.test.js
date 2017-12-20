@@ -1,6 +1,5 @@
-import { getMealStarter, default as reducer} from './../reducer';
 import moment from 'moment';
-import _ from 'lodash';
+import { getMealStarter, default as reducer } from './../reducer';
 import {
   fetchMealsRequest,
   fetchMealsSuccess,
@@ -9,7 +8,7 @@ import {
   updateMealSuccess,
   updateMealError,
   updateMealClient
-} from './../actions'
+} from './../actions';
 
 // initial state
 const thisSunday = moment().startOf('week').toISOString();
@@ -37,7 +36,7 @@ const mockMeals = [
     lunch: 'soup',
     dinner: 'chicken'
   }
-]
+];
 
 const fetchResults = {
   meals: mockMeals,
@@ -47,13 +46,13 @@ const fetchResults = {
 
 describe('Meals reducer', () => {
   it('Should set the initial state when nothing is passed in', () => {
-    const state = reducer(undefined, {type: '__UNKNOWN'});
+    const state = reducer(undefined, { type: '__UNKNOWN' });
     expect(state).toEqual(initialState);
   });
 
   it('Should return the current state on an unknown action', () => {
-    let currentState = {};
-    const state = reducer(currentState, {type: '__UNKNOWN'});
+    const currentState = {};
+    const state = reducer(currentState, { type: '__UNKNOWN' });
     expect(state).toBe(currentState);
   });
 
@@ -73,7 +72,7 @@ describe('Meals reducer', () => {
     });
 
     it('Should set error and loading on fetchMealsError', () => {
-      const error = {message: 'error'};
+      const error = { message: 'error' };
       const state = reducer(undefined, fetchMealsError(error));
       expect(state.error).toEqual(error);
       expect(state.loading).toBe(false);
@@ -92,21 +91,20 @@ describe('Meals reducer', () => {
     });
 
     it('Should set error and loading on updateMealError', () => {
-      const error = {message: 'error'};
+      const error = { message: 'error' };
       const state = reducer(undefined, updateMealError(error));
       expect(state.error).toEqual(error);
       expect(state.loading).toBe(false);
     });
 
     it('Should set meal and loading on updateMealClient', () => {
-      const date = thisThursday
-      const name = 'breakfast'
-      const item = 'pizza'
+      const date = thisThursday;
+      const name = 'breakfast';
+      const item = 'pizza';
 
       const state = reducer(undefined, updateMealClient(date, name, item));
       expect(state.meals.find(meal => meal.date === date).breakfast).toEqual(item);
       expect(state.loading).toBe(false);
     });
   });
-
 });
