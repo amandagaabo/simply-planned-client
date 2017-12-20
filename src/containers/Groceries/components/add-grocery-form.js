@@ -1,6 +1,5 @@
 import React from 'react';
 import {reduxForm, Field} from 'redux-form';
-
 import './add-grocery-form.css';
 
 export function AddGroceryForm(props) {
@@ -21,4 +20,4 @@ export function AddGroceryForm(props) {
 
 export default reduxForm({
   form: 'add-item'
-})(AddGroceryForm)
+})(AddGroceryForm);

@@ -18,7 +18,7 @@ export default function Layout(props) {
     }
   }
 
-  const itemList = props.groceries.map( (item) => {
+  const itemList = props.groceries.map((item) => {
     return <li
       key={item.id}
       id={item.id}
@@ -40,7 +40,7 @@ export default function Layout(props) {
         {itemList}
       </ul>
 
-      <AddGroceryForm onAddGroceryItem={values => props.onAddGroceryItem(props.authToken, values)}/>
+      <AddGroceryForm onAddGroceryItem={values => props.onAddGroceryItem(props.authToken, values)} />
     </div>
   );
 

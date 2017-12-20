@@ -18,7 +18,8 @@
       "consistent-return": "off",
       "function-paren-newline": "off",
       "react/self-closing-comp": "off",
-      "no-shadow": "off"
+      "no-shadow": "off",
+      "no-confusing-arrow": "off"
     },
     "globals": {
       "window": true,
