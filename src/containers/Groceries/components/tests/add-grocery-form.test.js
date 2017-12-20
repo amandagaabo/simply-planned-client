@@ -1,12 +1,12 @@
 import React from 'react';
-import {shallow} from 'enzyme';
-import {Field} from 'redux-form';
-import {AddGroceryForm} from '../add-grocery-form';
+import { shallow } from 'enzyme';
+import { Field } from 'redux-form';
+import { AddGroceryForm } from '../add-grocery-form';
 
 describe('<AddGroceryForm />', () => {
   it('Renders without crashing', () => {
     const handleSubmit = jest.fn();
-    shallow(<AddGroceryForm  handleSubmit={handleSubmit}/>);
+    shallow(<AddGroceryForm  handleSubmit={handleSubmit} />);
   });
 
   it('Renders the add grocery form', () => {

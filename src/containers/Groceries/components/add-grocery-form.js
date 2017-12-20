@@ -8,12 +8,12 @@ export function AddGroceryForm(props) {
     // handleSubmit calls the function with the form data automatically
     <form id="add-grocery-form" onSubmit={props.handleSubmit(props.onAddGroceryItem)}>
       <Field
-          component="input"
-          aria-label="grocery item"
-          name="item"
-          id="item"
-          type="text"
-          placeholder="type item and hit enter to add"
+        component="input"
+        aria-label="grocery item"
+        name="item"
+        id="item"
+        type="text"
+        placeholder="type item and hit enter to add"
       />
     </form>
   )
