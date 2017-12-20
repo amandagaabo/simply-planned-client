@@ -26,7 +26,7 @@ describe('Groceries <Layout />', () => {
     };
 
     const wrapper = shallow(<Layout groceries={groceries} onToggle={onToggle} />);
-    wrapper.find('.grocery-list li').first().simulate('click', { target: mockTarget });
+    wrapper.find('.grocery-list li button').first().simulate('click', { target: mockTarget });
     expect(onToggle).toHaveBeenCalledTimes(1);
   });
 
