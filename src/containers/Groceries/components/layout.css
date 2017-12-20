@@ -10,6 +10,20 @@
   cursor: pointer;
 }
 
+.grocery-item button {
+  background-color: #d3e29d;
+  border: none;
+  border-radius: none;
+  box-shadow: none;
+  width: 100%;
+  font-size: 20px;
+}
+
+.grocery-item button:hover {
+  background-color: #d3e29d;
+  box-shadow: none;
+}
+
 .grocery-container {
   position: fixed;
 }

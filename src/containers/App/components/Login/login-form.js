@@ -7,7 +7,7 @@ import { required, nonEmpty } from '../../../../utils/validators';
 export function LoginForm(props) {
   function onSubmit(values) {
     return props.dispatch(login(values.email, values.password));
-  };
+  }
 
   let error;
   if (props.error) {
@@ -22,41 +22,45 @@ export function LoginForm(props) {
     <div className="row">
       <h1>Log In</h1>
 
-      <form id="log-in-form" onSubmit={props.handleSubmit(values =>
-        onSubmit(values)
-      )}>
+      <form
+        id="log-in-form"
+        onSubmit={props.handleSubmit(values =>
+          onSubmit(values)
+        )}
+      >
 
         <Field
-            component={Input}
-            name="email"
-            type="email"
-            label="Email"
-            autofocus
-            validate={[required, nonEmpty]}
+          component={Input}
+          name="email"
+          type="email"
+          label="Email"
+          autofocus
+          validate={[required, nonEmpty]}
         />
 
         <Field
-            component={Input}
-            name="password"
-            id="password"
-            type="password"
-            label="Password"
-            validate={[required, nonEmpty]}
+          component={Input}
+          name="password"
+          id="password"
+          type="password"
+          label="Password"
+          validate={[required, nonEmpty]}
         />
 
         {error}
 
         <button
           type="submit"
-          disabled={!props.valid || props.submitting}>
+          disabled={!props.valid || props.submitting}
+        >
           log in
         </button>
       </form>
     </div>
   );
-};
+}
 
 export default reduxForm({
   form: 'login',
   onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
-})(LoginForm)
+})(LoginForm);

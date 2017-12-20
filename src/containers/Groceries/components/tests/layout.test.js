@@ -1,11 +1,11 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import Layout from '../layout';
 
 const groceries = [
-  {id: 123, name:'apples', checked: true},
-  {id: 456, name:'bread', checked: true},
-  {id: 789, name:'bananas', checked: true}
+  { id: 123, name: 'apples', checked: true },
+  { id: 456, name: 'bread', checked: true },
+  { id: 789, name: 'bananas', checked: true }
 ];
 
 describe('Groceries <Layout />', () => {
@@ -15,7 +15,7 @@ describe('Groceries <Layout />', () => {
 
   it('Renders the groceries', () => {
     const wrapper = shallow(<Layout groceries={groceries} />);
-    expect(wrapper.find('.grocery-list li')).toHaveLength(groceries.length)
+    expect(wrapper.find('.grocery-list li')).toHaveLength(groceries.length);
   });
 
   it('Calls onToggle function when item is clicked', () => {
@@ -23,10 +23,10 @@ describe('Groceries <Layout />', () => {
     const mockTarget = {
       id: 123,
       className: 'checked'
-    }
+    };
 
     const wrapper = shallow(<Layout groceries={groceries} onToggle={onToggle} />);
-    wrapper.find('.grocery-list li').first().simulate('click', { target: mockTarget });
+    wrapper.find('.grocery-list li button').first().simulate('click', { target: mockTarget });
     expect(onToggle).toHaveBeenCalledTimes(1);
   });
 

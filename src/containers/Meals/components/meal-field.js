@@ -5,8 +5,8 @@ import './meal-field.css';
 export default function MealField(props) {
   function handleChange(e) {
     const token = props.authToken;
-    const date = e.target.dataset.date;
-    const meal = e.target.dataset.meal;
+    const { date } = e.target.dataset;
+    const { meal } = e.target.dataset;
     const item = e.target.value;
 
     // update meal
@@ -16,22 +16,24 @@ export default function MealField(props) {
     autosize(e.target);
   }
 
-  let value = "";
+  let value = '';
   if (props.mealName) {
-    value = props.mealName
+    value = props.mealName;
   }
 
   return (
     <div className={`meal ${props.mealType}`}>
       <p className="meal-label">{props.mealType}</p>
-      <textarea className="meal-input"
+      <textarea
+        className="meal-input"
         aria-label="meal input"
         onChange={handleChange}
         value={value}
         data-date={props.mealDate}
         data-meal={props.mealType}
-        placeholder="enter meal name here">
+        placeholder="enter meal name here"
+      >
       </textarea>
     </div>
   );
-};
+}
