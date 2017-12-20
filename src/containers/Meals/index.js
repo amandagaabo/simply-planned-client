@@ -1,14 +1,13 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import _ from 'lodash';
-
-import {fetchMeals, updateMealServer, updateMealClient} from './actions'
+import { fetchMeals, updateMealServer, updateMealClient } from './actions';
 import Layout from './components/layout';
 
 export class Meals extends React.Component {
   componentDidMount() {
-    this.props.onLoad(this.props.authToken, this.props.sunday)
+    this.props.onLoad(this.props.authToken, this.props.sunday);
   }
 
   render() {
@@ -18,9 +17,9 @@ export class Meals extends React.Component {
 
     return (
       <Layout {...this.props} />
-    )
+    );
   }
-};
+}
 
 export const mapStateToProps = state => ({
   meals: state.app.meals.meals,
@@ -30,9 +29,9 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = (dispatch) => {
-  const sync = _.debounce( (token, date, name, item) => {
+  const sync = _.debounce((token, date, name, item) => {
     dispatch(updateMealServer(token, date, name, item));
-  }, 500 )
+  }, 500);
 
   return {
     onUpdateMeal: (token, date, name, item) => {
@@ -40,12 +39,12 @@ export const mapDispatchToProps = (dispatch) => {
       sync(token, date, name, item);
     },
     onLoad: (token, sunday) => {
-      dispatch(fetchMeals(token, sunday))
+      dispatch(fetchMeals(token, sunday));
     },
     onGetMeals: (token, sunday) => {
-      dispatch(fetchMeals(token, sunday))
+      dispatch(fetchMeals(token, sunday));
     }
-  }
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Meals)
+export default connect(mapStateToProps, mapDispatchToProps)(Meals);

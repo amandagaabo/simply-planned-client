@@ -15,9 +15,9 @@
 
 .meal-input {
   width: 100%;
-  min-height: 40px;
   font-size: 20px;
-  padding: 20px 5px;
+  padding-top: 20px;
+  padding-bottom: 40px;
   border: none;
   resize: none;
   overflow: hidden;
