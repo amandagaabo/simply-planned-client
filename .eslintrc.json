@@ -20,11 +20,14 @@
       "function-paren-newline": "off",
       "react/self-closing-comp": "off",
       "no-shadow": "off",
-      "no-confusing-arrow": "off"
+      "no-confusing-arrow": "off",
+      "no-empty": "off"
     },
     "globals": {
       "window": true,
+      "document": true,
       "expect": true,
-      "fetch": true
+      "fetch": true,
+      "localStorage": true
     }
 }
