@@ -1,10 +1,9 @@
 import reducer from './../reducer';
-
 import {
   setAuthToken,
   setCurrentUser,
   setReady
-} from './../actions'
+} from './../actions';
 
 // initial state
 const initialState = {
@@ -17,13 +16,13 @@ const initialState = {
 
 describe('App reducer', () => {
   it('Should set the initial state when nothing is passed in', () => {
-    const state = reducer(undefined, {type: '__UNKNOWN'});
+    const state = reducer(undefined, { type: '__UNKNOWN' });
     expect(state).toEqual(initialState);
   });
 
   it('Should return the current state on an unknown action', () => {
-    let currentState = {};
-    const state = reducer(currentState, {type: '__UNKNOWN'});
+    const currentState = {};
+    const state = reducer(currentState, { type: '__UNKNOWN' });
     expect(state).toBe(currentState);
   });
 

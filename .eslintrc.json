@@ -5,15 +5,22 @@
       "jest": true
     },
     "rules": {
+      "arrow-body-style": "off",
       "prefer-promise-reject-errors": "off",
       "react/jsx-filename-extension": "off",
       "jsx-a11y/anchor-is-valid": "off",
       "import/no-named-as-default": "off",
       "react/prop-types": "off",
-      "comma-dangle": "off"
+      "comma-dangle": "off",
+      "jsx-a11y/no-autofocus": "off",
+      "jsx-a11y/label-has-for": "off",
+      "no-return-assign": "off",
+      "consistent-return": "off",
+      "function-paren-newline": "off"
     },
     "globals": {
       "window": true,
-      "expect": true
+      "expect": true,
+      "fetch": true
     }
 }
