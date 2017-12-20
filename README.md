@@ -6,7 +6,7 @@ is available for the user to start adding items they will need as they add meals
 
 
 ## Demo Log In
-To see a demo of how the app works with meals and groceries already added to the users account, visit https://simplyplanned.netlify.com/ and use the following credentials:
+To see a demo of how the app works with meals and groceries already added to the users account, visit https://simplyplanned.amandaherschleb.com/ and use the following credentials:
 email: user@test.com
 password: password123
 
@@ -59,10 +59,9 @@ https://github.com/amandaherschleb/simply-planned-api
 * React & Redux
 * Node.js & Express
 * MongoDB & Mongoose
-* Mocha, Chai & Jest
-* Passport
-* bcrypt.js
-* Lodash
-* Numeral.js
-* Moment.js
+* Mocha & Chai
+* Jest & Enzyme
+* Passport & bcrypt.js
 * Travis CI
+* Lodash
+* Moment.js
