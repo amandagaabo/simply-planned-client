@@ -36,6 +36,10 @@ Grocery items can be crossed off the list by clicking on them.  Clicking the tra
 ![Alt text](/screenshots/delete-groceries.png?raw=true "Delete Groceries Screenshot")
 
 
+## API
+The API for this app can be found here:
+https://github.com/amandaherschleb/simply-planned-api
+
 
 ## Technologies, middleware and libraries used
 * HTML & CSS
@@ -44,6 +48,8 @@ Grocery items can be crossed off the list by clicking on them.  Clicking the tra
 * Node.js & Express
 * MongoDB & Mongoose
 * Jest
+* bcrypt.js
 * Lodash
 * Numeral.js
 * Moment.js
+* Travis CI
