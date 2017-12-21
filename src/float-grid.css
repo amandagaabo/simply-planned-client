@@ -106,6 +106,15 @@
     top: 60px;
   }
 
+  .toggle-side-bar, .toggle-side-bar_with-sidebar {
+    position: absolute;
+    top: 32px;
+  }
+
+  .toggle-side-bar {
+    left: 2px;
+  }
+
   .header-content {
     position: relative;
     height: 60px;

@@ -1,7 +1,7 @@
 .toggle-side-bar {
-  position: absolute;
-  top: 33px;
-  left: 2px;
+  position: fixed;
+  top: 109px;
+  right: 2px;
   width: 30px;
 }
 
@@ -15,6 +15,7 @@
 }
 
 .toggle-side-bar__with-sidebar {
+  left: 2px;
   transform: rotateY(-180deg);
 }
 
