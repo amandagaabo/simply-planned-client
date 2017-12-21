@@ -21,17 +21,9 @@ export function Home(props) {
       <section className="x-light-green-background">
         <div className="row">
           <h1>Plan Meals</h1>
-          <p>Whether you are trying a new diet or just want to be prepared,
-          weekly meal planning can make eating during the week less of a hassle.
-          Simply Planned takes a simple approach to meal planning and allows you to plan
+          <p>Simply Planned takes a simple approach to meal planning and allows you to plan
           meals your way - just add the name of the meal to the day you want to eat it.
-          You can look at your meal plans from previous weeks to get ideas for meals,
-          or do some searching online or through your cook books.  You do not need to
-          re-write your recipes so you can add them to your plan, all you need is the
-          name of the  meal.  If you want you can paste a link to the recipe or add the
-          name of the cook book and page number it is on so you can easily reference it
-          later.  Use this free form meal planner to plan your meals the way that works
-          best for you.
+          You can look at your meal plans from previous weeks to get ideas for this week.
           </p>
           <img
             className="home-img"
@@ -46,9 +38,7 @@ export function Home(props) {
           <h1>Make your Grocery List</h1>
           <p>While planning your meals and looking through recipes you will need to have a
           grocery list going.  Simply Planned has an easy to use grocery list so you can
-          add items as you think of them.  Type the name of the item you want, hit enter and
-          it is added to your list.  After you shop, cross everything off your list so you are
-          ready for next week.
+          add items as you think of them and remove them after you have bought them.
           </p>
           <img
             className="home-img"

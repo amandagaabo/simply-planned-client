@@ -16,4 +16,5 @@ header {
 
 .header-container {
   margin: 0 40px;
+  min-width: 300px;
 }

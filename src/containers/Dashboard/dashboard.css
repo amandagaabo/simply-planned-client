@@ -1,5 +1,6 @@
 .toggle-side-bar {
   position: fixed;
+  top: 109px;
   right: 2px;
   width: 30px;
 }
@@ -14,7 +15,7 @@
 }
 
 .toggle-side-bar__with-sidebar {
-  left: 0;
+  left: 2px;
   transform: rotateY(-180deg);
 }
 
@@ -32,7 +33,7 @@
   overflow: scroll;
   width: 420px;
   height: 100vh;
-  top: 0;
+  top: 75px;
   right: -420px;
 }
 

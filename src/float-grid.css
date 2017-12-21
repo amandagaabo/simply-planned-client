@@ -95,7 +95,26 @@
     width: 100%;
   }
 
+
   /* content with responsive layout */
+  main {
+    position: relative;
+    top: 60px;
+  }
+
+  .groceries-side-bar {
+    top: 60px;
+  }
+
+  .toggle-side-bar, .toggle-side-bar_with-sidebar {
+    position: absolute;
+    top: 32px;
+  }
+
+  .toggle-side-bar {
+    left: 2px;
+  }
+
   .header-content {
     position: relative;
     height: 60px;
@@ -144,10 +163,6 @@
     margin-top: 10px;
   }
 
-  section {
-    padding: 60px 0;
-  }
-
   .hero-section {
     padding: 200px 0;
   }
@@ -176,7 +191,6 @@
     overflow: scroll;
     width: 420px;
     height: 100vh;
-    top: 0;
     right: -385px;
   }
 

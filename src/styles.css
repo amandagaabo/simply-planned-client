@@ -9,7 +9,11 @@ body {
 
 section {
   min-height: 200px;
-  padding: 75px 0;
+}
+
+main {
+  position: relative;
+  top: 75px;
 }
 
 .x-light-green-background {
