@@ -106,13 +106,16 @@
     top: 60px;
   }
 
-  .toggle-side-bar, .toggle-side-bar_with-sidebar {
+  .toggle-side-bar_with-sidebar {
     position: absolute;
     top: 32px;
   }
 
   .toggle-side-bar {
-    left: 2px;
+    position: fixed;
+    top: 92px;
+    right: 2px;
+    width: 30px;
   }
 
   .header-content {
@@ -202,6 +205,12 @@
   .groceries-side-bar__visible {
     transform: translateX(-385px);
     z-index: 1;
+  }
+
+  .toggle-side-bar {
+    position: absolute;
+    top: 32px;
+    left: 2px;
   }
 
   .toggle-side-bar__with-sidebar {
