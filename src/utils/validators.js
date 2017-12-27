@@ -13,6 +13,7 @@ export const length = length => (value) => {
   if (length.max && value.length > length.max) {
     return `Must be at most ${length.max} characters long`;
   }
+  return undefined;
 };
 
 export const matches = field => (value, allValues) =>

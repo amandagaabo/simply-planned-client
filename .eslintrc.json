@@ -15,8 +15,6 @@
       "comma-dangle": "off",
       "jsx-a11y/no-autofocus": "off",
       "jsx-a11y/label-has-for": "off",
-      "no-return-assign": "off",
-      "consistent-return": "off",
       "function-paren-newline": "off",
       "react/self-closing-comp": "off",
       "no-shadow": "off",
