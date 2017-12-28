@@ -1,6 +1,6 @@
 import React from 'react';
-import {shallow} from 'enzyme';
-import {BrowserRouter as Router, Route, Switch}  from 'react-router-dom';
+import { shallow } from 'enzyme';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from '../layout';
 import Header from '../header/header';
 import Home from '../home/home';
@@ -11,7 +11,7 @@ import NotFoundPage from '../not-found/not-found-page';
 
 describe('App <Layout />', () => {
   it('Renders without crashing', () => {
-    shallow(<Layout  />);
+    shallow(<Layout />);
   });
 
   it('Redirects to correct page for each given endpoint', () => {

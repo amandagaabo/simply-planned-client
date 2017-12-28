@@ -60,6 +60,7 @@ export const login = (email, password) => (dispatch) => {
             })
           );
         }
+        return 'Other error';
       })
   );
 };
@@ -109,5 +110,6 @@ export const registerUser = user => () => {
           })
         );
       }
+      return 'other error';
     });
 };

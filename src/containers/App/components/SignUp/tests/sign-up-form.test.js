@@ -1,12 +1,12 @@
 import React from 'react';
-import {shallow} from 'enzyme';
-import {Field} from 'redux-form';
-import {SignUpForm} from './../sign-up-form';
+import { shallow } from 'enzyme';
+import { Field } from 'redux-form';
+import { SignUpForm } from './../sign-up-form';
 
 describe('<SignUpForm />', () => {
   it('Renders without crashing', () => {
     const handleSubmit = jest.fn();
-    shallow(<SignUpForm  handleSubmit={handleSubmit}/>);
+    shallow(<SignUpForm handleSubmit={handleSubmit} />);
   });
 
   it('Renders the sign up form', () => {
@@ -19,7 +19,7 @@ describe('<SignUpForm />', () => {
 
   it('Renders the login form with errors', () => {
     const handleSubmit = jest.fn();
-    const error = 'invalid un or pw'
+    const error = 'invalid un or pw';
     const wrapper = shallow(<SignUpForm handleSubmit={handleSubmit} error={error} />);
     expect(wrapper.contains(<h1>Sign Up</h1>)).toBe(true);
     expect(wrapper.find(Field)).toHaveLength(5);
