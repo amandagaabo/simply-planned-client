@@ -1,7 +1,7 @@
 .grocery-list  {
   list-style-type: none;
   text-align: center;
-  padding: 0;
+  padding: 0 0 0 30px;
   margin: 0 auto;
   margin-bottom: 20px;
 }
@@ -15,8 +15,11 @@
   border: none;
   border-radius: none;
   box-shadow: none;
-  width: 100%;
+  margin-bottom: 5px;
+  width: 50%;
   font-size: 20px;
+  text-align: left;
+  position: relative;
 }
 
 .grocery-item button:hover {
@@ -26,6 +29,12 @@
 
 .grocery-container {
   position: fixed;
+}
+
+.box-icon {
+  position: absolute;
+  top: 5px;
+  left: -15px;
 }
 
 .checked {

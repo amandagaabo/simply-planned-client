@@ -6,8 +6,8 @@ import './layout.css';
 
 export default function Layout(props) {
   function onItemClick(e) {
-    const { id } = e.target;
-    const checked = e.target.className === 'checked';
+    const { id } = e.currentTarget;
+    const checked = e.currentTarget.className === 'checked';
     props.onToggle(props.authToken, id, checked);
   }
 
@@ -19,6 +19,14 @@ export default function Layout(props) {
   }
 
   const itemList = props.groceries.map((item) => {
+    // set icon
+    let icon;
+    if (item.checked) {
+      icon = <Icon name="check-square-o" className="box-icon" />;
+    } else {
+      icon = <Icon name="square-o" className="box-icon" />;
+    }
+
     return (
       <li
         key={item.id}
@@ -28,7 +36,9 @@ export default function Layout(props) {
           id={item.id}
           className={item.checked ? 'checked' : 'not-checked'}
           onClick={e => onItemClick(e)}
-        > {item.name}
+        >
+          {icon}
+          {item.name}
         </button>
       </li>
     );
