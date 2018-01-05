@@ -53,9 +53,7 @@ export default class ListItem extends React.Component {
         onMouseLeave={() => this.hideIcon()}
       >
         <button
-          id={this.props.item.id}
-          data-checked={this.props.item.checked}
-          className={this.props.item.checked ? 'checked' : 'not-checked'}
+          className={this.props.item.checked ? 'checked item-btn' : 'not-checked item-btn'}
           onClick={() => this.onItemClick()}
         >
           {icon}
