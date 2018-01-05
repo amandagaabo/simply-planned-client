@@ -45,6 +45,10 @@
   clear: both;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 /* edit menu */
 .remove-items {
   position: absolute;
