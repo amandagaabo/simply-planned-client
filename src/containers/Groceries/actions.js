@@ -126,7 +126,7 @@ export const removeCheckedItems = (token, remove = removeCheckedInDB) => (dispat
 // REMOVE CHECKED ITEMS
 export const DELETE_ITEM_REQUEST = 'DELETE_ITEM_REQUEST';
 export const deleteItemRequest = () => ({
-  type: REMOVE_CHECKED_ITEMS_REQUEST
+  type: DELETE_ITEM_REQUEST
 });
 
 export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';

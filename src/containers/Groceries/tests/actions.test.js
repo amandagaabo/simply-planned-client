@@ -28,7 +28,14 @@ import {
   removeCheckedItemsSuccess,
   REMOVE_CHECKED_ITEMS_ERROR,
   removeCheckedItemsError,
-  removeCheckedItems
+  removeCheckedItems,
+  DELETE_ITEM_REQUEST,
+  deleteItemRequest,
+  DELETE_ITEM_SUCCESS,
+  deleteItemSuccess,
+  DELETE_ITEM_ERROR,
+  deleteItemError,
+  deleteItem
 } from '../actions';
 
 const middlewares = [thunk];
@@ -205,10 +212,10 @@ describe('removeCheckedItems', () => {
   it('Should dispatch addGroceryItemRequest and addGroceryItemSuccess', () => {
     const store = mockStore({});
     const token = '';
-    const toggleCheckedMock = { status: 'ok' };
+    const removeCheckedMock = { status: 'ok' };
 
     const mockRemovedCheckedInDB =
-      jest.fn().mockImplementation(() => Promise.resolve(toggleCheckedMock));
+      jest.fn().mockImplementation(() => Promise.resolve(removeCheckedMock));
 
     const expectedActions = [
       { type: REMOVE_CHECKED_ITEMS_REQUEST },
@@ -216,6 +223,51 @@ describe('removeCheckedItems', () => {
     ];
 
     return store.dispatch(removeCheckedItems(token, mockRemovedCheckedInDB)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+});
+
+describe('deleteItemRequest', () => {
+  const action = deleteItemRequest();
+  it('Should return the action', () => {
+    expect(action.type).toEqual(DELETE_ITEM_REQUEST);
+  });
+});
+
+describe('deleteItemSuccess', () => {
+  it('Should return the action', () => {
+    const itemID = 123;
+    const action = deleteItemSuccess(itemID);
+    expect(action.type).toEqual(DELETE_ITEM_SUCCESS);
+    expect(action.itemID).toEqual(itemID);
+  });
+});
+
+describe('deleteItemError', () => {
+  it('Should return the action', () => {
+    const error = { message: 'Internal server error' };
+    const action = deleteItemError(error);
+    expect(action.type).toEqual(DELETE_ITEM_ERROR);
+    expect(action.error).toEqual(error);
+  });
+});
+
+describe('deleteItem', () => {
+  it('Should dispatch deleteItemRequest and deleteItemSuccess', () => {
+    const store = mockStore({});
+    const token = '';
+    const itemID = 123;
+
+    const mockDeleteItemInDB =
+      jest.fn().mockImplementation(() => Promise.resolve(itemID));
+
+    const expectedActions = [
+      { type: DELETE_ITEM_REQUEST },
+      { type: DELETE_ITEM_SUCCESS, itemID },
+    ];
+
+    return store.dispatch(deleteItem(token, itemID, mockDeleteItemInDB)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
