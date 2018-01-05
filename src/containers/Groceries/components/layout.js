@@ -1,16 +1,10 @@
 import React from 'react';
 import { Icon } from 'react-fa';
-
 import AddGroceryForm from './add-grocery-form';
+import ListItem from './list-item';
 import './layout.css';
 
 export default function Layout(props) {
-  function onItemClick(e) {
-    const { id } = e.target;
-    const checked = e.target.className === 'checked';
-    props.onToggle(props.authToken, id, checked);
-  }
-
   function onRemoveButtonClick() {
     const confirmDelete = window.confirm('Delete all crossed off items?');
     if (confirmDelete) {
@@ -20,17 +14,7 @@ export default function Layout(props) {
 
   const itemList = props.groceries.map((item) => {
     return (
-      <li
-        key={item.id}
-        className="grocery-item"
-      >
-        <button
-          id={item.id}
-          className={item.checked ? 'checked' : 'not-checked'}
-          onClick={e => onItemClick(e)}
-        > {item.name}
-        </button>
-      </li>
+      <ListItem key={item.id} item={item} {...props} />
     );
   });
 

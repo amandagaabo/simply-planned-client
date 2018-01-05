@@ -4,6 +4,9 @@ A react app for simple meal planning. The app will allow users to add meals to e
 as short or as long as the user wants and can include references to recipes or pages in a cook book. A grocery list
 is available for the user to start adding items they will need as they add meals to their plan.
 
+## User
+This app is for intended for users who want a simple way to plan meals and make a grocery list. This is a freeform
+planner that allows the user to plan meals the way that works best for them.
 
 ## Demo Log In
 To see a demo of how the app works with meals and groceries already added to the users account, visit https://simplyplanned.amandaherschleb.com/ and use the following credentials:
