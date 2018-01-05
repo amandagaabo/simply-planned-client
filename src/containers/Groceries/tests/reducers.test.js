@@ -11,7 +11,10 @@ import {
   toggleCheckedError,
   removeCheckedItemsRequest,
   removeCheckedItemsSuccess,
-  removeCheckedItemsError
+  removeCheckedItemsError,
+  deleteItemRequest,
+  deleteItemSuccess,
+  deleteItemError
 } from './../actions';
 
 // initial state
@@ -125,6 +128,36 @@ describe('Grocery reducer', () => {
     it('Should set error and loading on removeCheckedItemsError', () => {
       const error = { message: 'error' };
       const state = reducer(undefined, removeCheckedItemsError(error));
+      expect(state.error).toEqual(error);
+      expect(state.loading).toBe(false);
+    });
+  });
+
+  describe('Delete item requests', () => {
+    it('Should set loading to true on deleteItemRequest', () => {
+      const state = reducer(undefined, deleteItemRequest());
+      expect(state.loading).toBe(true);
+    });
+
+    it('Should set groceries and loading on deleteItemSuccess', () => {
+      const initialState = {
+        groceries: [
+          { id: 123, name: 'bread', checked: true },
+          { id: 456, name: 'milk', checked: true },
+          { id: 789, name: 'cheese', checked: false }
+        ]
+      };
+
+      const itemID = initialState.groceries[0].id;
+      const state = reducer(initialState, deleteItemSuccess(itemID));
+      expect(state.groceries.length).toBe(2);
+      expect(state.groceries.find(item => item.id === itemID)).toBe(undefined);
+      expect(state.loading).toBe(false);
+    });
+
+    it('Should set error and loading on deleteItemError', () => {
+      const error = { message: 'error' };
+      const state = reducer(undefined, deleteItemError(error));
       expect(state.error).toEqual(error);
       expect(state.loading).toBe(false);
     });
