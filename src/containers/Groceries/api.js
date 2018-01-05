@@ -78,3 +78,20 @@ export function removeCheckedInDB(token) {
     return res.status;
   });
 }
+
+export function deleteItemInDB(token, itemID) {
+  // POST request to /groceries endpoint
+  return fetch(`${API_BASE_URL}/groceries/delete/${itemID}`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  }).then((res) => {
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }
+    return itemID;
+  });
+}

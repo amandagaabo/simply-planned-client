@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { reset } from 'redux-form';
 import {
   removeCheckedItems,
+  deleteItem,
   toggleChecked,
   addGroceryItem,
   fetchGroceries
@@ -40,6 +41,9 @@ export const mapDispatchToProps = (dispatch) => {
     },
     onToggle: (token, itemID, checked) => {
       dispatch(toggleChecked(token, itemID, checked));
+    },
+    onDeleteItem: (token, itemID) => {
+      dispatch(deleteItem(token, itemID));
     },
     onRemoveItems: (token) => {
       dispatch(removeCheckedItems(token));

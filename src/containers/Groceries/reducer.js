@@ -10,7 +10,10 @@ import {
   TOGGLE_CHECKED_ERROR,
   REMOVE_CHECKED_ITEMS_REQUEST,
   REMOVE_CHECKED_ITEMS_SUCCESS,
-  REMOVE_CHECKED_ITEMS_ERROR
+  REMOVE_CHECKED_ITEMS_ERROR,
+  DELETE_ITEM_REQUEST,
+  DELETE_ITEM_SUCCESS,
+  DELETE_ITEM_ERROR
 } from './actions';
 
 const initialState = {
@@ -96,6 +99,24 @@ export default function (state = initialState, action) {
         loading: false,
         error: action.error
       };
+    case DELETE_ITEM_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case DELETE_ITEM_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        groceries: state.groceries.filter(item => item.id !== action.itemID)
+      };
+    case DELETE_ITEM_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
+
     default:
       return state;
   }

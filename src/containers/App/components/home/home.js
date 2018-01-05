@@ -33,7 +33,7 @@ export function Home(props) {
         </div>
       </section>
 
-      <section className="light-green-background">
+      <section>
         <div className="row">
           <h1>Make your Grocery List</h1>
           <p>While planning your meals and looking through recipes you will need to have a

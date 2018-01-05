@@ -1,4 +1,4 @@
-import { getGroceriesFromDB, addGroceryToDB, toggleCheckedInDB, removeCheckedInDB } from './api';
+import { getGroceriesFromDB, addGroceryToDB, toggleCheckedInDB, removeCheckedInDB, deleteItemInDB } from './api';
 
 // FETCH GROCERIES
 export const FETCH_GROCERIES_REQUEST = 'FETCH_GROCERIES_REQUEST';
@@ -120,5 +120,36 @@ export const removeCheckedItems = (token, remove = removeCheckedInDB) => (dispat
   }).catch((err) => {
     // dispatch the error function if something goes wrong
     dispatch(removeCheckedItemsError(err));
+  });
+};
+
+// REMOVE CHECKED ITEMS
+export const DELETE_ITEM_REQUEST = 'DELETE_ITEM_REQUEST';
+export const deleteItemRequest = () => ({
+  type: REMOVE_CHECKED_ITEMS_REQUEST
+});
+
+export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
+export const deleteItemSuccess = itemID => ({
+  type: DELETE_ITEM_SUCCESS,
+  itemID
+});
+
+export const DELETE_ITEM_ERROR = 'DELETE_ITEM_ERROR';
+export const deleteItemError = error => ({
+  type: DELETE_ITEM_ERROR,
+  error
+});
+
+export const deleteItem = (token, itemID, deleteItem = deleteItemInDB) => (dispatch) => {
+  // dispatch the request action to start the request and show loading
+  dispatch(deleteItemRequest());
+  // search for the users groceries in the database by user id
+  return deleteItem(token, itemID).then((result) => {
+    // dispatch the success function and pass in the result from the db search on success
+    dispatch(deleteItemSuccess(result));
+  }).catch((err) => {
+    // dispatch the error function if something goes wrong
+    dispatch(deleteItemError(err));
   });
 };
